@@ -1,0 +1,279 @@
+//START OF FILE: Greeting.pl
+greeting() :- 
+        write('hello\n'), write('goodbye\n').
+//END OF FILE
+//START OF FILE: example.pl
+likes(bob, pizza).
+likes(alice, pizza).
+
+//END OF FILE
+//START OF FILE: SocialDistance.pl
+smallDistance(6).
+mediumDistance(13).
+largeDistance(27).
+smallDuration(15).
+mediumDuration(30).
+largeDuration(120).
+smallExhalation(10).
+mediumExhalation(30).
+largeExhalation(50).
+maxInt(200).
+minInt(0).
+one(1).
+comma(",").
+distance("Distance").
+duration("Duration").
+exhalation("Exhalation").
+isSafe("IsSafe").
+true("true").
+
+%Verifying if a value occurs in a specific cell specified by a query name.
+%Verifying if a tuple occurs in a specific column specified by a query name.
+givenSizes(Distance, Duration, Exhalation):-
+	smallDistance(SmallDistance),
+	mediumDistance(MediumDistance),
+	largeDistance(LargeDistance),
+	smallDuration(SmallDuration),
+	mediumDuration(MediumDuration),
+	largeDuration(LargeDuration),
+	smallExhalation(SmallExhalation),
+	mediumExhalation(MediumExhalation),
+	largeExhalation(LargeExhalation),
+	((Distance = SmallDistance, Duration = SmallDuration, Exhalation = SmallExhalation);
+	(Distance = MediumDistance, Duration = MediumDuration, Exhalation = MediumExhalation);
+	(Distance = LargeDistance, Duration = LargeDuration, Exhalation = LargeExhalation)).
+
+givenSafe(Distance, Duration, Exhalation):-
+	smallDistance(SmallDistance),
+	mediumDistance(MediumDistance),
+	largeDistance(LargeDistance),
+	smallDuration(SmallDuration),
+	mediumDuration(MediumDuration),
+	largeDuration(LargeDuration),
+	smallExhalation(SmallExhalation),
+	mediumExhalation(MediumExhalation),
+	largeExhalation(LargeExhalation),
+	((Distance = MediumDistance, Duration = MediumDuration, Exhalation = MediumExhalation);
+	(Distance = MediumDistance, Duration = SmallDuration, Exhalation = LargeExhalation);
+	(Distance = MediumDistance, Duration = LargeDuration, Exhalation = SmallExhalation);
+	(Distance = SmallDistance, Duration = MediumDuration, Exhalation = SmallExhalation);
+	(Distance = SmallDistance, Duration = SmallDuration, Exhalation = MediumExhalation);
+	(Distance = LargeDistance, Duration = MediumDuration, Exhalation = LargeExhalation);
+	(Distance = LargeDistance, Duration = LargeDuration, Exhalation = MediumExhalation)).
+	
+
+derivedSafe(Distance, Duration, Exhalation):-
+	(distanceGreaterThanMedium(Distance), durationLessThanMedium(Duration), exhalationLessThanMedium(Exhalation));
+	(distanceGreaterThanMedium(Distance), durationLessThanSmall(Duration), exhalationLessThanLarge(Exhalation));
+	(distanceGreaterThanMedium(Distance), durationLessThanLarge(Duration), exhalationLessThanSmall(Exhalation));
+	(distanceGreaterThanSmall(Distance), durationLessThanMedium(Duration), exhalationLessThanSmall(Exhalation));
+	(distanceGreaterThanSmall(Distance), durationLessThanSmall(Duration), exhalationLessThanMedium(Exhalation));
+	(distanceGreaterThanLarge(Distance), durationLessThanMedium(Duration), exhalationLessThanLarge(Exhalation));
+	(distanceGreaterThanLarge(Distance), durationLessThanLarge(Duration), exhalationLessThanMedium(Exhalation)).
+
+% Consider the three smaller problems of determining if a distance, duration, or exhalation level is at least as safe as a given distance, duration, and exhalation level.
+distanceGreaterThanSmall(Distance):-
+	smallDistance(SmallDistance),
+	Distance >= SmallDistance.
+% Consider the three smaller problems of determining if a distance, duration, or exhalation level is at least as safe as a given distance, duration, and exhalation level.
+distanceGreaterThanMedium(Distance):-
+	mediumDistance(MediumDistance),
+	Distance >= MediumDistance.
+% Consider the three smaller problems of determining if a distance, duration, or exhalation level is at least as safe as a given distance, duration, and exhalation level.
+distanceGreaterThanLarge(Distance):-
+	largeDistance(LargeDistance),
+	Distance >= LargeDistance.
+% Consider the three smaller problems of determining if a distance, duration, or exhalation level is at least as safe as a given distance, duration, and exhalation level.
+durationLessThanSmall(Duration):-
+	smallDuration(SmallDuration),
+	Duration =< SmallDuration.
+% Consider the three smaller problems of determining if a distance, duration, or exhalation level is at least as safe as a given distance, duration, and exhalation level.
+durationLessThanMedium(Duration):-
+	mediumDuration(MediumDuration),
+	Duration =< MediumDuration.
+% Consider the three smaller problems of determining if a distance, duration, or exhalation level is at least as safe as a given distance, duration, and exhalation level.
+durationLessThanLarge(Duration):-
+	largeDuration(LargeDuration),
+	Duration =< LargeDuration.	
+% Consider the three smaller problems of determining if a distance, duration, or exhalation level is at least as safe as a given distance, duration, and exhalation level.
+exhalationLessThanSmall(Exhalation):-
+	smallExhalation(SmallExhalation),
+	Exhalation =< SmallExhalation.
+% Consider the three smaller problems of determining if a distance, duration, or exhalation level is at least as safe as a given distance, duration, and exhalation level.
+exhalationLessThanMedium(Exhalation):-
+	mediumExhalation(MediumExhalation),
+	Exhalation =< MediumExhalation.
+% Consider the three smaller problems of determining if a distance, duration, or exhalation level is at least as safe as a given distance, duration, and exhalation level.
+exhalationLessThanLarge(Exhalation):-
+	largeExhalation(LargeExhalation),
+	Exhalation =< LargeExhalation.
+interpolatedSafe(Distance, Duration, Exhalation):-
+	(interpolateDistanceMedium(Distance), interpolateDurationMedium(Duration), interpolateExhalationMedium(Exhalation));
+	(interpolateDistanceMedium(Distance), interpolateDurationSmall(Duration), interpolateExhalationLarge(Exhalation));
+	(interpolateDistanceMedium(Distance), interpolateDurationLarge(Duration), interpolateExhalationSmall(Exhalation));
+	(interpolateDistanceSmall(Distance), interpolateDurationMedium(Duration), interpolateExhalationSmall(Exhalation));
+	(interpolateDistanceSmall(Distance), interpolateDurationSmall(Duration), interpolateExhalationMedium(Exhalation));
+	(interpolateDistanceLarge(Distance), interpolateDurationMedium(Duration), interpolateExhalationLarge(Exhalation));
+	(interpolateDistanceLarge(Distance), interpolateDurationLarge(Duration), interpolateExhalationMedium(Exhalation)).
+interpolateDistanceSmall(Distance):-
+	smallDistance(SmallDistance),
+	mediumDistance(MediumDistance),
+	Distance >= SmallDistance,
+	Distance < MediumDistance.
+interpolateDistanceMedium(Distance):-
+	largeDistance(LargeDistance),
+	mediumDistance(MediumDistance),
+	Distance >= MediumDistance,
+	Distance < LargeDistance.
+interpolateDistanceLarge(Distance):-
+	largeDistance(LargeDistance),
+	Distance >= LargeDistance.
+interpolateDurationSmall(Duration):-
+	smallDuration(SmallDuration),
+	minInt(MinInt),
+	Duration =< SmallDuration,
+	Duration >= MinInt.
+interpolateDurationMedium(Duration):-
+	smallDuration(SmallDuration),
+	mediumDuration(MediumDuration),
+	Duration > SmallDuration,
+	Duration =< MediumDuration.
+interpolateDurationLarge(Duration):-
+	largeDuration(LargeDuration),
+	mediumDuration(MediumDuration),
+	Duration > MediumDuration,
+	Duration =< LargeDuration.
+interpolateExhalationSmall(Exhalation):-
+	smallExhalation(SmallExhalation),
+	minInt(MinInt),
+	Exhalation =< SmallExhalation,
+	Exhalation >= MinInt.
+interpolateExhalationMedium(Exhalation):-
+	smallExhalation(SmallExhalation),
+	mediumExhalation(MediumExhalation),
+	Exhalation > SmallExhalation,
+	Exhalation =< MediumExhalation.
+interpolateExhalationLarge(Exhalation):-
+	largeExhalation(LargeExhalation),
+	mediumExhalation(MediumExhalation),
+	Exhalation > MediumExhalation,
+	Exhalation =< LargeExhalation.
+interpolatedSafe(Distance, Duration):-
+	(interpolateDistanceMedium(Distance), interpolateDurationMedium(Duration));
+	(interpolateDistanceSmall(Distance), interpolateDurationSmall(Duration));
+	(interpolateDistanceLarge(Distance), interpolateDurationLarge(Duration)).
+interpolatedSafe(Distance):-
+	interpolateDistanceMedium(Distance).
+generateSafeDistancesAndDurations(Distance, Duration, Exhalation):-
+	largeExhalation(LargeExhalation),
+	Exhalation =< LargeExhalation,
+	((mediumDistance(Distance), mediumDuration(Duration), interpolateExhalationMedium(Exhalation));
+	(mediumDistance(Distance), smallDuration(Duration), interpolateExhalationLarge(Exhalation));
+	(mediumDistance(Distance), largeDuration(Duration), interpolateExhalationSmall(Exhalation));
+	(smallDistance(Distance), mediumDuration(Duration), interpolateExhalationSmall(Exhalation));
+	(smallDistance(Distance), smallDuration(Duration), interpolateExhalationMedium(Exhalation));
+	(largeDistance(Distance), mediumDuration(Duration), interpolateExhalationLarge(Exhalation));
+	(largeDistance(Distance), largeDuration(Duration), interpolateExhalationMedium(Exhalation))).
+
+% Call another query to create the full safety table, and then recursively process the table.
+dataMatrix(
+	[
+		[13, 30, 30],
+		[13, 15, 50],
+		[13, 120, 10],
+		[6, 30, 10],
+		[6, 15, 30],
+		[27, 30, 50],
+		[27, 120, 30]
+	]
+).
+% Call another query to create the full safety table, and then recursively process the table.
+listGivenSafe([Distance, Duration, Exhalation]):-
+	dataMatrix(DataMatrix),
+	listGivenSafe([Distance, Duration, Exhalation], DataMatrix).
+% Call another query to create the full safety table, and then recursively process the table.
+listGivenSafe([Distance, Duration, Exhalation], [[Dis, Dur, Exh] | Tail]):-
+	(Distance is Dis, Duration is Dur, Exhalation is Exh); listGivenSafe([Distance, Duration, Exhalation], Tail).
+
+%You will need to recursively reduce both the safety table and N.
+printGivenCombinations(Number):-
+	minInt(Zero),
+	one(One),
+	Number >= Zero,
+	distance(Distance),
+	duration(Duration),
+	exhalation(Exhalation),
+	isSafe(IsSafe),
+	comma(Comma),
+	write(Distance),
+	write(Comma),
+	write(Duration),
+	write(Comma),
+	write(Exhalation),
+	write(Comma),
+	write(IsSafe),
+	nl,
+	dataMatrix(DataMatrix),
+	NewNumber is Number - One,
+	printGivenCombinations(NewNumber, DataMatrix).
+
+%You will need to recursively reduce both the safety table and N.
+printGivenCombinations(Number, [Head | Tail]):-
+	minInt(Zero),
+	one(One),
+	Number >= Zero,
+	[Distance | TwoLeft] = Head,
+	comma(Comma),
+	write(Distance),
+	write(Comma),
+	[Duration | OneLeft] = TwoLeft,
+	write(Duration),
+	write(Comma),
+	[Exhalation | _] = OneLeft,
+	write(Exhalation),
+	write(Comma),
+	true(True),
+	write(True),
+	nl,
+	NewNumber is Number - One,
+	printGivenCombinations(NewNumber, Tail).	
+
+generateExhalationInterpolation(Exhalation, InterpolatedExhalation):-
+	smallExhalation(SmallExhalation),
+	mediumExhalation(MediumExhalation),
+	largeExhalation(LargeExhalation),
+	maxInt(MaxInt),
+	(
+		(interpolateExhalationSmall(Exhalation), InterpolatedExhalation is SmallExhalation);
+		(interpolateExhalationMedium(Exhalation), InterpolatedExhalation is MediumExhalation);
+		(interpolateExhalationLarge(Exhalation), InterpolatedExhalation is LargeExhalation);
+		(Exhalation > LargeExhalation, InterpolatedExhalation is MaxInt)
+	).
+	
+	
+dataMatrixEdit(
+	[
+		[13, 30, 30],
+		[13, 15, 50],
+		[13, 120, 10],
+		[6, 30, 10],
+		[6, 15, 30],
+		[27, 30, 50],
+		[27, 120, 30]
+	]
+).
+	
+listGenerateSafeDistancesAndDurations(Exhalation, GeneratedTable) :-
+	dataMatrixEdit(DataMatrix),
+	generateExhalationInterpolation(Exhalation, InterpolatedExhalation),
+	listGenerateSafeDistancesAndDurations(InterpolatedExhalation, GeneratedTable, DataMatrix).
+
+listGenerateSafeDistancesAndDurations(Exhalation, [], []).
+
+listGenerateSafeDistancesAndDurations(Exhalation, GeneratedTable, [[Dist, Dur, Exh] | Rest]) :-
+	listGenerateSafeDistancesAndDurations(Exhalation, GeneratedTableTail, Rest),
+	(
+		(Exhalation = Exh, GeneratedTable = [[Dist, Dur] | GeneratedTableTail]);
+		(Exhalation \= Exh, GeneratedTable = GeneratedTableTail)
+	).
+//END OF FILE

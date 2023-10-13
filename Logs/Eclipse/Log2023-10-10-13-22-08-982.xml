@@ -1,0 +1,882 @@
+<Events startTimestamp="1696958528982" logVersion="1.0.0.202308221630">
+  <Command __id="53" _type="ShellCommand" date="Tue Oct 10 13:43:12 EDT 2023" starttimestamp="1696958528982" timestamp="1264017" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="8" _type="DiffBasedFileOpenCommand" date="Tue Oct 10 13:32:01 EDT 2023" docASTNodeCount="36" docActiveCodeLength="136" docExpressionCount="16" docLength="136" projectName="Assignment0_1" starttimestamp="1696958528982" timestamp="592440">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/Assignment0_1/src/tempp.java]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[
+public class tempp {
+
+	public static void main(String[] args) {
+		temp r = new temp();
+		Thread t = new Thread(r);
+		t.start();
+	}
+	
+}
+]]></snapshot>
+  </Command>
+  <Command __id="56" _type="ShellCommand" date="Tue Oct 10 13:43:19 EDT 2023" starttimestamp="1696958528982" timestamp="1270490" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="58" _type="ShellCommand" date="Tue Oct 10 13:43:24 EDT 2023" starttimestamp="1696958528982" timestamp="1275621" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="59" _type="MoveCaretCommand" caretOffset="0" date="Tue Oct 10 13:43:24 EDT 2023" docOffset="0" starttimestamp="1696958528982" timestamp="1275881" />
+  <Command __id="60" _type="ShellCommand" date="Tue Oct 10 13:43:25 EDT 2023" starttimestamp="1696958528982" timestamp="1276627" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="61" _type="ShellCommand" date="Tue Oct 10 13:43:26 EDT 2023" starttimestamp="1696958528982" timestamp="1277962" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="62" _type="ShellCommand" date="Tue Oct 10 13:43:27 EDT 2023" starttimestamp="1696958528982" timestamp="1278301" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="63" _type="ShellCommand" date="Tue Oct 10 13:43:29 EDT 2023" starttimestamp="1696958528982" timestamp="1280342" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="65" _type="InsertStringCommand" date="Tue Oct 10 13:43:29 EDT 2023" starttimestamp="1696958528982" timestamp="1280563" timestamp2="1280563">
+    <data><![CDATA[l]]></data>
+  </Command>
+  <Command __id="67" _type="InsertStringCommand" date="Tue Oct 10 13:43:29 EDT 2023" starttimestamp="1696958528982" timestamp="1280621" timestamp2="1280621">
+    <data><![CDATA[i]]></data>
+  </Command>
+  <Command __id="69" _type="InsertStringCommand" date="Tue Oct 10 13:43:29 EDT 2023" starttimestamp="1696958528982" timestamp="1280809" timestamp2="1280809">
+    <data><![CDATA[k]]></data>
+  </Command>
+  <Command __id="71" _type="InsertStringCommand" date="Tue Oct 10 13:43:29 EDT 2023" starttimestamp="1696958528982" timestamp="1280896" timestamp2="1280896">
+    <data><![CDATA[e]]></data>
+  </Command>
+  <Command __id="73" _type="InsertStringCommand" date="Tue Oct 10 13:43:30 EDT 2023" starttimestamp="1696958528982" timestamp="1281045" timestamp2="1281045">
+    <data><![CDATA[s]]></data>
+  </Command>
+  <Command __id="75" _type="InsertStringCommand" date="Tue Oct 10 13:43:30 EDT 2023" starttimestamp="1696958528982" timestamp="1281264" timestamp2="1281264">
+    <data><![CDATA[(]]></data>
+  </Command>
+  <Command __id="76" _type="ShellCommand" date="Tue Oct 10 13:43:30 EDT 2023" starttimestamp="1696958528982" timestamp="1281660" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="77" _type="ShellCommand" date="Tue Oct 10 13:43:31 EDT 2023" starttimestamp="1696958528982" timestamp="1282296" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="79" _type="InsertStringCommand" date="Tue Oct 10 13:43:31 EDT 2023" starttimestamp="1696958528982" timestamp="1282483" timestamp2="1282483">
+    <data><![CDATA[b]]></data>
+  </Command>
+  <Command __id="81" _type="InsertStringCommand" date="Tue Oct 10 13:43:31 EDT 2023" starttimestamp="1696958528982" timestamp="1282558" timestamp2="1282558">
+    <data><![CDATA[o]]></data>
+  </Command>
+  <Command __id="83" _type="InsertStringCommand" date="Tue Oct 10 13:43:31 EDT 2023" starttimestamp="1696958528982" timestamp="1282659" timestamp2="1282659">
+    <data><![CDATA[b]]></data>
+  </Command>
+  <Command __id="85" _type="InsertStringCommand" date="Tue Oct 10 13:43:31 EDT 2023" starttimestamp="1696958528982" timestamp="1282779" timestamp2="1282779">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="87" _type="InsertStringCommand" date="Tue Oct 10 13:43:31 EDT 2023" starttimestamp="1696958528982" timestamp="1282867" timestamp2="1282867">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="89" _type="InsertStringCommand" date="Tue Oct 10 13:43:32 EDT 2023" starttimestamp="1696958528982" timestamp="1283126" timestamp2="1283126">
+    <data><![CDATA[p]]></data>
+  </Command>
+  <Command __id="91" _type="InsertStringCommand" date="Tue Oct 10 13:43:32 EDT 2023" starttimestamp="1696958528982" timestamp="1283196" timestamp2="1283196">
+    <data><![CDATA[i]]></data>
+  </Command>
+  <Command __id="93" _type="InsertStringCommand" date="Tue Oct 10 13:43:32 EDT 2023" starttimestamp="1696958528982" timestamp="1283382" timestamp2="1283382">
+    <data><![CDATA[a]]></data>
+  </Command>
+  <Command __id="95" _type="InsertStringCommand" date="Tue Oct 10 13:43:32 EDT 2023" starttimestamp="1696958528982" timestamp="1283603" timestamp2="1283603">
+    <data><![CDATA[z]]></data>
+  </Command>
+  <Command __id="97" _type="InsertStringCommand" date="Tue Oct 10 13:43:32 EDT 2023" starttimestamp="1696958528982" timestamp="1283758" timestamp2="1283758">
+    <data><![CDATA[z]]></data>
+  </Command>
+  <Command __id="99" _type="InsertStringCommand" date="Tue Oct 10 13:43:32 EDT 2023" starttimestamp="1696958528982" timestamp="1283937" timestamp2="1283937">
+    <data><![CDATA[a]]></data>
+  </Command>
+  <Command __id="101" _type="InsertStringCommand" date="Tue Oct 10 13:43:33 EDT 2023" starttimestamp="1696958528982" timestamp="1284200" timestamp2="1284200">
+    <data><![CDATA[)]]></data>
+  </Command>
+  <Command __id="102" _type="ShellCommand" date="Tue Oct 10 13:43:33 EDT 2023" starttimestamp="1696958528982" timestamp="1284572" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="103" _type="ShellCommand" date="Tue Oct 10 13:43:34 EDT 2023" starttimestamp="1696958528982" timestamp="1285981" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="105" _type="InsertStringCommand" date="Tue Oct 10 13:43:35 EDT 2023" starttimestamp="1696958528982" timestamp="1286146" timestamp2="1286146">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="107" _type="InsertStringCommand" date="Tue Oct 10 13:43:35 EDT 2023" starttimestamp="1696958528982" timestamp="1286438" timestamp2="1286438">
+    <data><![CDATA[l]]></data>
+  </Command>
+  <Command __id="109" _type="InsertStringCommand" date="Tue Oct 10 13:43:35 EDT 2023" starttimestamp="1696958528982" timestamp="1286542" timestamp2="1286542">
+    <data><![CDATA[i]]></data>
+  </Command>
+  <Command __id="111" _type="InsertStringCommand" date="Tue Oct 10 13:43:35 EDT 2023" starttimestamp="1696958528982" timestamp="1286666" timestamp2="1286666">
+    <data><![CDATA[k]]></data>
+  </Command>
+  <Command __id="113" _type="InsertStringCommand" date="Tue Oct 10 13:43:35 EDT 2023" starttimestamp="1696958528982" timestamp="1286767" timestamp2="1286767">
+    <data><![CDATA[e]]></data>
+  </Command>
+  <Command __id="115" _type="InsertStringCommand" date="Tue Oct 10 13:43:35 EDT 2023" starttimestamp="1696958528982" timestamp="1286903" timestamp2="1286903">
+    <data><![CDATA[s]]></data>
+  </Command>
+  <Command __id="117" _type="InsertStringCommand" date="Tue Oct 10 13:43:36 EDT 2023" starttimestamp="1696958528982" timestamp="1287297" timestamp2="1287297">
+    <data><![CDATA[(]]></data>
+  </Command>
+  <Command __id="119" _type="InsertStringCommand" date="Tue Oct 10 13:43:36 EDT 2023" starttimestamp="1696958528982" timestamp="1287683" timestamp2="1287683">
+    <data><![CDATA[a]]></data>
+  </Command>
+  <Command __id="121" _type="InsertStringCommand" date="Tue Oct 10 13:43:36 EDT 2023" starttimestamp="1696958528982" timestamp="1287768" timestamp2="1287768">
+    <data><![CDATA[l]]></data>
+  </Command>
+  <Command __id="123" _type="InsertStringCommand" date="Tue Oct 10 13:43:36 EDT 2023" starttimestamp="1696958528982" timestamp="1287814" timestamp2="1287814">
+    <data><![CDATA[i]]></data>
+  </Command>
+  <Command __id="125" _type="InsertStringCommand" date="Tue Oct 10 13:43:36 EDT 2023" starttimestamp="1696958528982" timestamp="1287925" timestamp2="1287925">
+    <data><![CDATA[c]]></data>
+  </Command>
+  <Command __id="127" _type="InsertStringCommand" date="Tue Oct 10 13:43:37 EDT 2023" starttimestamp="1696958528982" timestamp="1288082" timestamp2="1288082">
+    <data><![CDATA[e]]></data>
+  </Command>
+  <Command __id="129" _type="InsertStringCommand" date="Tue Oct 10 13:43:37 EDT 2023" starttimestamp="1696958528982" timestamp="1288296" timestamp2="1288296">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="131" _type="InsertStringCommand" date="Tue Oct 10 13:43:37 EDT 2023" starttimestamp="1696958528982" timestamp="1288424" timestamp2="1288424">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="133" _type="InsertStringCommand" date="Tue Oct 10 13:43:37 EDT 2023" starttimestamp="1696958528982" timestamp="1288931" timestamp2="1288931">
+    <data><![CDATA[p]]></data>
+  </Command>
+  <Command __id="135" _type="InsertStringCommand" date="Tue Oct 10 13:43:38 EDT 2023" starttimestamp="1696958528982" timestamp="1289031" timestamp2="1289031">
+    <data><![CDATA[i]]></data>
+  </Command>
+  <Command __id="137" _type="InsertStringCommand" date="Tue Oct 10 13:43:38 EDT 2023" starttimestamp="1696958528982" timestamp="1289119" timestamp2="1289119">
+    <data><![CDATA[a]]></data>
+  </Command>
+  <Command __id="139" _type="InsertStringCommand" date="Tue Oct 10 13:43:38 EDT 2023" starttimestamp="1696958528982" timestamp="1289301" timestamp2="1289301">
+    <data><![CDATA[z]]></data>
+  </Command>
+  <Command __id="141" _type="InsertStringCommand" date="Tue Oct 10 13:43:38 EDT 2023" starttimestamp="1696958528982" timestamp="1289459" timestamp2="1289459">
+    <data><![CDATA[z]]></data>
+  </Command>
+  <Command __id="143" _type="InsertStringCommand" date="Tue Oct 10 13:43:38 EDT 2023" starttimestamp="1696958528982" timestamp="1289608" timestamp2="1289608">
+    <data><![CDATA[a]]></data>
+  </Command>
+  <Command __id="145" _type="InsertStringCommand" date="Tue Oct 10 13:43:39 EDT 2023" starttimestamp="1696958528982" timestamp="1290151" timestamp2="1290151">
+    <data><![CDATA[)]]></data>
+  </Command>
+  <Command __id="147" _type="InsertStringCommand" date="Tue Oct 10 13:43:39 EDT 2023" starttimestamp="1696958528982" timestamp="1290342" timestamp2="1290342">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="148" _type="EclipseCommand" commandID="org.eclipse.ui.file.save" date="Tue Oct 10 13:43:39 EDT 2023" starttimestamp="1696958528982" timestamp="1290851" />
+  <Command __id="149" _type="ShellCommand" date="Tue Oct 10 13:43:40 EDT 2023" starttimestamp="1696958528982" timestamp="1291246" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="150" _type="ShellCommand" date="Tue Oct 10 13:43:57 EDT 2023" starttimestamp="1696958528982" timestamp="1308340" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="151" _type="ShellCommand" date="Tue Oct 10 13:44:00 EDT 2023" starttimestamp="1696958528982" timestamp="1311459" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="152" _type="ShellCommand" date="Tue Oct 10 13:44:03 EDT 2023" starttimestamp="1696958528982" timestamp="1314138" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="153" _type="MoveCaretCommand" caretOffset="18" date="Tue Oct 10 13:44:04 EDT 2023" docOffset="18" starttimestamp="1696958528982" timestamp="1315257" />
+  <Command __id="155" _type="InsertStringCommand" date="Tue Oct 10 13:44:04 EDT 2023" starttimestamp="1696958528982" timestamp="1315804" timestamp2="1315804">
+    <data><![CDATA[.]]></data>
+  </Command>
+  <Command __id="156" _type="MoveCaretCommand" caretOffset="40" date="Tue Oct 10 13:44:05 EDT 2023" docOffset="40" starttimestamp="1696958528982" timestamp="1316859" />
+  <Command __id="158" _type="InsertStringCommand" date="Tue Oct 10 13:44:05 EDT 2023" starttimestamp="1696958528982" timestamp="1316898" timestamp2="1316898">
+    <data><![CDATA[.]]></data>
+  </Command>
+  <Command __id="159" _type="EclipseCommand" commandID="org.eclipse.ui.file.save" date="Tue Oct 10 13:44:06 EDT 2023" starttimestamp="1696958528982" timestamp="1317737" />
+  <Command __id="165" _type="ShellCommand" date="Tue Oct 10 13:44:25 EDT 2023" starttimestamp="1696958528982" timestamp="1336105" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="166" _type="ShellCommand" date="Tue Oct 10 13:44:28 EDT 2023" starttimestamp="1696958528982" timestamp="1339242" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="167" _type="ShellCommand" date="Tue Oct 10 13:44:29 EDT 2023" starttimestamp="1696958528982" timestamp="1340151" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="168" _type="ConsoleInput" date="Tue Oct 10 13:44:31 EDT 2023" starttimestamp="1696958528982" timestamp="1342515" type="Exception">
+    <outputString><![CDATA[:-|:-likes(A,piazza)
+]]></outputString>
+  </Command>
+  <Command __id="169" _type="ShellCommand" date="Tue Oct 10 13:44:34 EDT 2023" starttimestamp="1696958528982" timestamp="1345458" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="171" _type="ConsoleOutput" date="Tue Oct 10 13:44:41 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="1352309" type="ConsoleOutput">
+    <outputString><![CDATA[true.
+
+
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+]]></outputString>
+    <diff><![CDATA[[Diff(EQUAL,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word).¶")]]]></diff>
+  </Command>
+  <Command __id="172" _type="ConsoleInput" date="Tue Oct 10 13:44:48 EDT 2023" starttimestamp="1696958528982" timestamp="1359436" type="Exception">
+    <outputString><![CDATA[consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/example.pl').
+:-:-|likes(A,pizza)
+]]></outputString>
+  </Command>
+  <Command __id="173" _type="ShellCommand" date="Tue Oct 10 13:44:51 EDT 2023" starttimestamp="1696958528982" timestamp="1362604" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="174" _type="ShellCommand" date="Tue Oct 10 13:44:53 EDT 2023" starttimestamp="1696958528982" timestamp="1364555" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="183" _type="ConsoleOutput" date="Tue Oct 10 13:45:01 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="1372811" type="ConsoleOutput">
+    <outputString><![CDATA[true.
+
+
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+]]></outputString>
+    <diff><![CDATA[[Diff(EQUAL,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word).¶")]]]></diff>
+  </Command>
+  <Command __id="184" _type="ShellCommand" date="Tue Oct 10 13:45:05 EDT 2023" starttimestamp="1696958528982" timestamp="1376341" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="185" _type="ShellCommand" date="Tue Oct 10 13:45:06 EDT 2023" starttimestamp="1696958528982" timestamp="1377803" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="186" _type="ShellCommand" date="Tue Oct 10 13:45:07 EDT 2023" starttimestamp="1696958528982" timestamp="1378741" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="187" _type="ShellCommand" date="Tue Oct 10 13:45:08 EDT 2023" starttimestamp="1696958528982" timestamp="1379318" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="188" _type="ConsoleInput" date="Tue Oct 10 13:45:10 EDT 2023" starttimestamp="1696958528982" timestamp="1381404" type="Exception">
+    <outputString><![CDATA[|consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/example.pl').
+:-|:-likes(A,pzza)
+]]></outputString>
+  </Command>
+  <Command __id="189" _type="ShellCommand" date="Tue Oct 10 13:45:15 EDT 2023" starttimestamp="1696958528982" timestamp="1386069" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="190" _type="ShellCommand" date="Tue Oct 10 13:45:19 EDT 2023" starttimestamp="1696958528982" timestamp="1391003" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="191" _type="ConsoleInput" date="Tue Oct 10 13:45:21 EDT 2023" starttimestamp="1696958528982" timestamp="1392715" type="Exception">
+    <outputString><![CDATA[|;.
+]]></outputString>
+  </Command>
+  <Command __id="192" _type="ExceptionCommand" date="Tue Oct 10 13:45:22 EDT 2023" starttimestamp="1696958528982" timestamp="1393131" type="Exception">
+    <exceptionString><![CDATA[ERROR: Syntax error: Unexpected `;' before `.'
+ERROR: likes(A,pizza)
+;
+ERROR: ** here **
+ERROR:  .
+]]></exceptionString>
+    <language><![CDATA[prolog]]></language>
+  </Command>
+  <Command __id="193" _type="ShellCommand" date="Tue Oct 10 13:45:24 EDT 2023" starttimestamp="1696958528982" timestamp="1395980" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="195" _type="ConsoleOutput" date="Tue Oct 10 13:45:40 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="1411918" type="ConsoleOutput">
+    <outputString><![CDATA[consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/example.pl').
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word"), Diff(INSERT,"consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/example.pl'"), Diff(EQUAL,").¶")]]]></diff>
+  </Command>
+  <Command __id="196" _type="ConsoleOutput" date="Tue Oct 10 13:45:41 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="1412120" type="ConsoleOutput">
+    <outputString><![CDATA[true.
+
+
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/example.pl'"), Diff(INSERT,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word"), Diff(EQUAL,").¶")]]]></diff>
+  </Command>
+  <Command __id="197" _type="ShellCommand" date="Tue Oct 10 13:45:49 EDT 2023" starttimestamp="1696958528982" timestamp="1420575" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="198" _type="ShellCommand" date="Tue Oct 10 13:46:03 EDT 2023" starttimestamp="1696958528982" timestamp="1434493" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="199" _type="ShellCommand" date="Tue Oct 10 13:46:04 EDT 2023" starttimestamp="1696958528982" timestamp="1435991" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="200" _type="ShellCommand" date="Tue Oct 10 13:46:05 EDT 2023" starttimestamp="1696958528982" timestamp="1436913" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="201" _type="ConsoleInput" date="Tue Oct 10 13:46:06 EDT 2023" starttimestamp="1696958528982" timestamp="1437355" type="Exception">
+    <outputString><![CDATA[:-:-|likes(A,pizza).
+]]></outputString>
+  </Command>
+  <Command __id="202" _type="ShellCommand" date="Tue Oct 10 13:46:07 EDT 2023" starttimestamp="1696958528982" timestamp="1438432" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="203" _type="ShellCommand" date="Tue Oct 10 13:46:07 EDT 2023" starttimestamp="1696958528982" timestamp="1438938" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="204" _type="ConsoleInput" date="Tue Oct 10 13:46:09 EDT 2023" starttimestamp="1696958528982" timestamp="1440137" type="Exception">
+    <outputString><![CDATA[A = bob :-;.
+]]></outputString>
+  </Command>
+  <Command __id="205" _type="ConsoleOutput" date="Tue Oct 10 13:46:09 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="1440351" type="ConsoleOutput">
+    <outputString><![CDATA[A = alice.
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word)"), Diff(INSERT,"A = alice"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="207" _type="ConsoleOutput" date="Tue Oct 10 13:46:18 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="1449424" type="ConsoleOutput">
+    <outputString><![CDATA[true.
+
+
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"A = alice"), Diff(INSERT,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word)"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="208" _type="ConsoleInput" date="Tue Oct 10 13:46:25 EDT 2023" starttimestamp="1696958528982" timestamp="1456423" type="Exception">
+    <outputString><![CDATA[|consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/example.pl').
+:-|:-likes(A,pizza).
+]]></outputString>
+  </Command>
+  <Command __id="209" _type="ConsoleInput" date="Tue Oct 10 13:46:28 EDT 2023" starttimestamp="1696958528982" timestamp="1459239" type="Exception">
+    <outputString><![CDATA[A = bob :-.
+]]></outputString>
+  </Command>
+  <Command __id="210" _type="ConsoleOutput" date="Tue Oct 10 13:46:28 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="1459450" type="ConsoleOutput">
+    <outputString><![CDATA[A = alice.
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word)"), Diff(INSERT,"A = alice"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="211" _type="ConsoleInput" date="Tue Oct 10 13:46:29 EDT 2023" starttimestamp="1696958528982" timestamp="1460758" type="Exception">
+    <outputString><![CDATA[:-;.
+]]></outputString>
+  </Command>
+  <Command __id="212" _type="ExceptionCommand" date="Tue Oct 10 13:46:29 EDT 2023" starttimestamp="1696958528982" timestamp="1460968" type="Exception">
+    <exceptionString><![CDATA[false.
+
+
+ERROR: Unknown procedure: (;)/0
+ERROR:     However, there are definitions for:
+ERROR:         (;)/2
+]]></exceptionString>
+    <language><![CDATA[prolog]]></language>
+  </Command>
+  <Command __id="213" _type="ShellCommand" date="Tue Oct 10 13:46:38 EDT 2023" starttimestamp="1696958528982" timestamp="1470005" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="214" _type="BalloonCommand" date="Tue Oct 10 14:53:52 EDT 2023" message="*******************************************
+Worked 11 minutes(fixed)/24 minutes(context based) from
+Tue Oct 10 13:22:09 EDT 2023 to Tue Oct 10 13:46:38 EDT 2023
+Edited 1 Projects: 
+	PrologTest
+Edited 1 Files: 
+	/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/example.pl
+Number of insert: 42
+Number of delete: 2
+" starttimestamp="1696958528982" timestamp="5503455">
+    <fineGrainedWorkTime><![CDATA[24]]></fineGrainedWorkTime>
+    <insert><![CDATA[42]]></insert>
+    <startTime><![CDATA[1696958529973]]></startTime>
+    <endTime><![CDATA[1696959998987]]></endTime>
+    <workTime><![CDATA[11]]></workTime>
+    <delete><![CDATA[2]]></delete>
+  </Command>
+  <Command __id="215" _type="ShellCommand" date="Tue Oct 10 18:22:26 EDT 2023" starttimestamp="1696958528982" timestamp="18017693" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="225" _type="ShellCommand" date="Tue Oct 10 20:52:28 EDT 2023" starttimestamp="1696958528982" timestamp="27019966" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="226" _type="ShellCommand" date="Tue Oct 10 20:52:35 EDT 2023" starttimestamp="1696958528982" timestamp="27026606" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="57" _type="DiffBasedFileOpenCommand" date="Tue Oct 10 13:43:24 EDT 2023" docLength="0" projectName="PrologTest" starttimestamp="1696958528982" timestamp="1275608">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/example.pl]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[]]></snapshot>
+  </Command>
+  <DocumentChange __id="64" _type="Insert" date="Tue Oct 10 13:43:29 EDT 2023" docASTNodeCount="1" docActiveCodeLength="40" docExpressionCount="0" docLength="40" length="40" offset="0" repeat="40" starttimestamp="1696958528982" timestamp="1280559" timestamp2="1290340">
+    <text><![CDATA[likes(bob, piazza)
+likes(alice, piazza)
+]]></text>
+  </DocumentChange>
+  <DocumentChange __id="154" _type="Insert" date="Tue Oct 10 13:44:04 EDT 2023" docASTNodeCount="1" docActiveCodeLength="41" docExpressionCount="0" docLength="41" length="1" offset="18" starttimestamp="1696958528982" timestamp="1315803">
+    <text><![CDATA[.]]></text>
+  </DocumentChange>
+  <DocumentChange __id="157" _type="Insert" date="Tue Oct 10 13:44:05 EDT 2023" docASTNodeCount="1" docActiveCodeLength="42" docExpressionCount="0" docLength="42" length="1" offset="40" starttimestamp="1696958528982" timestamp="1316897">
+    <text><![CDATA[.]]></text>
+  </DocumentChange>
+  <DocumentChange __id="176" _type="Delete" date="Tue Oct 10 13:44:54 EDT 2023" docASTNodeCount="1" docActiveCodeLength="41" docExpressionCount="0" docLength="41" endLine="0" length="1" offset="13" startLine="0" starttimestamp="1696958528982" timestamp="1365835">
+    <text><![CDATA[a]]></text>
+  </DocumentChange>
+  <DocumentChange __id="179" _type="Delete" date="Tue Oct 10 13:44:55 EDT 2023" docASTNodeCount="1" docActiveCodeLength="40" docExpressionCount="0" docLength="40" endLine="1" length="1" offset="34" startLine="1" starttimestamp="1696958528982" timestamp="1366755">
+    <text><![CDATA[a]]></text>
+  </DocumentChange>
+  <Command __id="228" _type="ShellCommand" date="Tue Oct 10 20:52:39 EDT 2023" starttimestamp="1696958528982" timestamp="27030679" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="229" _type="DiffBasedFileOpenCommand" date="Tue Oct 10 20:52:44 EDT 2023" docLength="0" projectName="PrologTest" starttimestamp="1696958528982" timestamp="27035523">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[]]></snapshot>
+  </Command>
+  <Command __id="230" _type="ShellCommand" date="Tue Oct 10 20:52:44 EDT 2023" starttimestamp="1696958528982" timestamp="27035534" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="231" _type="MoveCaretCommand" caretOffset="0" date="Tue Oct 10 20:52:44 EDT 2023" docOffset="0" starttimestamp="1696958528982" timestamp="27035644" />
+  <Command __id="236" _type="ConsoleOutput" date="Tue Oct 10 20:52:52 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27043231" type="ConsoleOutput">
+    <outputString><![CDATA[consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl').
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"A = alice"), Diff(INSERT,"consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl')"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="237" _type="ConsoleOutput" date="Tue Oct 10 20:52:52 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27043437" type="ConsoleOutput">
+    <outputString><![CDATA[true.
+
+
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl'"), Diff(INSERT,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word"), Diff(EQUAL,").¶")]]]></diff>
+  </Command>
+  <Command __id="238" _type="ConsoleInput" date="Tue Oct 10 20:52:55 EDT 2023" starttimestamp="1696958528982" timestamp="27046940" type="Exception">
+    <outputString><![CDATA[:-:-|:-;.
+]]></outputString>
+  </Command>
+  <Command __id="239" _type="ExceptionCommand" date="Tue Oct 10 20:52:56 EDT 2023" starttimestamp="1696958528982" timestamp="27047155" type="Exception">
+    <exceptionString><![CDATA[false.
+
+
+ERROR: Unknown procedure: (;)/0
+ERROR:     However, there are definitions for:
+ERROR:         (;)/2
+]]></exceptionString>
+    <language><![CDATA[prolog]]></language>
+  </Command>
+  <Command __id="240" _type="MoveCaretCommand" caretOffset="27" date="Tue Oct 10 20:52:58 EDT 2023" docOffset="27" starttimestamp="1696958528982" timestamp="27049987" />
+  <Command __id="241" _type="SelectTextCommand" caretOffset="28" date="Tue Oct 10 20:52:59 EDT 2023" end="28" start="23" starttimestamp="1696958528982" timestamp="27050105" />
+  <Command __id="242" _type="MoveCaretCommand" caretOffset="33" date="Tue Oct 10 20:52:59 EDT 2023" docOffset="33" starttimestamp="1696958528982" timestamp="27050541" />
+  <Command __id="243" _type="ShellCommand" date="Tue Oct 10 20:53:01 EDT 2023" starttimestamp="1696958528982" timestamp="27052132" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="244" _type="ShellCommand" date="Tue Oct 10 20:53:01 EDT 2023" starttimestamp="1696958528982" timestamp="27052612" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="245" _type="ConsoleInput" date="Tue Oct 10 20:53:07 EDT 2023" starttimestamp="1696958528982" timestamp="27058163" type="Exception">
+    <outputString><![CDATA[:-greeting()
+]]></outputString>
+  </Command>
+  <Command __id="248" _type="ConsoleOutput" date="Tue Oct 10 20:53:14 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27065481" type="ConsoleOutput">
+    <outputString><![CDATA[consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl').
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word"), Diff(INSERT,"consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl'"), Diff(EQUAL,").¶")]]]></diff>
+  </Command>
+  <Command __id="249" _type="ConsoleOutput" date="Tue Oct 10 20:53:14 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27065684" type="ConsoleOutput">
+    <outputString><![CDATA[true.
+
+
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl'"), Diff(INSERT,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word"), Diff(EQUAL,").¶")]]]></diff>
+  </Command>
+  <Command __id="250" _type="ConsoleInput" date="Tue Oct 10 20:53:18 EDT 2023" starttimestamp="1696958528982" timestamp="27069302" type="Exception">
+    <outputString><![CDATA[:-:-|:-greeting()
+]]></outputString>
+  </Command>
+  <Command __id="251" _type="ConsoleInput" date="Tue Oct 10 20:53:23 EDT 2023" starttimestamp="1696958528982" timestamp="27074996" type="Exception">
+    <outputString><![CDATA[|a
+]]></outputString>
+  </Command>
+  <Command __id="252" _type="ShellCommand" date="Tue Oct 10 20:53:27 EDT 2023" starttimestamp="1696958528982" timestamp="27078432" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="253" _type="ShellCommand" date="Tue Oct 10 20:53:51 EDT 2023" starttimestamp="1696958528982" timestamp="27102895" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="256" _type="ConsoleOutput" date="Tue Oct 10 20:54:00 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27111292" type="ConsoleOutput">
+    <outputString><![CDATA[consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl').
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word"), Diff(INSERT,"consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl'"), Diff(EQUAL,").¶")]]]></diff>
+  </Command>
+  <Command __id="257" _type="ConsoleOutput" date="Tue Oct 10 20:54:00 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27111498" type="ConsoleOutput">
+    <outputString><![CDATA[true.
+
+
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl'"), Diff(INSERT,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word"), Diff(EQUAL,").¶")]]]></diff>
+  </Command>
+  <Command __id="258" _type="ConsoleInput" date="Tue Oct 10 20:54:04 EDT 2023" starttimestamp="1696958528982" timestamp="27115114" type="Exception">
+    <outputString><![CDATA[:-:-|:-greeting().
+]]></outputString>
+  </Command>
+  <Command __id="259" _type="ConsoleOutput" date="Tue Oct 10 20:54:04 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27115328" type="ConsoleOutput">
+    <outputString><![CDATA[hello
+goodbye
+true.
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word)"), Diff(INSERT,"hello¶goodbye¶true"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="260" _type="ShellCommand" date="Tue Oct 10 20:54:06 EDT 2023" starttimestamp="1696958528982" timestamp="27117441" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="261" _type="ShellCommand" date="Tue Oct 10 20:54:22 EDT 2023" starttimestamp="1696958528982" timestamp="27133563" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="262" _type="ConsoleOutput" date="Tue Oct 10 20:54:24 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27135498" type="ConsoleOutput">
+    <outputString><![CDATA[greeting().
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"hello¶goodbye¶true"), Diff(INSERT,"greeting()"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="263" _type="ConsoleOutput" date="Tue Oct 10 20:54:24 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27135706" type="ConsoleOutput">
+    <outputString><![CDATA[hello
+goodbye
+true.
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"greeting()"), Diff(INSERT,"hello¶goodbye¶true"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="264" _type="ConsoleOutput" date="Tue Oct 10 20:54:24 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27135717" type="ConsoleOutput">
+    <outputString><![CDATA[halt.
+]]></outputString>
+    <diff><![CDATA[[Diff(EQUAL,"h"), Diff(DELETE,"ello¶goodbye¶true"), Diff(INSERT,"alt"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="265" _type="PasteCommand" date="Tue Oct 10 20:54:25 EDT 2023" starttimestamp="1696958528982" timestamp="27136135" />
+  <Command __id="266" _type="ShellCommand" date="Tue Oct 10 20:54:29 EDT 2023" starttimestamp="1696958528982" timestamp="27140219" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="267" _type="ShellCommand" date="Tue Oct 10 20:54:49 EDT 2023" starttimestamp="1696958528982" timestamp="27160046" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="268" _type="ShellCommand" date="Tue Oct 10 20:54:51 EDT 2023" starttimestamp="1696958528982" timestamp="27162402" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="269" _type="ShellCommand" date="Tue Oct 10 20:54:54 EDT 2023" starttimestamp="1696958528982" timestamp="27165618" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="270" _type="ShellCommand" date="Tue Oct 10 20:54:55 EDT 2023" starttimestamp="1696958528982" timestamp="27166085" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="291" _type="ConsoleOutput" date="Tue Oct 10 20:57:16 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27307660" type="ConsoleOutput">
+    <outputString><![CDATA[consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl').
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"halt"), Diff(INSERT,"consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl')"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="292" _type="ConsoleOutput" date="Tue Oct 10 20:57:16 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27307866" type="ConsoleOutput">
+    <outputString><![CDATA[true.
+
+
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"consult('/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl'"), Diff(INSERT,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word"), Diff(EQUAL,").¶")]]]></diff>
+  </Command>
+  <Command __id="293" _type="ConsoleInput" date="Tue Oct 10 20:57:22 EDT 2023" starttimestamp="1696958528982" timestamp="27313042" type="Exception">
+    <outputString><![CDATA[:-greeting().:-halt.:-:-|:-greeting().
+]]></outputString>
+  </Command>
+  <Command __id="294" _type="ConsoleOutput" date="Tue Oct 10 20:57:22 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27313255" type="ConsoleOutput">
+    <outputString><![CDATA[hello
+goodbye
+true.
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word)"), Diff(INSERT,"hello¶goodbye¶true"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="295" _type="ConsoleInput" date="Tue Oct 10 20:57:26 EDT 2023" starttimestamp="1696958528982" timestamp="27317679" type="Exception">
+    <outputString><![CDATA[:-hult().
+]]></outputString>
+  </Command>
+  <Command __id="296" _type="ExceptionCommand" date="Tue Oct 10 20:57:27 EDT 2023" starttimestamp="1696958528982" timestamp="27318099" type="Exception">
+    <exceptionString><![CDATA[ERROR: Type error: `compound' expected, found `halt' (an atom)
+ERROR: In:
+ERROR:   [10] compound_name_arguments(halt,halt,[])
+ERROR:    [8] correct_literal(user:hult(),[],'<garbage_collected>',_132) at /opt/homebrew/Cellar/swi-prolog/9.0.4/libexec/lib/swipl/boot/dwim.pl:177
+ERROR:    [6] correct_goal('<garbage_collected>',user,[],_170) at /opt/homebrew/Cellar/swi-prolog/9.0.4/libexec/lib/swipl/boot/dwim.pl:83
+ERROR: 
+ERROR: Note: some frames are missing due to last-call optimization.
+ERROR: Re-run your program in debug mode (:- debug.) to get more detail.
+]]></exceptionString>
+    <language><![CDATA[prolog]]></language>
+  </Command>
+  <Command __id="297" _type="ShellCommand" date="Tue Oct 10 20:57:28 EDT 2023" starttimestamp="1696958528982" timestamp="27319562" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="298" _type="ShellCommand" date="Tue Oct 10 20:57:29 EDT 2023" starttimestamp="1696958528982" timestamp="27320876" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="299" _type="ConsoleInput" date="Tue Oct 10 20:57:30 EDT 2023" starttimestamp="1696958528982" timestamp="27321736" type="Exception">
+    <outputString><![CDATA[:-halt.
+]]></outputString>
+  </Command>
+  <Command __id="300" _type="ConsoleInput" date="Tue Oct 10 20:57:37 EDT 2023" starttimestamp="1696958528982" timestamp="27328369" type="Exception">
+    <outputString><![CDATA[:-halt.
+]]></outputString>
+  </Command>
+  <Command __id="301" _type="ShellCommand" date="Tue Oct 10 20:57:49 EDT 2023" starttimestamp="1696958528982" timestamp="27340933" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="302" _type="ShellCommand" date="Tue Oct 10 20:57:51 EDT 2023" starttimestamp="1696958528982" timestamp="27342814" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="303" _type="ConsoleInput" date="Tue Oct 10 20:57:55 EDT 2023" starttimestamp="1696958528982" timestamp="27346411" type="Exception">
+    <outputString><![CDATA[:-greeting().
+]]></outputString>
+  </Command>
+  <Command __id="304" _type="ConsoleOutput" date="Tue Oct 10 20:57:55 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27346626" type="ConsoleOutput">
+    <outputString><![CDATA[hello
+goodbye
+true.
+]]></outputString>
+    <diff><![CDATA[[Diff(EQUAL,"hello¶goodbye¶true.¶")]]]></diff>
+  </Command>
+  <Command __id="306" _type="ConsoleOutput" date="Tue Oct 10 20:58:09 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27360217" type="ConsoleOutput">
+    <outputString><![CDATA[true.
+
+
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"hello¶goodbye¶true"), Diff(INSERT,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word)"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="311" _type="ShellCommand" date="Tue Oct 10 20:58:30 EDT 2023" starttimestamp="1696958528982" timestamp="27381975" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="312" _type="ConsoleInput" date="Tue Oct 10 20:58:36 EDT 2023" starttimestamp="1696958528982" timestamp="27387860" type="Exception">
+    <outputString><![CDATA[:-:-|:-greeting().
+]]></outputString>
+  </Command>
+  <Command __id="313" _type="ConsoleOutput" date="Tue Oct 10 20:58:37 EDT 2023" overflow="false" starttimestamp="1696958528982" timestamp="27388076" type="ConsoleOutput">
+    <outputString><![CDATA[hello
+goodbye
+true.
+]]></outputString>
+    <diff><![CDATA[[Diff(DELETE,"true.¶¶¶Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)¶SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.¶Please run ?- license. for legal details.¶¶For online help and background, visit https://www.swi-prolog.org¶For built-in help, use ?- help(Topic). or ?- apropos(Word)"), Diff(INSERT,"hello¶goodbye¶true"), Diff(EQUAL,".¶")]]]></diff>
+  </Command>
+  <Command __id="314" _type="ShellCommand" date="Tue Oct 10 20:58:42 EDT 2023" starttimestamp="1696958528982" timestamp="27393464" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="315" _type="ShellCommand" date="Tue Oct 10 20:58:45 EDT 2023" starttimestamp="1696958528982" timestamp="27396565" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="316" _type="ShellCommand" date="Tue Oct 10 20:58:45 EDT 2023" starttimestamp="1696958528982" timestamp="27396934" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="317" _type="ShellCommand" date="Tue Oct 10 20:58:47 EDT 2023" starttimestamp="1696958528982" timestamp="27398134" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="318" _type="ShellCommand" date="Tue Oct 10 20:58:47 EDT 2023" starttimestamp="1696958528982" timestamp="27398838" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="319" _type="ShellCommand" date="Tue Oct 10 20:58:54 EDT 2023" starttimestamp="1696958528982" timestamp="27405554" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="320" _type="MoveCaretCommand" caretOffset="60" date="Tue Oct 10 20:58:58 EDT 2023" docOffset="60" starttimestamp="1696958528982" timestamp="27409862" />
+  <Command __id="321" _type="ShellCommand" date="Tue Oct 10 20:59:00 EDT 2023" starttimestamp="1696958528982" timestamp="27411222" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="322" _type="ShellCommand" date="Tue Oct 10 20:59:04 EDT 2023" starttimestamp="1696958528982" timestamp="27415856" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="323" _type="MoveCaretCommand" caretOffset="60" date="Tue Oct 10 20:59:04 EDT 2023" docOffset="60" starttimestamp="1696958528982" timestamp="27415928" />
+  <Command __id="324" _type="ShellCommand" date="Tue Oct 10 20:59:05 EDT 2023" starttimestamp="1696958528982" timestamp="27416316" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="325" _type="ShellCommand" date="Tue Oct 10 20:59:07 EDT 2023" starttimestamp="1696958528982" timestamp="27418349" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="326" _type="ShellCommand" date="Tue Oct 10 20:59:07 EDT 2023" starttimestamp="1696958528982" timestamp="27418462" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="327" _type="ShellCommand" date="Tue Oct 10 20:59:16 EDT 2023" starttimestamp="1696958528982" timestamp="27427799" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="328" _type="ConsoleInput" date="Tue Oct 10 20:59:18 EDT 2023" starttimestamp="1696958528982" timestamp="27429751" type="Exception">
+    <outputString><![CDATA[:-halt.
+]]></outputString>
+  </Command>
+  <Command __id="329" _type="ShellCommand" date="Tue Oct 10 20:59:20 EDT 2023" starttimestamp="1696958528982" timestamp="27431580" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="330" _type="ShellCommand" date="Tue Oct 10 20:59:22 EDT 2023" starttimestamp="1696958528982" timestamp="27433267" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="331" _type="ShellCommand" date="Tue Oct 10 20:59:22 EDT 2023" starttimestamp="1696958528982" timestamp="27433369" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="332" _type="ShellCommand" date="Tue Oct 10 20:59:25 EDT 2023" starttimestamp="1696958528982" timestamp="27436188" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="333" _type="ShellCommand" date="Tue Oct 10 20:59:25 EDT 2023" starttimestamp="1696958528982" timestamp="27436952" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="346" _type="EclipseCommand" commandID="" date="Tue Oct 10 21:00:52 EDT 2023" starttimestamp="1696958528982" timestamp="27523943" />
+  <Command __id="347" _type="EclipseCommand" commandID="" date="Tue Oct 10 21:00:52 EDT 2023" starttimestamp="1696958528982" timestamp="27523945" />
+  <Command __id="382" _type="ShellCommand" date="Tue Oct 10 21:01:53 EDT 2023" starttimestamp="1696958528982" timestamp="27584044" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="383" _type="ShellCommand" date="Tue Oct 10 21:01:56 EDT 2023" starttimestamp="1696958528982" timestamp="27587843" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="384" _type="ShellCommand" date="Tue Oct 10 21:01:57 EDT 2023" starttimestamp="1696958528982" timestamp="27588904" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="385" _type="ShellCommand" date="Tue Oct 10 21:01:59 EDT 2023" starttimestamp="1696958528982" timestamp="27590890" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="386" _type="EclipseCommand" commandID="org.eclipse.ui.ide.showInSystemExplorer" date="Tue Oct 10 21:02:20 EDT 2023" starttimestamp="1696958528982" timestamp="27611486" />
+  <Command __id="387" _type="CopyCommand" date="Tue Oct 10 21:02:24 EDT 2023" starttimestamp="1696958528982" timestamp="27615717" />
+  <Command __id="483" _type="ShellCommand" date="Tue Oct 10 21:07:05 EDT 2023" starttimestamp="1696958528982" timestamp="27896855" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="484" _type="PasteCommand" date="Tue Oct 10 21:07:06 EDT 2023" starttimestamp="1696958528982" timestamp="27897676" />
+  <Command __id="486" _type="ShellCommand" date="Tue Oct 10 21:07:07 EDT 2023" starttimestamp="1696958528982" timestamp="27898493" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="487" _type="MoveCaretCommand" caretOffset="0" date="Tue Oct 10 21:07:07 EDT 2023" docOffset="0" starttimestamp="1696958528982" timestamp="27898617" />
+  <Command __id="488" _type="ShellCommand" date="Tue Oct 10 21:07:08 EDT 2023" starttimestamp="1696958528982" timestamp="27899548" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="489" _type="BalloonCommand" date="Tue Oct 10 21:16:49 EDT 2023" message="*******************************************
+Worked 9 minutes(fixed)/50 minutes(context based) from
+Tue Oct 10 20:16:49 EDT 2023 to Tue Oct 10 21:07:08 EDT 2023
+Edited 2 Projects: 
+	TestHelper
+	PrologTest
+Edited 2 Files: 
+	/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/Greeting.pl
+	/Users/shanw25/College/JuniorFall/COMP524/TestHelper/src/RunF23A3Tests.java
+Number of insert: 158
+Number of delete: 21
+" starttimestamp="1696958528982" timestamp="28481015">
+    <fineGrainedWorkTime><![CDATA[50]]></fineGrainedWorkTime>
+    <insert><![CDATA[158]]></insert>
+    <startTime><![CDATA[1696983409995]]></startTime>
+    <endTime><![CDATA[1696986428530]]></endTime>
+    <workTime><![CDATA[9]]></workTime>
+    <delete><![CDATA[21]]></delete>
+  </Command>
+  <Command __id="490" _type="ShellCommand" date="Tue Oct 10 22:02:10 EDT 2023" starttimestamp="1696958528982" timestamp="31201491" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="491" _type="ShellCommand" date="Tue Oct 10 22:02:13 EDT 2023" starttimestamp="1696958528982" timestamp="31204050" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="492" _type="ShellCommand" date="Tue Oct 10 22:05:19 EDT 2023" starttimestamp="1696958528982" timestamp="31390595" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="493" _type="ShellCommand" date="Tue Oct 10 22:05:21 EDT 2023" starttimestamp="1696958528982" timestamp="31392672" type="ECLIPSE_LOST_FOCUS" />
+  <DocumentChange __id="394" _type="Replace" date="Tue Oct 10 21:02:31 EDT 2023" docASTNodeCount="55" docActiveCodeLength="404" docExpressionCount="34" docLength="524" endLine="4" insertionLength="44" int_docASTNodeCount="54" int_docActiveCodeLength="360" int_docExpressionCount="33" int_docLength="480" length="52" offset="212" startLine="4" starttimestamp="1696958528982" timestamp="27622926">
+    <deletedText><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/PrologTest]]></deletedText>
+    <insertedText><![CDATA["D:/dewan_backup/Java/PLProjs/PLProjsProlog"]]></insertedText>
+  </DocumentChange>
+  <DocumentChange __id="398" _type="Replace" date="Tue Oct 10 21:02:34 EDT 2023" docASTNodeCount="55" docActiveCodeLength="414" docExpressionCount="34" docLength="534" endLine="4" insertionLength="52" int_docASTNodeCount="55" int_docActiveCodeLength="362" int_docExpressionCount="34" int_docLength="482" length="42" offset="213" startLine="4" starttimestamp="1696958528982" timestamp="27625370">
+    <deletedText><![CDATA[D:/dewan_backup/Java/PLProjs/PLProjsProlog]]></deletedText>
+    <insertedText><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/PrologTest]]></insertedText>
+  </DocumentChange>
+  <DocumentChange __id="435" _type="Insert" date="Tue Oct 10 21:04:31 EDT 2023" docASTNodeCount="65" docActiveCodeLength="484" docExpressionCount="43" docLength="604" length="70" offset="142" repeat="2" starttimestamp="1696958528982" timestamp="27742664" timestamp2="27742921">
+    <text><![CDATA[
+import grader.basics.execution.prolog.PrologCommandGeneratorSelector;]]></text>
+  </DocumentChange>
+  <DocumentChange __id="443" _type="Insert" date="Tue Oct 10 21:04:53 EDT 2023" docASTNodeCount="65" docActiveCodeLength="487" docExpressionCount="43" docLength="607" length="3" offset="504" starttimestamp="1696958528982" timestamp="27764901">
+    <text><![CDATA[
+		]]></text>
+  </DocumentChange>
+  <DocumentChange __id="445" _type="Replace" date="Tue Oct 10 21:04:54 EDT 2023" docASTNodeCount="71" docActiveCodeLength="580" docExpressionCount="48" docLength="700" endLine="10" insertionLength="95" int_docASTNodeCount="65" int_docActiveCodeLength="485" int_docExpressionCount="43" int_docLength="605" length="2" offset="505" startLine="10" starttimestamp="1696958528982" timestamp="27765178">
+    <deletedText><![CDATA[		]]></deletedText>
+    <insertedText><![CDATA[		PrologCommandGeneratorSelector.getCommandGenerator().
+		setUserBinary(<full name of swipl >);]]></insertedText>
+  </DocumentChange>
+  <DocumentChange __id="450" _type="Delete" date="Tue Oct 10 21:05:02 EDT 2023" docASTNodeCount="71" docActiveCodeLength="559" docExpressionCount="48" docLength="679" endLine="11" length="21" offset="577" startLine="11" starttimestamp="1696958528982" timestamp="27773831">
+    <text><![CDATA[<full name of swipl >]]></text>
+  </DocumentChange>
+  <DocumentChange __id="452" _type="Insert" date="Tue Oct 10 21:05:02 EDT 2023" docASTNodeCount="72" docActiveCodeLength="584" docExpressionCount="49" docLength="704" length="25" offset="577" repeat="2" starttimestamp="1696958528982" timestamp="27773981" timestamp2="27774402">
+    <text><![CDATA["/opt/homebrew/bin/swipl"]]></text>
+  </DocumentChange>
+  <Command __id="485" _type="DiffBasedFileOpenCommand" date="Tue Oct 10 21:07:07 EDT 2023" docLength="0" projectName="PrologTest" starttimestamp="1696958528982" timestamp="27898482">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/SocialDistance.pl]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[]]></snapshot>
+  </Command>
+  <DocumentChange __id="495" _type="Insert" date="Tue Oct 10 22:05:23 EDT 2023" docASTNodeCount="1" docActiveCodeLength="11" docExpressionCount="0" docLength="11" length="11" offset="0" repeat="11" starttimestamp="1696958528982" timestamp="31394908" timestamp2="31397890">
+    <text><![CDATA[givenSizes(]]></text>
+  </DocumentChange>
+  <Command __id="494" _type="ShellCommand" date="Tue Oct 10 22:05:23 EDT 2023" starttimestamp="1696958528982" timestamp="31394185" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="496" _type="InsertStringCommand" date="Tue Oct 10 22:05:23 EDT 2023" starttimestamp="1696958528982" timestamp="31394909" timestamp2="31394909">
+    <data><![CDATA[g]]></data>
+  </Command>
+  <Command __id="498" _type="InsertStringCommand" date="Tue Oct 10 22:05:23 EDT 2023" starttimestamp="1696958528982" timestamp="31394977" timestamp2="31394977">
+    <data><![CDATA[i]]></data>
+  </Command>
+  <Command __id="500" _type="InsertStringCommand" date="Tue Oct 10 22:05:24 EDT 2023" starttimestamp="1696958528982" timestamp="31395066" timestamp2="31395066">
+    <data><![CDATA[v]]></data>
+  </Command>
+  <Command __id="502" _type="InsertStringCommand" date="Tue Oct 10 22:05:24 EDT 2023" starttimestamp="1696958528982" timestamp="31395116" timestamp2="31395116">
+    <data><![CDATA[e]]></data>
+  </Command>
+  <Command __id="503" _type="ShellCommand" date="Tue Oct 10 22:05:24 EDT 2023" starttimestamp="1696958528982" timestamp="31395987" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="504" _type="ShellCommand" date="Tue Oct 10 22:05:25 EDT 2023" starttimestamp="1696958528982" timestamp="31396867" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="506" _type="InsertStringCommand" date="Tue Oct 10 22:05:25 EDT 2023" starttimestamp="1696958528982" timestamp="31396967" timestamp2="31396967">
+    <data><![CDATA[n]]></data>
+  </Command>
+  <Command __id="508" _type="InsertStringCommand" date="Tue Oct 10 22:05:26 EDT 2023" starttimestamp="1696958528982" timestamp="31397200" timestamp2="31397200">
+    <data><![CDATA[S]]></data>
+  </Command>
+  <Command __id="510" _type="InsertStringCommand" date="Tue Oct 10 22:05:26 EDT 2023" starttimestamp="1696958528982" timestamp="31397409" timestamp2="31397409">
+    <data><![CDATA[i]]></data>
+  </Command>
+  <Command __id="512" _type="InsertStringCommand" date="Tue Oct 10 22:05:26 EDT 2023" starttimestamp="1696958528982" timestamp="31397448" timestamp2="31397448">
+    <data><![CDATA[z]]></data>
+  </Command>
+  <Command __id="514" _type="InsertStringCommand" date="Tue Oct 10 22:05:26 EDT 2023" starttimestamp="1696958528982" timestamp="31397590" timestamp2="31397590">
+    <data><![CDATA[e]]></data>
+  </Command>
+  <Command __id="516" _type="InsertStringCommand" date="Tue Oct 10 22:05:26 EDT 2023" starttimestamp="1696958528982" timestamp="31397713" timestamp2="31397713">
+    <data><![CDATA[s]]></data>
+  </Command>
+  <Command __id="518" _type="InsertStringCommand" date="Tue Oct 10 22:05:26 EDT 2023" starttimestamp="1696958528982" timestamp="31397891" timestamp2="31397891">
+    <data><![CDATA[(]]></data>
+  </Command>
+  <Command __id="519" _type="ShellCommand" date="Tue Oct 10 22:05:27 EDT 2023" starttimestamp="1696958528982" timestamp="31398323" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="520" _type="ShellCommand" date="Tue Oct 10 22:05:27 EDT 2023" starttimestamp="1696958528982" timestamp="31398926" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="522" _type="InsertStringCommand" date="Tue Oct 10 22:05:29 EDT 2023" starttimestamp="1696958528982" timestamp="31400318" timestamp2="31400318">
+    <data><![CDATA[6]]></data>
+  </Command>
+  <Command __id="524" _type="InsertStringCommand" date="Tue Oct 10 22:05:29 EDT 2023" starttimestamp="1696958528982" timestamp="31400603" timestamp2="31400603">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="526" _type="InsertStringCommand" date="Tue Oct 10 22:05:29 EDT 2023" starttimestamp="1696958528982" timestamp="31400991" timestamp2="31400991">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="528" _type="InsertStringCommand" date="Tue Oct 10 22:05:30 EDT 2023" starttimestamp="1696958528982" timestamp="31401261" timestamp2="31401261">
+    <data><![CDATA[1]]></data>
+  </Command>
+  <Command __id="530" _type="InsertStringCommand" date="Tue Oct 10 22:05:30 EDT 2023" starttimestamp="1696958528982" timestamp="31401366" timestamp2="31401366">
+    <data><![CDATA[5]]></data>
+  </Command>
+  <Command __id="532" _type="InsertStringCommand" date="Tue Oct 10 22:05:30 EDT 2023" starttimestamp="1696958528982" timestamp="31401874" timestamp2="31401874">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="534" _type="InsertStringCommand" date="Tue Oct 10 22:05:30 EDT 2023" starttimestamp="1696958528982" timestamp="31401947" timestamp2="31401947">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="536" _type="InsertStringCommand" date="Tue Oct 10 22:05:31 EDT 2023" starttimestamp="1696958528982" timestamp="31402281" timestamp2="31402281">
+    <data><![CDATA[9]]></data>
+  </Command>
+  <Command __id="538" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Tue Oct 10 22:05:31 EDT 2023" starttimestamp="1696958528982" timestamp="31402828" />
+  <Command __id="540" _type="InsertStringCommand" date="Tue Oct 10 22:05:31 EDT 2023" starttimestamp="1696958528982" timestamp="31402985" timestamp2="31402985">
+    <data><![CDATA[1]]></data>
+  </Command>
+  <Command __id="542" _type="InsertStringCommand" date="Tue Oct 10 22:05:32 EDT 2023" starttimestamp="1696958528982" timestamp="31403057" timestamp2="31403057">
+    <data><![CDATA[9]]></data>
+  </Command>
+  <Command __id="544" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Tue Oct 10 22:05:32 EDT 2023" starttimestamp="1696958528982" timestamp="31403659" />
+  <Command __id="546" _type="InsertStringCommand" date="Tue Oct 10 22:05:33 EDT 2023" starttimestamp="1696958528982" timestamp="31404425" timestamp2="31404425">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="548" _type="InsertStringCommand" date="Tue Oct 10 22:05:33 EDT 2023" starttimestamp="1696958528982" timestamp="31404775" timestamp2="31404775">
+    <data><![CDATA[)]]></data>
+  </Command>
+  <Command __id="550" _type="InsertStringCommand" date="Tue Oct 10 22:05:34 EDT 2023" starttimestamp="1696958528982" timestamp="31405411" timestamp2="31405411">
+    <data><![CDATA[.]]></data>
+  </Command>
+  <Command __id="552" _type="InsertStringCommand" date="Tue Oct 10 22:05:34 EDT 2023" starttimestamp="1696958528982" timestamp="31405605" timestamp2="31405605">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="553" _type="ShellCommand" date="Tue Oct 10 22:05:35 EDT 2023" starttimestamp="1696958528982" timestamp="31406173" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="554" _type="ShellCommand" date="Tue Oct 10 22:05:37 EDT 2023" starttimestamp="1696958528982" timestamp="31408108" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="555" _type="MoveCaretCommand" caretOffset="22" date="Tue Oct 10 22:05:38 EDT 2023" docOffset="22" starttimestamp="1696958528982" timestamp="31409499" />
+  <Command __id="556" _type="InsertStringCommand" date="Tue Oct 10 22:05:38 EDT 2023" starttimestamp="1696958528982" timestamp="31409760" timestamp2="31409760">
+    <data><![CDATA[c]]></data>
+  </Command>
+  <Command __id="557" _type="MoveCaretCommand" caretOffset="23" date="Tue Oct 10 22:05:38 EDT 2023" docOffset="23" starttimestamp="1696958528982" timestamp="31410016" />
+  <Command __id="559" _type="PasteCommand" date="Tue Oct 10 22:05:39 EDT 2023" starttimestamp="1696958528982" timestamp="31410169" />
+  <Command __id="561" _type="UndoCommand" date="Tue Oct 10 22:05:39 EDT 2023" starttimestamp="1696958528982" timestamp="31410991" />
+  <Command __id="562" _type="SelectTextCommand" caretOffset="0" date="Tue Oct 10 22:05:40 EDT 2023" end="22" start="0" starttimestamp="1696958528982" timestamp="31411365" />
+  <Command __id="563" _type="CopyCommand" date="Tue Oct 10 22:05:40 EDT 2023" starttimestamp="1696958528982" timestamp="31411597" />
+  <Command __id="564" _type="MoveCaretCommand" caretOffset="23" date="Tue Oct 10 22:05:40 EDT 2023" docOffset="23" starttimestamp="1696958528982" timestamp="31411857" />
+  <Command __id="566" _type="PasteCommand" date="Tue Oct 10 22:05:40 EDT 2023" starttimestamp="1696958528982" timestamp="31412009" />
+  <Command __id="568" _type="InsertStringCommand" date="Tue Oct 10 22:05:41 EDT 2023" starttimestamp="1696958528982" timestamp="31412769" timestamp2="31412769">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="570" _type="PasteCommand" date="Tue Oct 10 22:05:41 EDT 2023" starttimestamp="1696958528982" timestamp="31412917" />
+  <Command __id="571" _type="ShellCommand" date="Tue Oct 10 22:05:42 EDT 2023" starttimestamp="1696958528982" timestamp="31413204" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="572" _type="ShellCommand" date="Tue Oct 10 22:06:17 EDT 2023" starttimestamp="1696958528982" timestamp="31448740" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="573" _type="SelectTextCommand" caretOffset="35" date="Tue Oct 10 22:06:20 EDT 2023" end="35" start="34" starttimestamp="1696958528982" timestamp="31451388" />
+  <Command __id="575" _type="InsertStringCommand" date="Tue Oct 10 22:06:20 EDT 2023" starttimestamp="1696958528982" timestamp="31451568" timestamp2="31451568">
+    <data><![CDATA[1]]></data>
+  </Command>
+  <Command __id="577" _type="InsertStringCommand" date="Tue Oct 10 22:06:20 EDT 2023" starttimestamp="1696958528982" timestamp="31451654" timestamp2="31451654">
+    <data><![CDATA[3]]></data>
+  </Command>
+  <Command __id="578" _type="MoveCaretCommand" caretOffset="39" date="Tue Oct 10 22:06:21 EDT 2023" docOffset="39" starttimestamp="1696958528982" timestamp="31452123" />
+  <Command __id="579" _type="SelectTextCommand" caretOffset="38" date="Tue Oct 10 22:06:22 EDT 2023" end="40" start="38" starttimestamp="1696958528982" timestamp="31453459" />
+  <Command __id="581" _type="InsertStringCommand" date="Tue Oct 10 22:06:22 EDT 2023" starttimestamp="1696958528982" timestamp="31453924" timestamp2="31453924">
+    <data><![CDATA[3]]></data>
+  </Command>
+  <Command __id="583" _type="InsertStringCommand" date="Tue Oct 10 22:06:23 EDT 2023" starttimestamp="1696958528982" timestamp="31454481" timestamp2="31454481">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="584" _type="SelectTextCommand" caretOffset="43" date="Tue Oct 10 22:06:24 EDT 2023" end="43" start="42" starttimestamp="1696958528982" timestamp="31455616" />
+  <Command __id="586" _type="InsertStringCommand" date="Tue Oct 10 22:06:24 EDT 2023" starttimestamp="1696958528982" timestamp="31455736" timestamp2="31455736">
+    <data><![CDATA[3]]></data>
+  </Command>
+  <Command __id="587" _type="ShellCommand" date="Tue Oct 10 22:06:25 EDT 2023" starttimestamp="1696958528982" timestamp="31456693" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="588" _type="ShellCommand" date="Tue Oct 10 22:06:28 EDT 2023" starttimestamp="1696958528982" timestamp="31459362" type="ECLIPSE_GAINED_FOCUS" />
+  <DocumentChange __id="521" _type="Insert" date="Tue Oct 10 22:05:29 EDT 2023" docASTNodeCount="1" docActiveCodeLength="19" docExpressionCount="0" docLength="19" length="8" offset="11" repeat="8" starttimestamp="1696958528982" timestamp="31400316" timestamp2="31402280">
+    <text><![CDATA[6, 15, 9]]></text>
+  </DocumentChange>
+  <DocumentChange __id="537" _type="Delete" date="Tue Oct 10 22:05:31 EDT 2023" docASTNodeCount="1" docActiveCodeLength="18" docExpressionCount="0" docLength="18" endLine="0" length="1" offset="18" startLine="0" starttimestamp="1696958528982" timestamp="31402825">
+    <text><![CDATA[9]]></text>
+  </DocumentChange>
+  <DocumentChange __id="539" _type="Insert" date="Tue Oct 10 22:05:31 EDT 2023" docASTNodeCount="1" docActiveCodeLength="20" docExpressionCount="0" docLength="20" length="2" offset="18" repeat="2" starttimestamp="1696958528982" timestamp="31402984" timestamp2="31403057">
+    <text><![CDATA[19]]></text>
+  </DocumentChange>
+  <DocumentChange __id="543" _type="Delete" date="Tue Oct 10 22:05:32 EDT 2023" docASTNodeCount="1" docActiveCodeLength="19" docExpressionCount="0" docLength="19" endLine="0" length="1" offset="19" startLine="0" starttimestamp="1696958528982" timestamp="31403655">
+    <text><![CDATA[9]]></text>
+  </DocumentChange>
+  <DocumentChange __id="545" _type="Insert" date="Tue Oct 10 22:05:33 EDT 2023" docASTNodeCount="1" docActiveCodeLength="23" docExpressionCount="0" docLength="23" length="4" offset="19" repeat="4" starttimestamp="1696958528982" timestamp="31404423" timestamp2="31405604">
+    <text><![CDATA[0).
+]]></text>
+  </DocumentChange>
+  <DocumentChange __id="558" _type="Insert" date="Tue Oct 10 22:05:39 EDT 2023" docASTNodeCount="1" docActiveCodeLength="40" docExpressionCount="0" docLength="40" length="17" offset="23" starttimestamp="1696958528982" timestamp="31410168">
+    <text><![CDATA[SocialDistance.pl]]></text>
+  </DocumentChange>
+  <DocumentChange __id="560" _type="Delete" date="Tue Oct 10 22:05:39 EDT 2023" docASTNodeCount="1" docActiveCodeLength="23" docExpressionCount="0" docLength="23" endLine="1" length="17" offset="23" startLine="1" starttimestamp="1696958528982" timestamp="31410987">
+    <text><![CDATA[SocialDistance.pl]]></text>
+  </DocumentChange>
+  <DocumentChange __id="565" _type="Insert" date="Tue Oct 10 22:05:40 EDT 2023" docASTNodeCount="1" docActiveCodeLength="68" docExpressionCount="0" docLength="68" length="45" offset="23" repeat="3" starttimestamp="1696958528982" timestamp="31412006" timestamp2="31412914">
+    <text><![CDATA[givenSizes(6, 15, 10).
+givenSizes(6, 15, 10).]]></text>
+  </DocumentChange>
+  <DocumentChange __id="574" _type="Replace" date="Tue Oct 10 22:06:20 EDT 2023" docASTNodeCount="1" docActiveCodeLength="68" docExpressionCount="0" docLength="68" endLine="1" insertionLength="1" int_docASTNodeCount="1" int_docActiveCodeLength="67" int_docExpressionCount="0" int_docLength="67" length="1" offset="34" startLine="1" starttimestamp="1696958528982" timestamp="31451564">
+    <deletedText><![CDATA[6]]></deletedText>
+    <insertedText><![CDATA[1]]></insertedText>
+  </DocumentChange>
+  <DocumentChange __id="576" _type="Insert" date="Tue Oct 10 22:06:20 EDT 2023" docASTNodeCount="1" docActiveCodeLength="69" docExpressionCount="0" docLength="69" length="1" offset="35" starttimestamp="1696958528982" timestamp="31451654">
+    <text><![CDATA[3]]></text>
+  </DocumentChange>
+  <DocumentChange __id="580" _type="Replace" date="Tue Oct 10 22:06:22 EDT 2023" docASTNodeCount="1" docActiveCodeLength="68" docExpressionCount="0" docLength="68" endLine="1" insertionLength="1" int_docASTNodeCount="1" int_docActiveCodeLength="67" int_docExpressionCount="0" int_docLength="67" length="2" offset="38" startLine="1" starttimestamp="1696958528982" timestamp="31453919">
+    <deletedText><![CDATA[15]]></deletedText>
+    <insertedText><![CDATA[3]]></insertedText>
+  </DocumentChange>
+  <DocumentChange __id="582" _type="Insert" date="Tue Oct 10 22:06:23 EDT 2023" docASTNodeCount="1" docActiveCodeLength="69" docExpressionCount="0" docLength="69" length="1" offset="39" starttimestamp="1696958528982" timestamp="31454481">
+    <text><![CDATA[0]]></text>
+  </DocumentChange>
+  <DocumentChange __id="585" _type="Replace" date="Tue Oct 10 22:06:24 EDT 2023" docASTNodeCount="1" docActiveCodeLength="69" docExpressionCount="0" docLength="69" endLine="1" insertionLength="1" int_docASTNodeCount="1" int_docActiveCodeLength="68" int_docExpressionCount="0" int_docLength="68" length="1" offset="42" startLine="1" starttimestamp="1696958528982" timestamp="31455732">
+    <deletedText><![CDATA[1]]></deletedText>
+    <insertedText><![CDATA[3]]></insertedText>
+  </DocumentChange>
+  <Command __id="589" _type="SelectTextCommand" caretOffset="58" date="Tue Oct 10 22:06:29 EDT 2023" end="59" start="58" starttimestamp="1696958528982" timestamp="31460608" />
+  <DocumentChange __id="590" _type="Replace" date="Tue Oct 10 22:06:30 EDT 2023" docASTNodeCount="1" docActiveCodeLength="69" docExpressionCount="0" docLength="69" endLine="2" insertionLength="1" int_docASTNodeCount="1" int_docActiveCodeLength="68" int_docExpressionCount="0" int_docLength="68" length="1" offset="58" startLine="2" starttimestamp="1696958528982" timestamp="31461954">
+    <deletedText><![CDATA[6]]></deletedText>
+    <insertedText><![CDATA[2]]></insertedText>
+  </DocumentChange>
+  <Command __id="591" _type="InsertStringCommand" date="Tue Oct 10 22:06:30 EDT 2023" starttimestamp="1696958528982" timestamp="31461959" timestamp2="31461959">
+    <data><![CDATA[2]]></data>
+  </Command>
+  <DocumentChange __id="592" _type="Insert" date="Tue Oct 10 22:06:31 EDT 2023" docASTNodeCount="1" docActiveCodeLength="70" docExpressionCount="0" docLength="70" length="1" offset="59" starttimestamp="1696958528982" timestamp="31462056">
+    <text><![CDATA[7]]></text>
+  </DocumentChange>
+  <Command __id="593" _type="InsertStringCommand" date="Tue Oct 10 22:06:31 EDT 2023" starttimestamp="1696958528982" timestamp="31462056" timestamp2="31462056">
+    <data><![CDATA[7]]></data>
+  </Command>
+  <Command __id="594" _type="MoveCaretCommand" caretOffset="63" date="Tue Oct 10 22:06:32 EDT 2023" docOffset="63" starttimestamp="1696958528982" timestamp="31463027" />
+  <Command __id="595" _type="SelectTextCommand" caretOffset="64" date="Tue Oct 10 22:06:32 EDT 2023" end="64" start="63" starttimestamp="1696958528982" timestamp="31463913" />
+  <DocumentChange __id="596" _type="Replace" date="Tue Oct 10 22:06:33 EDT 2023" docASTNodeCount="1" docActiveCodeLength="70" docExpressionCount="0" docLength="70" endLine="2" insertionLength="1" int_docASTNodeCount="1" int_docActiveCodeLength="69" int_docExpressionCount="0" int_docLength="69" length="1" offset="63" startLine="2" starttimestamp="1696958528982" timestamp="31464147">
+    <deletedText><![CDATA[5]]></deletedText>
+    <insertedText><![CDATA[1]]></insertedText>
+  </DocumentChange>
+  <Command __id="597" _type="InsertStringCommand" date="Tue Oct 10 22:06:33 EDT 2023" starttimestamp="1696958528982" timestamp="31464151" timestamp2="31464151">
+    <data><![CDATA[1]]></data>
+  </Command>
+  <DocumentChange __id="598" _type="Insert" date="Tue Oct 10 22:06:33 EDT 2023" docASTNodeCount="1" docActiveCodeLength="71" docExpressionCount="0" docLength="71" length="1" offset="64" starttimestamp="1696958528982" timestamp="31464249">
+    <text><![CDATA[0]]></text>
+  </DocumentChange>
+  <Command __id="599" _type="InsertStringCommand" date="Tue Oct 10 22:06:33 EDT 2023" starttimestamp="1696958528982" timestamp="31464249" timestamp2="31464249">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <DocumentChange __id="600" _type="Delete" date="Tue Oct 10 22:06:34 EDT 2023" docASTNodeCount="1" docActiveCodeLength="69" docExpressionCount="0" docLength="69" endLine="2" length="2" offset="63" repeat="2" startLine="2" starttimestamp="1696958528982" timestamp="31465675" timestamp2="31465857">
+    <text><![CDATA[10]]></text>
+  </DocumentChange>
+  <Command __id="601" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Tue Oct 10 22:06:34 EDT 2023" starttimestamp="1696958528982" timestamp="31465678" />
+  <Command __id="603" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Tue Oct 10 22:06:34 EDT 2023" starttimestamp="1696958528982" timestamp="31465860" />
+  <DocumentChange __id="604" _type="Insert" date="Tue Oct 10 22:06:35 EDT 2023" docASTNodeCount="1" docActiveCodeLength="71" docExpressionCount="0" docLength="71" length="2" offset="63" repeat="2" starttimestamp="1696958528982" timestamp="31466025" timestamp2="31466217">
+    <text><![CDATA[20]]></text>
+  </DocumentChange>
+  <Command __id="605" _type="InsertStringCommand" date="Tue Oct 10 22:06:35 EDT 2023" starttimestamp="1696958528982" timestamp="31466026" timestamp2="31466026">
+    <data><![CDATA[2]]></data>
+  </Command>
+  <Command __id="607" _type="InsertStringCommand" date="Tue Oct 10 22:06:35 EDT 2023" starttimestamp="1696958528982" timestamp="31466217" timestamp2="31466217">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="608" _type="SelectTextCommand" caretOffset="67" date="Tue Oct 10 22:06:36 EDT 2023" end="68" start="67" starttimestamp="1696958528982" timestamp="31467030" />
+  <Command __id="610" _type="InsertStringCommand" date="Tue Oct 10 22:06:36 EDT 2023" starttimestamp="1696958528982" timestamp="31467735" timestamp2="31467735">
+    <data><![CDATA[5]]></data>
+  </Command>
+  <Command __id="611" _type="MoveCaretCommand" caretOffset="71" date="Tue Oct 10 22:06:36 EDT 2023" docOffset="71" starttimestamp="1696958528982" timestamp="31467881" />
+</Events>

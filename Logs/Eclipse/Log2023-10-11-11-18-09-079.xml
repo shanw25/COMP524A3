@@ -1,0 +1,1849 @@
+<Events startTimestamp="1697037489079" logVersion="1.0.0.202308221630">
+  <Command __id="0" _type="DiffBasedFileOpenCommand" date="Wed Oct 11 11:18:09 EDT 2023" docASTNodeCount="72" docActiveCodeLength="584" docExpressionCount="49" docLength="704" projectName="TestHelper" starttimestamp="1697037489079" timestamp="50">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/TestHelper/src/RunF23A3Tests.java]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[import gradingTools.comp524f23.assignment3.F23Assignment3Suite;
+import trace.grader.basics.GraderBasicsTraceUtility;
+import util.trace.Tracer;
+import grader.basics.execution.prolog.PrologCommandGeneratorSelector;
+public class RunF23A3Tests {
+	static final String PROJECT_LOCATION = "/Users/shanw25/College/JuniorFall/COMP524/PrologTest"; //Your location will be different
+
+	public static void main (String[] args) {
+//		Tracer.showInfo(true);
+//		GraderBasicsTraceUtility.setBufferTracedMessages(false);	
+		PrologCommandGeneratorSelector.getCommandGenerator().
+		setUserBinary("/opt/homebrew/bin/swipl");
+		F23Assignment3Suite.setProjectLocation(PROJECT_LOCATION);
+		F23Assignment3Suite.main(args);
+	}
+}
+]]></snapshot>
+  </Command>
+  <Command __id="8" _type="ShellCommand" date="Wed Oct 11 11:35:39 EDT 2023" starttimestamp="1697037489079" timestamp="1050544" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="11" _type="DiffBasedFileOpenCommand" date="Wed Oct 11 11:35:44 EDT 2023" docASTNodeCount="72" docActiveCodeLength="584" docExpressionCount="49" docLength="704" projectName="TestHelper" starttimestamp="1697037489079" timestamp="1055041">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/TestHelper/src/RunF23A3Tests.java]]></filePath>
+    <diff><![CDATA[Diff(EQUAL,"import gradingTools.comp524f23.assignment3.F23Assignment3Suite;import trace.grader.basics.GraderBasicsTraceUtility;import util.trace.Tracer;import grader.basics.execution.prolog.PrologCommandGeneratorSelector;public class RunF23A3Tests {	static final String PROJECT_LOCATION = "/Users/shanw25/College/JuniorFall/COMP524/PrologTest"; //Your location will be different	public static void main (String[] args) {//		Tracer.showInfo(true);//		GraderBasicsTraceUtility.setBufferTracedMessages(false);			PrologCommandGeneratorSelector.getCommandGenerator().		setUserBinary("/opt/homebrew/bin/swipl");		F23Assignment3Suite.setProjectLocation(PROJECT_LOCATION);		F23Assignment3Suite.main(args);	}}")]]></diff>
+    <snapshot><![CDATA[null]]></snapshot>
+  </Command>
+  <Command __id="12" _type="MoveCaretCommand" caretOffset="552" date="Wed Oct 11 11:35:44 EDT 2023" docOffset="701" starttimestamp="1697037489079" timestamp="1055195" />
+  <Command __id="17" _type="DiffBasedFileOpenCommand" date="Wed Oct 11 11:35:51 EDT 2023" docASTNodeCount="869" docActiveCodeLength="7064" docExpressionCount="486" docLength="19430" projectName="Assignment0_1" starttimestamp="1697037489079" timestamp="1061999">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/Assignment0_1/src/ConcurrentOddNumbers.java]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[import static trace.grader.basics.GraderBasicsTraceUtility.printProperty;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import util.misc.ThreadSupport;
+
+
+
+/** 
+ * If N is the supplied argument, this code uses the fork-join model to generate 
+ * N random numbers and identify the odd numbers in this list and their count.
+ * 
+ * If is not supplied, then a default value of 6 is assumed.
+ * 
+ * The comments in the class explain the Java thread API features
+ * used in this program. which include: 
+ * the interface Runnable,  
+ * the class Thread, 
+ * the Thread constructor,
+ * the Thread instance methods start() and join(),
+ * the synchronized keyword in a method declaration.
+ * 
+ * As you will see, this file actually has not only the main class 
+ * ConcurrentOddNumbers, but also four other inner classes, OddNumbersWorkerCode, 
+ * OddNumbersDispatcherCode, OddNumbersRepository, and OddNumbersUtil.  
+ * Hopefully, this separation of concerns make the code more understandable. 
+
+ * The code has three bugs in the following methods, 
+ * which you should fix in the order below:
+ * 1.	forkAndJoinThreads in class OddNumbersDispatcherCode .
+ * 2.	fairThreadRemainderSize in class fairThreadRemainderSize.
+ * 3.	incrementTotalOddNumbers in OddNumbersSharedRepository. 
+ *      The fix for the bug in this is actually identified � 
+ *      your task is to understand why it is a fix.
+ *  
+ */
+public class ConcurrentOddNumbers {
+	static int[] randomNumbers; // input list populated based on main argument
+	
+	/**
+	 * 
+	 * In general, a thread is an independent unit of steps, coded in its
+	 * root method.
+	 * 
+	 * The steps in its root method can can be executed while other threads are 
+	 * executing their root methods. 
+	 * 
+	 * A thread has its own stack to service the calls made by its root method.
+	 * 
+	 * In the physical world, a thread corresponds to an actor and its 
+	 * root method is the script followed by the actor.
+	 * 
+	 * The main() method of a class is  executed by a Java created thread, 
+	 * called the Main thread. 
+	 * 
+	 * All methods called directly or indirectly by the main() method are executed
+	 * by this thread.
+	 * 
+	 * The main() method is always at the root of the thread's stack,
+	 * and thus, is called the root method of the thread.
+	 * 
+	 * Other methods such as the dispatcher methods get pushed on top of the
+	 * stack when they are called and popped when they return.
+	 *  
+	 * A thread starts when when its root method is called and terminates
+	 * when the root method ends. 
+	 * 
+	 * In between the start and stop, a stack of calls can be serviced
+	 * by a thread.
+	 *  
+	 * This stack grows and shrinks, as different methods are called.
+	 * 
+	 * In this example, for instance, some example stack snapshots are: 
+	 * ConcurrentOddNumbers.main()->OddNumnbersUtil.fillRandomNumbers
+	 * ConcurrentOddNumbers.main()->OddNumnbersUtil.fillRandomNumbers->OddNumbersUtil.generateRandomNumbers 
+	 * ConcurrentOddNumbers.main()->ConcurrentOddNumbers.fillOddNumbers()
+	 * 
+	 */
+	public static void main(String[] args) {
+		// Trace the start of this method and associated thread
+		printProperty("main() called with arguments", 
+				Arrays.toString(args));
+		
+		// Ask the util class to generate a sequence of random numbers
+		randomNumbers = OddNumbersUtil.fillRandomNumbers(args); 
+		
+		// Ask the dispatcher class to "fork" and "join" child threads to identify 
+		// which of the  generated numbers are odd.	
+		// This code will create worker threads that can work independently
+		// of the thread that called main()
+		OddNumbersDispatcherCode.fillOddNumbers(randomNumbers);
+		
+		// Ask the util class to print the odd numbers
+		OddNumbersUtil.printOddNumbers(); 
+		
+		// Trace the end of this method and associated thread
+		printProperty("main() terminates with arguments", Arrays.toString(args));
+	}
+}
+
+/**
+ * The Main thread is created automatically by the JVM.
+ * 
+ * What if an existing thread wants to create new thread, which is required in the
+ * fork-join and other forms of concurrency?
+ * 
+ * In Java, a non-Main thread must execute a parameterless instance 
+ * root method called run() in a class that implements the Java Runnable interface.
+ * 
+ * The following is such a Runnable class, which represents the code executed by
+ * each forked worker thread.
+ * 
+ * Different worker threads are bound to different Runnable instances of this class. 
+ * 
+ * This binding is done by the dispatcher class defined later.
+ * 
+ */
+class OddNumbersWorkerCode implements Runnable {
+	int[] inputList;
+	int startIndex, stopIndex;
+	
+	/**
+	 * Unlike the main() method, the run() method does not take parameters.
+	 * 
+	 * Any parameters needed by it are passed as parameters to the constructor(s) 
+	 * of the enclosing Runnable class.
+	 * 
+	 * In this example, these indicate the list of generated random numbers,
+	 * and the portion of this list that this instance of Runnable must process.
+	 */
+	public OddNumbersWorkerCode(int[] anInputList, int aStartIndex, int aStopIndex) {
+		inputList = anInputList;
+		startIndex = aStartIndex;
+		stopIndex = aStopIndex;
+	}
+	
+	/**
+	 * This is an instance method that becomes the root method of a new thread.
+	 * It is executed when we start the associated thread.
+	 * How to associate itwith a new thread is shown in the next class.
+	 */
+	@Override
+	public void run() {
+		printProperty("run() called to start processing subsequence",  
+				startIndex + "-" + stopIndex );
+		
+		// The run method just delegates work to another method.
+		fillOddNumbers(inputList, startIndex, stopIndex);
+		
+		printProperty("run() terminates to end processing of subsequence",  
+				startIndex + "-" + stopIndex );
+	}	
+	/** 
+	 * The code executed by this method is a typical iteration loop executed
+	 * by worker threads. It finds all odd numbers in the subsequence of the
+	 * anInputList between whose indices are >= aStartIndex and < aStopIndex. 
+	 */	
+	public static void fillOddNumbers(int[] anInputList, 
+					int aStartIndex, int aStopIndex) {
+		int aNumberOfOddNumbers = 0;		
+		for (int index = aStartIndex; index < aStopIndex; index++) {
+			// trace the input processed by this iteration
+			printProperty("Index", index);
+			int aNumber = anInputList[index];
+			printProperty("Number", aNumber);
+			
+			// compute and trace the result computed by this iteration
+			boolean isOdd = OddNumbersUtil.isOddNumber(aNumber);
+			printProperty("Is Odd", isOdd);
+			
+			// deposit the result in a shared repository
+			if (isOdd) {			
+				OddNumbersRepository.addOddNumber(aNumber);
+				// This repository is shared with other worker threads and the
+				// dispatcher (Main) thread.
+				
+				aNumberOfOddNumbers++; // updating a local variable
+			}			
+		}
+		
+		// This is the number of odd numbers found by the thread that
+		// executes this loop. The total number computed by all threads
+		// is in the shared repository
+		printProperty("Num Odd Numbers", aNumberOfOddNumbers);
+	}
+}
+
+/**
+ * This class contains contains "dispatching" code executed by main().
+ * 
+ * This code creates the worker threads, associates them with Runnable instances, 
+ * starts them, waits for them to finish, and prints the results. 
+ * 
+ * When the Main thread executes this code,
+ * it becomes the dispatching thread in the fork-join model,
+ * dispatching work to forked child threads.
+ *
+ */
+class OddNumbersDispatcherCode {	
+	
+	public static final int NUM_THREADS = 4; // number of forked threads is fixed
+	
+	// A thread is represented in Java by an instance of the Thread class.
+	// So this array keeps track of the worker threads created.
+	private static Thread[] threads = new Thread[NUM_THREADS];
+	
+	// These are the Runnable instances to be bound to the threads above.
+	// There is a one to one correspondence between a thread and a Runnable
+	private static Runnable[] runnables = 
+			new Runnable[NUM_THREADS]; // Code executed by each thread 
+	
+	/**
+	 * This is the method called by main(), and it delegates its work to other methods
+	 */
+	static void fillOddNumbers(int[] anInputList) {
+		OddNumbersRepository.reset(); // initialize the shared repository
+		OddNumbersDispatcherCode.concurrentFillOddNumbers(anInputList);
+	}	
+	
+	public static void concurrentFillOddNumbers(int[] anInputList) {
+		createRunnables(anInputList); // First create the runnables
+		forkAndJoinThreads(); // Next create, start, and join threads
+	}
+	
+	/**
+	 * 
+	 * The goal of this method to make a set of worker threads execute concurrently,
+	 * and then make the forking dispatcher thread  wait for all of them to finish. 
+	 * 
+	 * In this program you know threads are running concurrently if 
+	 *   1. multiple threads produce output.
+	 * 	 2. thread output is interleaved or mixed, that is, before a thread finishes 
+	 *      its output, one or more of other threads produce output. 
+	 * 
+	 * In sequential execution, either one thread produces all output, or between
+	 * the first and last output of a thread, no other thread produces output.
+	 * 
+	 * The method is buggy in that it does not quite meet this goal. You need to
+	 * find and fix the bug(s) in it. 
+	 * 
+	 */
+	private static void forkAndJoinThreads() {
+		// runnable index is also a thread index
+		for (int aThreadIndex = 0; aThreadIndex < threads.length; aThreadIndex++) {			
+			forkThread(aThreadIndex);
+//			joinThread(aThreadIndex);
+		}
+		for (int aThreadIndex = 0; aThreadIndex < threads.length; aThreadIndex++) {			
+//			forkThread(aThreadIndex);
+			joinThread(aThreadIndex);
+		}
+	}
+	
+	private static void forkThread (int aThreadIndex) {
+		// The call new Thread(aRunnable) creates a new thread object and
+		// binds it to the Runnable constructor argument. 
+		threads[aThreadIndex] = new Thread(runnables[aThreadIndex]);	
+					
+		printProperty("Starting", OddNumbersUtil.threadName(threads[aThreadIndex]));			 
+					threads[aThreadIndex].start(); 
+		// The call t.start() starts the thread represented by t, that is, 
+		// creates a new stack, and executes the run() method of the 
+		// Runnable instance bound to t.
+	}
+	
+	private static void joinThread (int aThreadIndex) {
+		try {
+			printProperty(
+					"Stopping execution until the following thread terminates",
+					OddNumbersUtil.threadName(threads[aThreadIndex]));
+			threads[aThreadIndex].join(); 
+			// t.join blocks the calling thread until t finishes,
+			// that is, stops the caller from executing the next instruction
+			// until t finishes executing its run method. 
+			
+			// This blocking akin to a readLine input call blocking the caller 
+			// until the user types a line. 
+			
+			// Thus, this call reduces the concurrency in the system, as it
+			// makes the joining thread wait until the joined thread t finishes.				
+			// In other words, even though the joining thread *exists* concurrently
+			// with the joined thread, it is not allowed to execute concurrently 
+			// with it. 
+			
+			// If t has finished executing when t.join() is called, the call
+			// does not block the joining thread.
+			
+			// A thread can join multiple threads, one at a time, by
+			// making a series of such calls on each of these threads
+			printProperty(
+					"Resuming execution as the following thread has terminated", 
+					OddNumbersUtil.threadName(threads[aThreadIndex]));
+		} catch (InterruptedException e) {				
+			e.printStackTrace();
+			// The joined thread may be interrupted while the joiner thread
+			// is waiting for it to finish. If this happens the joiner
+			// unblocks, and services an InterruptedException.
+		}		
+	}
+	
+	/**
+	 * This method decomposes the work of processing the random numbers 
+	 * into a bunch of Runnable instances, one for each worker thread
+	 * to be started. 
+	 * 
+	 * A decomposed work unit is a subsequence of the input random number sequence.
+	 *  
+	 * It is represented by the start and end indices of this portion.	  
+	 * 
+	 */
+	private static void createRunnables(int[] randomNumbers) {
+		int aStartIndex = 0;
+		for (int aThreadIndex = 0; aThreadIndex < NUM_THREADS; aThreadIndex++) {
+			int aProblemSize = threadProblemSize(aThreadIndex, randomNumbers.length);
+			int aStopIndex = aStartIndex + aProblemSize;
+			runnables[aThreadIndex] = 
+			 new OddNumbersWorkerCode(randomNumbers, aStartIndex, aStopIndex);
+			aStartIndex = aStopIndex; // next thread's start is this thread's stop
+		}		
+	}	
+	
+	/**
+	 * This method determines how many elements of the input list, whose size is, 
+	 * aProblemSize, will be processed by the thread whose index in the 
+	 * thread array is aThreadIndex.
+	 *   
+	 * The problem may not be evenly divided among the threads. The thread index is
+	 * used to determine which threads do extra work.
+	 * 
+	 */
+	private static int threadProblemSize(int aThreadIndex, int aProblemSize) {
+		// Following is the size if the problem can be eveny divided among the threads
+		int aMinimumProblemSize = aProblemSize / NUM_THREADS;
+		
+		// This is the remaining work
+		int aRemainder = aProblemSize % NUM_THREADS;
+		
+		return aMinimumProblemSize + 
+			// calculate out how much of the remaining work is done by this thread
+			fairThreadRemainderSize(aThreadIndex, aRemainder);
+	}		
+	
+	/**
+	 * The goal of this method, as its name suggests, is to divide aRemainder items
+	 * work fairly among the available threads, that is,
+	 * the differences in the	sizes of the portions is as small as possible.
+	 * 
+	 * aRemainder is expected to be between 0 and NUM_THREADS - 1;
+	 * 
+	 * This method is buggy.
+	 *
+	 */
+	private static int fairThreadRemainderSize(int aThreadIndex, int aRemainder) {
+		if (aThreadIndex < aRemainder) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+}
+
+/**
+ * This class represents the data  modified by
+ * the worker threads that is output by the dispatcher Main thread. 
+ * 
+ * Thus, the dispatcher Main thread is the consumer of this information and 
+ * the worker threads are the producers of it.
+ */
+class OddNumbersRepository {
+	static List<Integer> oddNumbers;  // variable length output list
+	static int totalNumberOddNumbers;
+	
+	/**
+	 * The values must be reset before workers start modifying them. 
+	 */
+	public static void reset() {
+		totalNumberOddNumbers = 0;
+		oddNumbers = new ArrayList();
+	}
+	
+	/**
+	 * These two static methods are called by the dispatcher thread	
+	 */
+	public static List<Integer> getOddNumbers() {
+		return oddNumbers;
+	}	
+	public static int getTotalNumberOddNumbers() {
+		return totalNumberOddNumbers;
+	}
+	
+	/**
+	 * This is a static method that is called by the run methods of 
+	 * all worker threads.
+	 * 
+	 * A method that can be executed by multiple threads is called a shared
+	 * method.
+	 * 
+	 * Such a method can be synchronized or not based on whether
+	 * it has the synchronized keyword in its header.
+	 * 
+	 * Only one synchronized static method of a class can be executed at any time
+	 * by any thread.  
+	 * The current synchronized method invocation locks the class.
+	 * 
+	 * Only one synchronized instance method of an object can be executed at any time
+	 * by any thread. 
+	 * The current synchronized method invocation locks the instance. 
+	 * The same instance method can be executed on some other unlocked instance.  
+	 * 
+	 * Threads that try to execute synchronized methods in locked classes/instances 
+	 * wait in queues until the classes/instances are unlocked.
+	 * 
+	 * Such waiting makes the code safe in that global variables (those not declared
+	 * in the method) do not become inconsistent.
+	 *
+	 * Should this method be synchronized? The answer is yes.
+	 * 
+	 * To understand this answer, start by looking at the commented code below. 
+	 * If you have not done so already, fix the problem with forkAndJoinThreads.
+	 * Look at the output of this method and the final results? 
+	 * Do they make	sense?
+	 * 
+	 * Next uncomment the first line in the header to make it synchronized, 
+	 * and run the program again.
+	 * 
+	 * Again, look at the outputs above. Does this now make sense?
+	 */
+	 synchronized
+	 static void incrementTotalOddNumbers() {
+		// Here we are simulating register-based increments, if you do not know
+		// how that works, think of aRegister as a temporary variable
+		 
+		int aRegister = totalNumberOddNumbers; // Simulate load memory to register
+		printProperty("Loaded total numer of odd numbers", totalNumberOddNumbers);
+		
+	
+		// Before the incremented register is saved to memory, 
+				// another concurrent thread may also load
+				// the same value for totalNumberOddNumbers in its local register variable.
+				// What problems can this cause if the method is not synchronized?	
+				
+				aRegister++; // increment register		
+				
+				ThreadSupport.sleep(10);
+				// The above sleep call will block the current thread for 10 ms and let
+				// some other thread execute before the save operation occurs
+				// This call simulates a CPU switching execution to another thread.
+		
+				totalNumberOddNumbers = aRegister; // Simulate save register to memory
+				printProperty("Saved total numer of odd numbers", totalNumberOddNumbers);
+
+
+	}	
+	
+	 static void addOddNumber(int aNumber) {
+		incrementTotalOddNumbers();
+		oddNumbers.add(aNumber);
+	}	
+}
+
+/**
+ * Ignore this class, it has no concurrency concept
+ */
+class OddNumbersUtil {
+	public static final int MAX_RANDOM_NUMBER = 1000;
+	public static final int DEFAULT_INPUT_LENGTH = 6;
+	static void printOddNumbers() {
+		printProperty("Total Num Odd Numbers",  
+				OddNumbersRepository.getTotalNumberOddNumbers());
+		printProperty("Odd Numbers",
+				OddNumbersRepository.getOddNumbers());
+	}
+	public static int firstArgToInteger(String[] args) {
+		// If nothing was passed on the command line, then print error and exit
+		
+		if (args.length < 1) {
+			System.err.println("No argument supplied to the main class, assuming default value of " + DEFAULT_INPUT_LENGTH);
+			return DEFAULT_INPUT_LENGTH;
+			//System.exit(0);;
+		} 
+		// Convert the first command line argument to an integer, exit if error
+		try {
+			return Integer.parseInt(args[0]);
+		} catch (Exception ex) {
+			System.err.println("Cannot convert argument on command line to integer");
+			System.exit(1);
+		}
+		return -1;
+	}
+	static int[] fillRandomNumbers(String[] args) {
+		int aNumRandomNumbers = firstArgToInteger(args); // get the number from arguments
+		int[] aRandomNumbers = generateRandomNumbers(aNumRandomNumbers);
+		printProperty("Random Numbers", 
+				Arrays.toString(aRandomNumbers));
+		return aRandomNumbers;
+	}
+	private static int[] generateRandomNumbers(int aNumRandomNumbers) {
+		int[] retVal = new int[aNumRandomNumbers];
+		for (int index = 0; index < retVal.length; index++) {
+			double aRandomDouble = Math.random(); // number between 0 and 1
+			int aRandomInteger = (int) (aRandomDouble * MAX_RANDOM_NUMBER);
+			retVal[index] = aRandomInteger;
+		}
+		return retVal;
+	}
+
+	public static String threadName(Thread aThread) {
+		return "Thread " + aThread.getId();
+	}
+
+	public static boolean isOddNumber(int aNumber) {
+		return aNumber % 2 == 1;
+	}	
+	
+}
+
+
+
+]]></snapshot>
+  </Command>
+  <Command __id="18" _type="MoveCaretCommand" caretOffset="14432" date="Wed Oct 11 11:35:51 EDT 2023" docOffset="14548" starttimestamp="1697037489079" timestamp="1062128" />
+  <Command __id="20" _type="MoveCaretCommand" caretOffset="71" date="Wed Oct 11 11:35:51 EDT 2023" docOffset="71" starttimestamp="1697037489079" timestamp="1062895" />
+  <Command __id="21" _type="ShellCommand" date="Wed Oct 11 11:35:53 EDT 2023" starttimestamp="1697037489079" timestamp="1064423" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="22" _type="ShellCommand" date="Wed Oct 11 11:35:54 EDT 2023" starttimestamp="1697037489079" timestamp="1065554" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="23" _type="ShellCommand" date="Wed Oct 11 11:35:55 EDT 2023" starttimestamp="1697037489079" timestamp="1066838" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="19" _type="DiffBasedFileOpenCommand" date="Wed Oct 11 11:35:51 EDT 2023" docLength="71" projectName="PrologTest" starttimestamp="1697037489079" timestamp="1062758">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/SocialDistance.pl]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[givenSizes(6, 15, 10).
+givenSizes(13, 30, 30).
+givenSizes(27, 120, 50).]]></snapshot>
+  </Command>
+  <Command __id="24" _type="ShellCommand" date="Wed Oct 11 11:36:33 EDT 2023" starttimestamp="1697037489079" timestamp="1104733" type="ECLIPSE_GAINED_FOCUS" />
+  <DocumentChange __id="25" _type="Insert" date="Wed Oct 11 11:36:35 EDT 2023" docASTNodeCount="1" docActiveCodeLength="72" docExpressionCount="0" docLength="72" length="1" offset="71" starttimestamp="1697037489079" timestamp="1106644">
+    <text><![CDATA[	]]></text>
+  </DocumentChange>
+  <Command __id="26" _type="InsertStringCommand" date="Wed Oct 11 11:36:35 EDT 2023" starttimestamp="1697037489079" timestamp="1106647" timestamp2="1106647">
+    <data><![CDATA[	]]></data>
+  </Command>
+  <DocumentChange __id="27" _type="Delete" date="Wed Oct 11 11:36:36 EDT 2023" docASTNodeCount="1" docActiveCodeLength="70" docExpressionCount="0" docLength="70" endLine="2" length="2" offset="70" repeat="2" startLine="2" starttimestamp="1697037489079" timestamp="1107465" timestamp2="1107595">
+    <text><![CDATA[.	]]></text>
+  </DocumentChange>
+  <Command __id="28" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 11:36:36 EDT 2023" starttimestamp="1697037489079" timestamp="1107471" />
+  <Command __id="30" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 11:36:36 EDT 2023" starttimestamp="1697037489079" timestamp="1107598" />
+  <DocumentChange __id="31" _type="Insert" date="Wed Oct 11 11:36:37 EDT 2023" docASTNodeCount="1" docActiveCodeLength="76" docExpressionCount="0" docLength="76" length="6" offset="70" repeat="6" starttimestamp="1697037489079" timestamp="1108486" timestamp2="1109587">
+    <text><![CDATA[.
+Give]]></text>
+  </DocumentChange>
+  <Command __id="32" _type="InsertStringCommand" date="Wed Oct 11 11:36:37 EDT 2023" starttimestamp="1697037489079" timestamp="1108488" timestamp2="1108488">
+    <data><![CDATA[.]]></data>
+  </Command>
+  <Command __id="34" _type="InsertStringCommand" date="Wed Oct 11 11:36:37 EDT 2023" starttimestamp="1697037489079" timestamp="1108664" timestamp2="1108664">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="36" _type="InsertStringCommand" date="Wed Oct 11 11:36:38 EDT 2023" starttimestamp="1697037489079" timestamp="1109246" timestamp2="1109246">
+    <data><![CDATA[G]]></data>
+  </Command>
+  <Command __id="38" _type="InsertStringCommand" date="Wed Oct 11 11:36:38 EDT 2023" starttimestamp="1697037489079" timestamp="1109344" timestamp2="1109344">
+    <data><![CDATA[i]]></data>
+  </Command>
+  <Command __id="40" _type="InsertStringCommand" date="Wed Oct 11 11:36:38 EDT 2023" starttimestamp="1697037489079" timestamp="1109490" timestamp2="1109490">
+    <data><![CDATA[v]]></data>
+  </Command>
+  <Command __id="42" _type="InsertStringCommand" date="Wed Oct 11 11:36:38 EDT 2023" starttimestamp="1697037489079" timestamp="1109587" timestamp2="1109587">
+    <data><![CDATA[e]]></data>
+  </Command>
+  <DocumentChange __id="43" _type="Delete" date="Wed Oct 11 11:36:38 EDT 2023" docASTNodeCount="1" docActiveCodeLength="72" docExpressionCount="0" docLength="72" endLine="3" length="4" offset="72" repeat="4" startLine="3" starttimestamp="1697037489079" timestamp="1109751" timestamp2="1110104">
+    <text><![CDATA[Give]]></text>
+  </DocumentChange>
+  <Command __id="44" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 11:36:38 EDT 2023" starttimestamp="1697037489079" timestamp="1109755" />
+  <Command __id="46" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 11:36:38 EDT 2023" starttimestamp="1697037489079" timestamp="1109847" />
+  <Command __id="48" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 11:36:39 EDT 2023" starttimestamp="1697037489079" timestamp="1109979" />
+  <Command __id="50" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 11:36:39 EDT 2023" starttimestamp="1697037489079" timestamp="1110105" />
+  <DocumentChange __id="51" _type="Insert" date="Wed Oct 11 11:36:39 EDT 2023" docASTNodeCount="1" docActiveCodeLength="78" docExpressionCount="0" docLength="78" length="6" offset="72" repeat="6" starttimestamp="1697037489079" timestamp="1110184" timestamp2="1111311">
+    <text><![CDATA[given(]]></text>
+  </DocumentChange>
+  <Command __id="52" _type="InsertStringCommand" date="Wed Oct 11 11:36:39 EDT 2023" starttimestamp="1697037489079" timestamp="1110185" timestamp2="1110185">
+    <data><![CDATA[g]]></data>
+  </Command>
+  <Command __id="54" _type="InsertStringCommand" date="Wed Oct 11 11:36:39 EDT 2023" starttimestamp="1697037489079" timestamp="1110890" timestamp2="1110890">
+    <data><![CDATA[i]]></data>
+  </Command>
+  <Command __id="56" _type="InsertStringCommand" date="Wed Oct 11 11:36:40 EDT 2023" starttimestamp="1697037489079" timestamp="1110999" timestamp2="1110999">
+    <data><![CDATA[v]]></data>
+  </Command>
+  <Command __id="58" _type="InsertStringCommand" date="Wed Oct 11 11:36:40 EDT 2023" starttimestamp="1697037489079" timestamp="1111066" timestamp2="1111066">
+    <data><![CDATA[e]]></data>
+  </Command>
+  <Command __id="60" _type="InsertStringCommand" date="Wed Oct 11 11:36:40 EDT 2023" starttimestamp="1697037489079" timestamp="1111137" timestamp2="1111137">
+    <data><![CDATA[n]]></data>
+  </Command>
+  <Command __id="62" _type="InsertStringCommand" date="Wed Oct 11 11:36:40 EDT 2023" starttimestamp="1697037489079" timestamp="1111313" timestamp2="1111313">
+    <data><![CDATA[(]]></data>
+  </Command>
+  <Command __id="63" _type="ShellCommand" date="Wed Oct 11 11:36:40 EDT 2023" starttimestamp="1697037489079" timestamp="1111792" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="64" _type="ShellCommand" date="Wed Oct 11 11:36:41 EDT 2023" starttimestamp="1697037489079" timestamp="1112469" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="66" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 11:36:41 EDT 2023" starttimestamp="1697037489079" timestamp="1112570" />
+  <Command __id="67" _type="ShellCommand" date="Wed Oct 11 11:36:42 EDT 2023" starttimestamp="1697037489079" timestamp="1113065" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="68" _type="ShellCommand" date="Wed Oct 11 11:36:43 EDT 2023" starttimestamp="1697037489079" timestamp="1114742" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="70" _type="InsertStringCommand" date="Wed Oct 11 11:36:44 EDT 2023" starttimestamp="1697037489079" timestamp="1115152" timestamp2="1115152">
+    <data><![CDATA[S]]></data>
+  </Command>
+  <Command __id="72" _type="InsertStringCommand" date="Wed Oct 11 11:36:44 EDT 2023" starttimestamp="1697037489079" timestamp="1115386" timestamp2="1115386">
+    <data><![CDATA[a]]></data>
+  </Command>
+  <Command __id="74" _type="InsertStringCommand" date="Wed Oct 11 11:36:44 EDT 2023" starttimestamp="1697037489079" timestamp="1115409" timestamp2="1115409">
+    <data><![CDATA[f]]></data>
+  </Command>
+  <Command __id="76" _type="InsertStringCommand" date="Wed Oct 11 11:36:44 EDT 2023" starttimestamp="1697037489079" timestamp="1115521" timestamp2="1115521">
+    <data><![CDATA[e]]></data>
+  </Command>
+  <Command __id="78" _type="InsertStringCommand" date="Wed Oct 11 11:36:44 EDT 2023" starttimestamp="1697037489079" timestamp="1115670" timestamp2="1115670">
+    <data><![CDATA[(]]></data>
+  </Command>
+  <Command __id="79" _type="ShellCommand" date="Wed Oct 11 11:36:46 EDT 2023" starttimestamp="1697037489079" timestamp="1116983" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="80" _type="ShellCommand" date="Wed Oct 11 11:36:50 EDT 2023" starttimestamp="1697037489079" timestamp="1121513" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="81" _type="ShellCommand" date="Wed Oct 11 11:36:55 EDT 2023" starttimestamp="1697037489079" timestamp="1126375" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="82" _type="ShellCommand" date="Wed Oct 11 11:37:31 EDT 2023" starttimestamp="1697037489079" timestamp="1162404" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="83" _type="ShellCommand" date="Wed Oct 11 11:37:36 EDT 2023" starttimestamp="1697037489079" timestamp="1167025" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="84" _type="ShellCommand" date="Wed Oct 11 11:39:10 EDT 2023" starttimestamp="1697037489079" timestamp="1261258" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="85" _type="ShellCommand" date="Wed Oct 11 11:39:11 EDT 2023" starttimestamp="1697037489079" timestamp="1261972" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="86" _type="ShellCommand" date="Wed Oct 11 11:39:14 EDT 2023" starttimestamp="1697037489079" timestamp="1265110" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="87" _type="ShellCommand" date="Wed Oct 11 11:39:16 EDT 2023" starttimestamp="1697037489079" timestamp="1267749" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="88" _type="ShellCommand" date="Wed Oct 11 11:39:17 EDT 2023" starttimestamp="1697037489079" timestamp="1268410" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="89" _type="ShellCommand" date="Wed Oct 11 11:39:19 EDT 2023" starttimestamp="1697037489079" timestamp="1270687" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="90" _type="ShellCommand" date="Wed Oct 11 11:39:20 EDT 2023" starttimestamp="1697037489079" timestamp="1271454" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="92" _type="InsertStringCommand" date="Wed Oct 11 11:39:21 EDT 2023" starttimestamp="1697037489079" timestamp="1272354" timestamp2="1272354">
+    <data><![CDATA[1]]></data>
+  </Command>
+  <Command __id="94" _type="InsertStringCommand" date="Wed Oct 11 11:39:21 EDT 2023" starttimestamp="1697037489079" timestamp="1272446" timestamp2="1272446">
+    <data><![CDATA[3]]></data>
+  </Command>
+  <Command __id="95" _type="InsertStringCommand" date="Wed Oct 11 11:39:22 EDT 2023" starttimestamp="1697037489079" timestamp="1273762" timestamp2="1273762">
+    <data><![CDATA[c]]></data>
+  </Command>
+  <Command __id="96" _type="MoveCaretCommand" caretOffset="84" date="Wed Oct 11 11:39:24 EDT 2023" docOffset="84" starttimestamp="1697037489079" timestamp="1275206" />
+  <Command __id="97" _type="SelectTextCommand" caretOffset="84" date="Wed Oct 11 11:39:24 EDT 2023" end="84" start="82" starttimestamp="1697037489079" timestamp="1275346" />
+  <Command __id="98" _type="MoveCaretCommand" caretOffset="84" date="Wed Oct 11 11:39:24 EDT 2023" docOffset="84" starttimestamp="1697037489079" timestamp="1275766" />
+  <Command __id="99" _type="SelectTextCommand" caretOffset="84" date="Wed Oct 11 11:39:25 EDT 2023" end="84" start="82" starttimestamp="1697037489079" timestamp="1275936" />
+  <Command __id="100" _type="SelectTextCommand" caretOffset="84" date="Wed Oct 11 11:39:25 EDT 2023" end="84" start="72" starttimestamp="1697037489079" timestamp="1276082" />
+  <Command __id="101" _type="CopyCommand" date="Wed Oct 11 11:39:25 EDT 2023" starttimestamp="1697037489079" timestamp="1276326" />
+  <Command __id="102" _type="MoveCaretCommand" caretOffset="84" date="Wed Oct 11 11:39:25 EDT 2023" docOffset="84" starttimestamp="1697037489079" timestamp="1276608" />
+  <Command __id="104" _type="InsertStringCommand" date="Wed Oct 11 11:39:25 EDT 2023" starttimestamp="1697037489079" timestamp="1276797" timestamp2="1276797">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="106" _type="PasteCommand" date="Wed Oct 11 11:39:26 EDT 2023" starttimestamp="1697037489079" timestamp="1277033" />
+  <Command __id="108" _type="InsertStringCommand" date="Wed Oct 11 11:39:26 EDT 2023" starttimestamp="1697037489079" timestamp="1277396" timestamp2="1277396">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="110" _type="PasteCommand" date="Wed Oct 11 11:39:26 EDT 2023" starttimestamp="1697037489079" timestamp="1277541" />
+  <Command __id="112" _type="InsertStringCommand" date="Wed Oct 11 11:39:26 EDT 2023" starttimestamp="1697037489079" timestamp="1277654" timestamp2="1277654">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="114" _type="PasteCommand" date="Wed Oct 11 11:39:26 EDT 2023" starttimestamp="1697037489079" timestamp="1277803" />
+  <Command __id="116" _type="InsertStringCommand" date="Wed Oct 11 11:39:26 EDT 2023" starttimestamp="1697037489079" timestamp="1277881" timestamp2="1277881">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="118" _type="PasteCommand" date="Wed Oct 11 11:39:27 EDT 2023" starttimestamp="1697037489079" timestamp="1278049" />
+  <Command __id="120" _type="InsertStringCommand" date="Wed Oct 11 11:39:27 EDT 2023" starttimestamp="1697037489079" timestamp="1278115" timestamp2="1278115">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="122" _type="PasteCommand" date="Wed Oct 11 11:39:27 EDT 2023" starttimestamp="1697037489079" timestamp="1278277" />
+  <Command __id="123" _type="ShellCommand" date="Wed Oct 11 11:39:28 EDT 2023" starttimestamp="1697037489079" timestamp="1279712" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="124" _type="ShellCommand" date="Wed Oct 11 11:39:30 EDT 2023" starttimestamp="1697037489079" timestamp="1280962" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="126" _type="PasteCommand" date="Wed Oct 11 11:39:30 EDT 2023" starttimestamp="1697037489079" timestamp="1281132" />
+  <Command __id="128" _type="UndoCommand" date="Wed Oct 11 11:39:31 EDT 2023" starttimestamp="1697037489079" timestamp="1282066" />
+  <Command __id="130" _type="InsertStringCommand" date="Wed Oct 11 11:39:31 EDT 2023" starttimestamp="1697037489079" timestamp="1282343" timestamp2="1282343">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="132" _type="PasteCommand" date="Wed Oct 11 11:39:31 EDT 2023" starttimestamp="1697037489079" timestamp="1282517" />
+  <Command __id="133" _type="EclipseCommand" commandID="org.eclipse.ui.file.save" date="Wed Oct 11 11:39:32 EDT 2023" starttimestamp="1697037489079" timestamp="1283430" />
+  <Command __id="134" _type="ShellCommand" date="Wed Oct 11 11:39:33 EDT 2023" starttimestamp="1697037489079" timestamp="1284238" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="135" _type="ShellCommand" date="Wed Oct 11 12:28:12 EDT 2023" starttimestamp="1697037489079" timestamp="4202971" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="136" _type="ShellCommand" date="Wed Oct 11 12:28:23 EDT 2023" starttimestamp="1697037489079" timestamp="4214503" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="137" _type="ShellCommand" date="Wed Oct 11 12:28:24 EDT 2023" starttimestamp="1697037489079" timestamp="4215608" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="138" _type="ShellCommand" date="Wed Oct 11 12:28:25 EDT 2023" starttimestamp="1697037489079" timestamp="4216020" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="139" _type="ShellCommand" date="Wed Oct 11 12:28:31 EDT 2023" starttimestamp="1697037489079" timestamp="4221929" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="140" _type="MoveCaretCommand" caretOffset="97" date="Wed Oct 11 12:28:31 EDT 2023" docOffset="97" starttimestamp="1697037489079" timestamp="4222721" />
+  <Command __id="141" _type="MoveCaretCommand" caretOffset="84" date="Wed Oct 11 12:28:32 EDT 2023" docOffset="84" starttimestamp="1697037489079" timestamp="4223143" />
+  <Command __id="142" _type="ShellCommand" date="Wed Oct 11 12:28:32 EDT 2023" starttimestamp="1697037489079" timestamp="4223524" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="143" _type="ShellCommand" date="Wed Oct 11 12:28:33 EDT 2023" starttimestamp="1697037489079" timestamp="4224401" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="144" _type="SelectTextCommand" caretOffset="34" date="Wed Oct 11 12:28:35 EDT 2023" end="36" start="34" starttimestamp="1697037489079" timestamp="4225942" />
+  <Command __id="145" _type="MoveCaretCommand" caretOffset="34" date="Wed Oct 11 12:28:35 EDT 2023" docOffset="34" starttimestamp="1697037489079" timestamp="4226162" />
+  <Command __id="146" _type="ShellCommand" date="Wed Oct 11 12:28:37 EDT 2023" starttimestamp="1697037489079" timestamp="4228210" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="147" _type="ShellCommand" date="Wed Oct 11 12:28:39 EDT 2023" starttimestamp="1697037489079" timestamp="4230031" type="ECLIPSE_GAINED_FOCUS" />
+  <DocumentChange __id="65" _type="Delete" date="Wed Oct 11 11:36:41 EDT 2023" docASTNodeCount="1" docActiveCodeLength="77" docExpressionCount="0" docLength="77" endLine="3" length="1" offset="77" startLine="3" starttimestamp="1697037489079" timestamp="1112569">
+    <text><![CDATA[(]]></text>
+  </DocumentChange>
+  <DocumentChange __id="69" _type="Insert" date="Wed Oct 11 11:36:44 EDT 2023" docASTNodeCount="1" docActiveCodeLength="82" docExpressionCount="0" docLength="82" length="5" offset="77" repeat="5" starttimestamp="1697037489079" timestamp="1115151" timestamp2="1115669">
+    <text><![CDATA[Safe(]]></text>
+  </DocumentChange>
+  <DocumentChange __id="91" _type="Insert" date="Wed Oct 11 11:39:21 EDT 2023" docASTNodeCount="1" docActiveCodeLength="84" docExpressionCount="0" docLength="84" length="2" offset="82" repeat="2" starttimestamp="1697037489079" timestamp="1272353" timestamp2="1272445">
+    <text><![CDATA[13]]></text>
+  </DocumentChange>
+  <DocumentChange __id="103" _type="Insert" date="Wed Oct 11 11:39:25 EDT 2023" docASTNodeCount="1" docActiveCodeLength="149" docExpressionCount="0" docLength="149" length="65" offset="84" repeat="10" starttimestamp="1697037489079" timestamp="1276795" timestamp2="1278275">
+    <text><![CDATA[
+givenSafe(13
+givenSafe(13
+givenSafe(13
+givenSafe(13
+givenSafe(13]]></text>
+  </DocumentChange>
+  <DocumentChange __id="125" _type="Insert" date="Wed Oct 11 11:39:30 EDT 2023" docASTNodeCount="1" docActiveCodeLength="161" docExpressionCount="0" docLength="161" length="12" offset="149" starttimestamp="1697037489079" timestamp="1281130">
+    <text><![CDATA[givenSafe(13]]></text>
+  </DocumentChange>
+  <DocumentChange __id="127" _type="Delete" date="Wed Oct 11 11:39:31 EDT 2023" docASTNodeCount="1" docActiveCodeLength="149" docExpressionCount="0" docLength="149" endLine="8" length="12" offset="149" startLine="8" starttimestamp="1697037489079" timestamp="1282062">
+    <text><![CDATA[givenSafe(13]]></text>
+  </DocumentChange>
+  <DocumentChange __id="129" _type="Insert" date="Wed Oct 11 11:39:31 EDT 2023" docASTNodeCount="1" docActiveCodeLength="162" docExpressionCount="0" docLength="162" length="13" offset="149" repeat="2" starttimestamp="1697037489079" timestamp="1282340" timestamp2="1282515">
+    <text><![CDATA[
+givenSafe(13]]></text>
+  </DocumentChange>
+  <Command __id="148" _type="MoveCaretCommand" caretOffset="65" date="Wed Oct 11 12:28:40 EDT 2023" docOffset="65" starttimestamp="1697037489079" timestamp="4231143" />
+  <Command __id="149" _type="SelectTextCommand" caretOffset="65" date="Wed Oct 11 12:28:40 EDT 2023" end="65" start="62" starttimestamp="1697037489079" timestamp="4231357" />
+  <Command __id="150" _type="MoveCaretCommand" caretOffset="84" date="Wed Oct 11 12:28:41 EDT 2023" docOffset="84" starttimestamp="1697037489079" timestamp="4231958" />
+  <Command __id="151" _type="MoveCaretCommand" caretOffset="35" date="Wed Oct 11 12:28:41 EDT 2023" docOffset="35" starttimestamp="1697037489079" timestamp="4232757" />
+  <Command __id="152" _type="SelectTextCommand" caretOffset="36" date="Wed Oct 11 12:28:41 EDT 2023" end="36" start="34" starttimestamp="1697037489079" timestamp="4232905" />
+  <Command __id="153" _type="MoveCaretCommand" caretOffset="39" date="Wed Oct 11 12:28:42 EDT 2023" docOffset="39" starttimestamp="1697037489079" timestamp="4233759" />
+  <Command __id="154" _type="SelectTextCommand" caretOffset="40" date="Wed Oct 11 12:28:42 EDT 2023" end="40" start="38" starttimestamp="1697037489079" timestamp="4233892" />
+  <Command __id="155" _type="MoveCaretCommand" caretOffset="43" date="Wed Oct 11 12:28:43 EDT 2023" docOffset="43" starttimestamp="1697037489079" timestamp="4234513" />
+  <Command __id="156" _type="SelectTextCommand" caretOffset="44" date="Wed Oct 11 12:28:43 EDT 2023" end="44" start="42" starttimestamp="1697037489079" timestamp="4234642" />
+  <Command __id="157" _type="MoveCaretCommand" caretOffset="38" date="Wed Oct 11 12:28:44 EDT 2023" docOffset="38" starttimestamp="1697037489079" timestamp="4235138" />
+  <Command __id="158" _type="SelectTextCommand" caretOffset="40" date="Wed Oct 11 12:28:44 EDT 2023" end="40" start="38" starttimestamp="1697037489079" timestamp="4235296" />
+  <Command __id="159" _type="MoveCaretCommand" caretOffset="84" date="Wed Oct 11 12:28:44 EDT 2023" docOffset="84" starttimestamp="1697037489079" timestamp="4235762" />
+  <DocumentChange __id="160" _type="Insert" date="Wed Oct 11 12:28:46 EDT 2023" docASTNodeCount="1" docActiveCodeLength="163" docExpressionCount="0" docLength="163" length="1" offset="84" starttimestamp="1697037489079" timestamp="4237294">
+    <text><![CDATA[，]]></text>
+  </DocumentChange>
+  <Command __id="161" _type="InsertStringCommand" date="Wed Oct 11 12:28:46 EDT 2023" starttimestamp="1697037489079" timestamp="4237295" timestamp2="4237295">
+    <data><![CDATA[，]]></data>
+  </Command>
+  <DocumentChange __id="162" _type="Delete" date="Wed Oct 11 12:28:47 EDT 2023" docASTNodeCount="1" docActiveCodeLength="162" docExpressionCount="0" docLength="162" endLine="3" length="1" offset="84" startLine="3" starttimestamp="1697037489079" timestamp="4237973">
+    <text><![CDATA[，]]></text>
+  </DocumentChange>
+  <Command __id="163" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:28:47 EDT 2023" starttimestamp="1697037489079" timestamp="4237976" />
+  <DocumentChange __id="164" _type="Insert" date="Wed Oct 11 12:28:47 EDT 2023" docASTNodeCount="1" docActiveCodeLength="165" docExpressionCount="0" docLength="165" length="3" offset="84" repeat="3" starttimestamp="1697037489079" timestamp="4238312" timestamp2="4238743">
+    <text><![CDATA[,30]]></text>
+  </DocumentChange>
+  <Command __id="165" _type="InsertStringCommand" date="Wed Oct 11 12:28:47 EDT 2023" starttimestamp="1697037489079" timestamp="4238313" timestamp2="4238313">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="167" _type="InsertStringCommand" date="Wed Oct 11 12:28:47 EDT 2023" starttimestamp="1697037489079" timestamp="4238627" timestamp2="4238627">
+    <data><![CDATA[3]]></data>
+  </Command>
+  <Command __id="169" _type="InsertStringCommand" date="Wed Oct 11 12:28:47 EDT 2023" starttimestamp="1697037489079" timestamp="4238743" timestamp2="4238743">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="171" _type="InsertStringCommand" date="Wed Oct 11 12:28:50 EDT 2023" starttimestamp="1697037489079" timestamp="4241475" timestamp2="4241475">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="173" _type="InsertStringCommand" date="Wed Oct 11 12:28:50 EDT 2023" starttimestamp="1697037489079" timestamp="4241648" timestamp2="4241648">
+    <data><![CDATA[3]]></data>
+  </Command>
+  <Command __id="175" _type="InsertStringCommand" date="Wed Oct 11 12:28:50 EDT 2023" starttimestamp="1697037489079" timestamp="4241758" timestamp2="4241758">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="177" _type="InsertStringCommand" date="Wed Oct 11 12:28:51 EDT 2023" starttimestamp="1697037489079" timestamp="4242301" timestamp2="4242301">
+    <data><![CDATA[)]]></data>
+  </Command>
+  <Command __id="179" _type="InsertStringCommand" date="Wed Oct 11 12:28:51 EDT 2023" starttimestamp="1697037489079" timestamp="4242546" timestamp2="4242546">
+    <data><![CDATA[.]]></data>
+  </Command>
+  <Command __id="180" _type="EclipseCommand" commandID="org.eclipse.ui.file.save" date="Wed Oct 11 12:28:52 EDT 2023" starttimestamp="1697037489079" timestamp="4242995" />
+  <Command __id="181" _type="MoveCaretCommand" caretOffset="105" date="Wed Oct 11 12:28:52 EDT 2023" docOffset="105" starttimestamp="1697037489079" timestamp="4243871" />
+  <Command __id="182" _type="MoveCaretCommand" caretOffset="157" date="Wed Oct 11 12:28:53 EDT 2023" docOffset="157" starttimestamp="1697037489079" timestamp="4244884" />
+  <Command __id="184" _type="MoveCaretCommand" caretOffset="0" date="Wed Oct 11 12:28:54 EDT 2023" docOffset="0" starttimestamp="1697037489079" timestamp="4245692" />
+  <Command __id="185" _type="MoveCaretCommand" caretOffset="152" date="Wed Oct 11 12:28:54 EDT 2023" docOffset="152" starttimestamp="1697037489079" timestamp="4245857" />
+  <Command __id="187" _type="MoveCaretCommand" caretOffset="157" date="Wed Oct 11 12:28:56 EDT 2023" docOffset="157" starttimestamp="1697037489079" timestamp="4246987" />
+  <Command __id="188" _type="MoveCaretCommand" caretOffset="105" date="Wed Oct 11 12:28:59 EDT 2023" docOffset="105" starttimestamp="1697037489079" timestamp="4250058" />
+  <Command __id="189" _type="MoveCaretCommand" caretOffset="92" date="Wed Oct 11 12:28:59 EDT 2023" docOffset="92" starttimestamp="1697037489079" timestamp="4250738" />
+  <Command __id="190" _type="ShellCommand" date="Wed Oct 11 12:29:00 EDT 2023" starttimestamp="1697037489079" timestamp="4251382" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="191" _type="ShellCommand" date="Wed Oct 11 12:29:02 EDT 2023" starttimestamp="1697037489079" timestamp="4253762" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="192" _type="BalloonCommand" date="Wed Oct 11 12:29:05 EDT 2023" message="*******************************************
+Worked 3 minutes(fixed)/60 minutes(context based) from
+Wed Oct 11 11:18:09 EDT 2023 to Wed Oct 11 12:29:02 EDT 2023
+Edited 1 Projects: 
+	PrologTest
+Edited 1 Files: 
+	/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/SocialDistance.pl
+Number of insert: 119
+Number of delete: 20
+" starttimestamp="1697037489079" timestamp="4255944">
+    <fineGrainedWorkTime><![CDATA[60]]></fineGrainedWorkTime>
+    <insert><![CDATA[119]]></insert>
+    <startTime><![CDATA[1697037489129]]></startTime>
+    <endTime><![CDATA[1697041742841]]></endTime>
+    <workTime><![CDATA[3]]></workTime>
+    <delete><![CDATA[20]]></delete>
+  </Command>
+  <Command __id="193" _type="ShellCommand" date="Wed Oct 11 12:29:15 EDT 2023" starttimestamp="1697037489079" timestamp="4266819" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="194" _type="ShellCommand" date="Wed Oct 11 12:29:20 EDT 2023" starttimestamp="1697037489079" timestamp="4271243" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="195" _type="ShellCommand" date="Wed Oct 11 12:29:21 EDT 2023" starttimestamp="1697037489079" timestamp="4272034" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="196" _type="ShellCommand" date="Wed Oct 11 12:29:24 EDT 2023" starttimestamp="1697037489079" timestamp="4275183" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="197" _type="ShellCommand" date="Wed Oct 11 12:29:25 EDT 2023" starttimestamp="1697037489079" timestamp="4276425" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="198" _type="ShellCommand" date="Wed Oct 11 12:29:26 EDT 2023" starttimestamp="1697037489079" timestamp="4277406" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="199" _type="ShellCommand" date="Wed Oct 11 12:29:27 EDT 2023" starttimestamp="1697037489079" timestamp="4278458" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="200" _type="ShellCommand" date="Wed Oct 11 12:29:27 EDT 2023" starttimestamp="1697037489079" timestamp="4278914" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="201" _type="ShellCommand" date="Wed Oct 11 12:29:29 EDT 2023" starttimestamp="1697037489079" timestamp="4279939" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="202" _type="ShellCommand" date="Wed Oct 11 12:29:29 EDT 2023" starttimestamp="1697037489079" timestamp="4280411" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="203" _type="ShellCommand" date="Wed Oct 11 12:29:30 EDT 2023" starttimestamp="1697037489079" timestamp="4281523" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="204" _type="ShellCommand" date="Wed Oct 11 12:29:31 EDT 2023" starttimestamp="1697037489079" timestamp="4282131" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="205" _type="ShellCommand" date="Wed Oct 11 12:29:33 EDT 2023" starttimestamp="1697037489079" timestamp="4284225" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="206" _type="ShellCommand" date="Wed Oct 11 12:29:35 EDT 2023" starttimestamp="1697037489079" timestamp="4286786" type="ECLIPSE_GAINED_FOCUS" />
+  <DocumentChange __id="170" _type="Insert" date="Wed Oct 11 12:28:50 EDT 2023" docASTNodeCount="1" docActiveCodeLength="170" docExpressionCount="0" docLength="170" length="5" offset="87" repeat="5" starttimestamp="1697037489079" timestamp="4241475" timestamp2="4242545">
+    <text><![CDATA[,30).]]></text>
+  </DocumentChange>
+  <Command __id="183" _type="DiffBasedFileOpenCommand" date="Wed Oct 11 12:28:54 EDT 2023" docASTNodeCount="46" docActiveCodeLength="416" docExpressionCount="30" docLength="1144" projectName="Assignment0_1" starttimestamp="1697037489079" timestamp="4245515">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/Assignment0_1/src/RunAssignment0_1_Tests.java]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[import gradingTools.comp524f23.assignment0_1.F23Assignment0_1Suite;
+import trace.grader.basics.GraderBasicsTraceUtility;
+
+public class RunAssignment0_1_Tests {
+	public static void main(String[] args) {
+		
+//		// if you want to step through local checks calls to your code
+//		// set this to false
+//		BasicProjectExecution.setUseMethodAndConstructorTimeOut(false);
+		
+		// if you set this to false, grader steps will not be traced
+		GraderBasicsTraceUtility.setTracerShowInfo(false);
+		
+//		// if you set this to false, all grader steps will be traced,
+//		// not just the ones that failed
+		GraderBasicsTraceUtility.setBufferTracedMessages(true);
+//		
+//		// Change this number if a test trace gets longer than 600 and is clipped
+//		GraderBasicsTraceUtility.setMaxPrintedTraces(600);
+//		
+//		// Change this number if all traces together are longer than 2000
+//		GraderBasicsTraceUtility.setMaxTraces(2000);
+		
+//		// Change this number if your process times out prematurely
+//		BasicProjectExecution.setProcessTimeOut(5);
+//		
+		// You need to always call such a method
+		F23Assignment0_1Suite.main(args);
+	}
+}
+]]></snapshot>
+  </Command>
+  <Command __id="186" _type="DiffBasedFileOpenCommand" date="Wed Oct 11 12:28:55 EDT 2023" docLength="170" projectName="PrologTest" starttimestamp="1697037489079" timestamp="4246841">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/SocialDistance.pl]]></filePath>
+    <diff><![CDATA[Diff(EQUAL,"givenSizes(6, 15, 10).givenSizes(13, 30, 30).givenSizes(27, 120, 50)."), Diff(INSERT,"givenSafe(13,30,30).givenSafe(13givenSafe(13givenSafe(13givenSafe(13givenSafe(13givenSafe(13")]]></diff>
+    <snapshot><![CDATA[givenSizes(6, 15, 10).
+givenSizes(13, 30, 30).
+givenSizes(27, 120, 50).
+givenSafe(13,30,30).
+givenSafe(13
+givenSafe(13
+givenSafe(13
+givenSafe(13
+givenSafe(13
+givenSafe(13]]></snapshot>
+  </Command>
+  <Command __id="207" _type="MoveCaretCommand" caretOffset="105" date="Wed Oct 11 12:29:37 EDT 2023" docOffset="105" starttimestamp="1697037489079" timestamp="4288145" />
+  <DocumentChange __id="208" _type="Insert" date="Wed Oct 11 12:29:39 EDT 2023" docASTNodeCount="1" docActiveCodeLength="174" docExpressionCount="0" docLength="174" length="4" offset="105" repeat="4" starttimestamp="1697037489079" timestamp="4289981" timestamp2="4290619">
+    <text><![CDATA[,15 ]]></text>
+  </DocumentChange>
+  <Command __id="209" _type="InsertStringCommand" date="Wed Oct 11 12:29:39 EDT 2023" starttimestamp="1697037489079" timestamp="4289981" timestamp2="4289981">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="211" _type="InsertStringCommand" date="Wed Oct 11 12:29:39 EDT 2023" starttimestamp="1697037489079" timestamp="4290234" timestamp2="4290234">
+    <data><![CDATA[1]]></data>
+  </Command>
+  <Command __id="213" _type="InsertStringCommand" date="Wed Oct 11 12:29:39 EDT 2023" starttimestamp="1697037489079" timestamp="4290406" timestamp2="4290406">
+    <data><![CDATA[5]]></data>
+  </Command>
+  <Command __id="215" _type="InsertStringCommand" date="Wed Oct 11 12:29:39 EDT 2023" starttimestamp="1697037489079" timestamp="4290619" timestamp2="4290619">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <DocumentChange __id="216" _type="Delete" date="Wed Oct 11 12:29:40 EDT 2023" docASTNodeCount="1" docActiveCodeLength="173" docExpressionCount="0" docLength="173" endLine="4" length="1" offset="108" startLine="4" starttimestamp="1697037489079" timestamp="4291158">
+    <text><![CDATA[ ]]></text>
+  </DocumentChange>
+  <Command __id="217" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:29:40 EDT 2023" starttimestamp="1697037489079" timestamp="4291161" />
+  <DocumentChange __id="218" _type="Insert" date="Wed Oct 11 12:29:40 EDT 2023" docASTNodeCount="1" docActiveCodeLength="179" docExpressionCount="0" docLength="179" length="6" offset="108" repeat="6" starttimestamp="1697037489079" timestamp="4291439" timestamp2="4293504">
+    <text><![CDATA[, 50).]]></text>
+  </DocumentChange>
+  <Command __id="219" _type="InsertStringCommand" date="Wed Oct 11 12:29:40 EDT 2023" starttimestamp="1697037489079" timestamp="4291440" timestamp2="4291440">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="221" _type="InsertStringCommand" date="Wed Oct 11 12:29:40 EDT 2023" starttimestamp="1697037489079" timestamp="4291503" timestamp2="4291503">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="223" _type="InsertStringCommand" date="Wed Oct 11 12:29:40 EDT 2023" starttimestamp="1697037489079" timestamp="4291661" timestamp2="4291661">
+    <data><![CDATA[5]]></data>
+  </Command>
+  <Command __id="225" _type="InsertStringCommand" date="Wed Oct 11 12:29:40 EDT 2023" starttimestamp="1697037489079" timestamp="4291739" timestamp2="4291739">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="227" _type="InsertStringCommand" date="Wed Oct 11 12:29:42 EDT 2023" starttimestamp="1697037489079" timestamp="4293078" timestamp2="4293078">
+    <data><![CDATA[)]]></data>
+  </Command>
+  <Command __id="229" _type="InsertStringCommand" date="Wed Oct 11 12:29:42 EDT 2023" starttimestamp="1697037489079" timestamp="4293505" timestamp2="4293505">
+    <data><![CDATA[.]]></data>
+  </Command>
+  <Command __id="230" _type="MoveCaretCommand" caretOffset="85" date="Wed Oct 11 12:29:43 EDT 2023" docOffset="85" starttimestamp="1697037489079" timestamp="4294462" />
+  <DocumentChange __id="231" _type="Insert" date="Wed Oct 11 12:29:43 EDT 2023" docASTNodeCount="1" docActiveCodeLength="180" docExpressionCount="0" docLength="180" length="1" offset="85" starttimestamp="1697037489079" timestamp="4294532">
+    <text><![CDATA[ ]]></text>
+  </DocumentChange>
+  <Command __id="232" _type="InsertStringCommand" date="Wed Oct 11 12:29:43 EDT 2023" starttimestamp="1697037489079" timestamp="4294533" timestamp2="4294533">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="233" _type="MoveCaretCommand" caretOffset="89" date="Wed Oct 11 12:29:44 EDT 2023" docOffset="89" starttimestamp="1697037489079" timestamp="4295234" />
+  <DocumentChange __id="234" _type="Insert" date="Wed Oct 11 12:29:44 EDT 2023" docASTNodeCount="1" docActiveCodeLength="181" docExpressionCount="0" docLength="181" length="1" offset="89" starttimestamp="1697037489079" timestamp="4295305">
+    <text><![CDATA[ ]]></text>
+  </DocumentChange>
+  <Command __id="235" _type="InsertStringCommand" date="Wed Oct 11 12:29:44 EDT 2023" starttimestamp="1697037489079" timestamp="4295306" timestamp2="4295306">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="236" _type="MoveCaretCommand" caretOffset="107" date="Wed Oct 11 12:29:44 EDT 2023" docOffset="107" starttimestamp="1697037489079" timestamp="4295868" />
+  <Command __id="237" _type="MoveCaretCommand" caretOffset="108" date="Wed Oct 11 12:29:45 EDT 2023" docOffset="108" starttimestamp="1697037489079" timestamp="4296359" />
+  <DocumentChange __id="238" _type="Insert" date="Wed Oct 11 12:29:45 EDT 2023" docASTNodeCount="1" docActiveCodeLength="182" docExpressionCount="0" docLength="182" length="1" offset="108" starttimestamp="1697037489079" timestamp="4296441">
+    <text><![CDATA[ ]]></text>
+  </DocumentChange>
+  <Command __id="239" _type="InsertStringCommand" date="Wed Oct 11 12:29:45 EDT 2023" starttimestamp="1697037489079" timestamp="4296442" timestamp2="4296442">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="240" _type="MoveCaretCommand" caretOffset="108" date="Wed Oct 11 12:29:45 EDT 2023" docOffset="108" starttimestamp="1697037489079" timestamp="4296796" />
+  <Command __id="241" _type="MoveCaretCommand" caretOffset="130" date="Wed Oct 11 12:29:46 EDT 2023" docOffset="130" starttimestamp="1697037489079" timestamp="4297204" />
+  <Command __id="243" _type="InsertStringCommand" date="Wed Oct 11 12:29:47 EDT 2023" starttimestamp="1697037489079" timestamp="4297937" timestamp2="4297937">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="245" _type="InsertStringCommand" date="Wed Oct 11 12:29:47 EDT 2023" starttimestamp="1697037489079" timestamp="4298348" timestamp2="4298348">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="246" _type="ShellCommand" date="Wed Oct 11 12:30:05 EDT 2023" starttimestamp="1697037489079" timestamp="4316705" type="ECLIPSE_LOST_FOCUS" />
+  <DocumentChange __id="242" _type="Insert" date="Wed Oct 11 12:29:47 EDT 2023" docASTNodeCount="1" docActiveCodeLength="184" docExpressionCount="0" docLength="184" length="2" offset="130" repeat="2" starttimestamp="1697037489079" timestamp="4297937" timestamp2="4298347">
+    <text><![CDATA[, ]]></text>
+  </DocumentChange>
+  <Command __id="247" _type="ShellCommand" date="Wed Oct 11 12:30:07 EDT 2023" starttimestamp="1697037489079" timestamp="4318130" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="249" _type="InsertStringCommand" date="Wed Oct 11 12:30:09 EDT 2023" starttimestamp="1697037489079" timestamp="4320698" timestamp2="4320698">
+    <data><![CDATA[1]]></data>
+  </Command>
+  <Command __id="251" _type="InsertStringCommand" date="Wed Oct 11 12:30:09 EDT 2023" starttimestamp="1697037489079" timestamp="4320791" timestamp2="4320791">
+    <data><![CDATA[2]]></data>
+  </Command>
+  <Command __id="253" _type="InsertStringCommand" date="Wed Oct 11 12:30:09 EDT 2023" starttimestamp="1697037489079" timestamp="4320848" timestamp2="4320848">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="255" _type="InsertStringCommand" date="Wed Oct 11 12:30:10 EDT 2023" starttimestamp="1697037489079" timestamp="4321101" timestamp2="4321101">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="257" _type="InsertStringCommand" date="Wed Oct 11 12:30:10 EDT 2023" starttimestamp="1697037489079" timestamp="4321231" timestamp2="4321231">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="259" _type="InsertStringCommand" date="Wed Oct 11 12:30:10 EDT 2023" starttimestamp="1697037489079" timestamp="4321300" timestamp2="4321300">
+    <data><![CDATA[1]]></data>
+  </Command>
+  <Command __id="261" _type="InsertStringCommand" date="Wed Oct 11 12:30:10 EDT 2023" starttimestamp="1697037489079" timestamp="4321384" timestamp2="4321384">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="263" _type="InsertStringCommand" date="Wed Oct 11 12:30:11 EDT 2023" starttimestamp="1697037489079" timestamp="4322078" timestamp2="4322078">
+    <data><![CDATA[)]]></data>
+  </Command>
+  <Command __id="265" _type="InsertStringCommand" date="Wed Oct 11 12:30:11 EDT 2023" starttimestamp="1697037489079" timestamp="4322527" timestamp2="4322527">
+    <data><![CDATA[.]]></data>
+  </Command>
+  <Command __id="266" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.LINE_DOWN" date="Wed Oct 11 12:30:12 EDT 2023" starttimestamp="1697037489079" timestamp="4323337" />
+  <Command __id="267" _type="ShellCommand" date="Wed Oct 11 12:30:12 EDT 2023" starttimestamp="1697037489079" timestamp="4323752" type="ECLIPSE_LOST_FOCUS" />
+  <DocumentChange __id="248" _type="Insert" date="Wed Oct 11 12:30:09 EDT 2023" docASTNodeCount="1" docActiveCodeLength="193" docExpressionCount="0" docLength="193" length="9" offset="132" repeat="9" starttimestamp="1697037489079" timestamp="4320698" timestamp2="4322526">
+    <text><![CDATA[120, 10).]]></text>
+  </DocumentChange>
+  <Command __id="268" _type="ShellCommand" date="Wed Oct 11 12:30:14 EDT 2023" starttimestamp="1697037489079" timestamp="4325680" type="ECLIPSE_GAINED_FOCUS" />
+  <DocumentChange __id="269" _type="Delete" date="Wed Oct 11 12:30:16 EDT 2023" docASTNodeCount="1" docActiveCodeLength="191" docExpressionCount="0" docLength="191" endLine="6" length="2" offset="152" repeat="2" startLine="6" starttimestamp="1697037489079" timestamp="4327172" timestamp2="4327280">
+    <text><![CDATA[13]]></text>
+  </DocumentChange>
+  <Command __id="270" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:16 EDT 2023" starttimestamp="1697037489079" timestamp="4327175" />
+  <Command __id="272" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:16 EDT 2023" starttimestamp="1697037489079" timestamp="4327282" />
+  <Command __id="274" _type="InsertStringCommand" date="Wed Oct 11 12:30:16 EDT 2023" starttimestamp="1697037489079" timestamp="4327902" timestamp2="4327902">
+    <data><![CDATA[6]]></data>
+  </Command>
+  <Command __id="276" _type="InsertStringCommand" date="Wed Oct 11 12:30:17 EDT 2023" starttimestamp="1697037489079" timestamp="4328070" timestamp2="4328070">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="278" _type="InsertStringCommand" date="Wed Oct 11 12:30:17 EDT 2023" starttimestamp="1697037489079" timestamp="4328228" timestamp2="4328228">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="279" _type="ShellCommand" date="Wed Oct 11 12:30:17 EDT 2023" starttimestamp="1697037489079" timestamp="4328836" type="ECLIPSE_LOST_FOCUS" />
+  <DocumentChange __id="273" _type="Insert" date="Wed Oct 11 12:30:16 EDT 2023" docASTNodeCount="1" docActiveCodeLength="194" docExpressionCount="0" docLength="194" length="3" offset="152" repeat="3" starttimestamp="1697037489079" timestamp="4327901" timestamp2="4328227">
+    <text><![CDATA[6, ]]></text>
+  </DocumentChange>
+  <Command __id="280" _type="ShellCommand" date="Wed Oct 11 12:30:20 EDT 2023" starttimestamp="1697037489079" timestamp="4331516" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="282" _type="InsertStringCommand" date="Wed Oct 11 12:30:22 EDT 2023" starttimestamp="1697037489079" timestamp="4333736" timestamp2="4333736">
+    <data><![CDATA[3]]></data>
+  </Command>
+  <Command __id="284" _type="InsertStringCommand" date="Wed Oct 11 12:30:22 EDT 2023" starttimestamp="1697037489079" timestamp="4333841" timestamp2="4333841">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="286" _type="InsertStringCommand" date="Wed Oct 11 12:30:23 EDT 2023" starttimestamp="1697037489079" timestamp="4334110" timestamp2="4334110">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="288" _type="InsertStringCommand" date="Wed Oct 11 12:30:23 EDT 2023" starttimestamp="1697037489079" timestamp="4334824" timestamp2="4334824">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="290" _type="InsertStringCommand" date="Wed Oct 11 12:30:23 EDT 2023" starttimestamp="1697037489079" timestamp="4334907" timestamp2="4334907">
+    <data><![CDATA[1]]></data>
+  </Command>
+  <Command __id="292" _type="InsertStringCommand" date="Wed Oct 11 12:30:24 EDT 2023" starttimestamp="1697037489079" timestamp="4334970" timestamp2="4334970">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="294" _type="InsertStringCommand" date="Wed Oct 11 12:30:24 EDT 2023" starttimestamp="1697037489079" timestamp="4335365" timestamp2="4335365">
+    <data><![CDATA[)]]></data>
+  </Command>
+  <Command __id="296" _type="InsertStringCommand" date="Wed Oct 11 12:30:24 EDT 2023" starttimestamp="1697037489079" timestamp="4335783" timestamp2="4335783">
+    <data><![CDATA[.]]></data>
+  </Command>
+  <Command __id="297" _type="MoveCaretCommand" caretOffset="176" date="Wed Oct 11 12:30:25 EDT 2023" docOffset="176" starttimestamp="1697037489079" timestamp="4336507" />
+  <Command __id="298" _type="ShellCommand" date="Wed Oct 11 12:30:25 EDT 2023" starttimestamp="1697037489079" timestamp="4336648" type="ECLIPSE_LOST_FOCUS" />
+  <DocumentChange __id="281" _type="Insert" date="Wed Oct 11 12:30:22 EDT 2023" docASTNodeCount="1" docActiveCodeLength="202" docExpressionCount="0" docLength="202" length="8" offset="155" repeat="8" starttimestamp="1697037489079" timestamp="4333735" timestamp2="4335782">
+    <text><![CDATA[30, 10).]]></text>
+  </DocumentChange>
+  <Command __id="299" _type="ShellCommand" date="Wed Oct 11 12:30:28 EDT 2023" starttimestamp="1697037489079" timestamp="4339032" type="ECLIPSE_GAINED_FOCUS" />
+  <DocumentChange __id="300" _type="Delete" date="Wed Oct 11 12:30:29 EDT 2023" docASTNodeCount="1" docActiveCodeLength="200" docExpressionCount="0" docLength="200" endLine="7" length="2" offset="174" repeat="2" startLine="7" starttimestamp="1697037489079" timestamp="4340380" timestamp2="4340505">
+    <text><![CDATA[13]]></text>
+  </DocumentChange>
+  <Command __id="301" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:29 EDT 2023" starttimestamp="1697037489079" timestamp="4340382" />
+  <Command __id="303" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:29 EDT 2023" starttimestamp="1697037489079" timestamp="4340507" />
+  <DocumentChange __id="304" _type="Insert" date="Wed Oct 11 12:30:30 EDT 2023" docASTNodeCount="1" docActiveCodeLength="209" docExpressionCount="0" docLength="209" length="9" offset="174" repeat="9" starttimestamp="1697037489079" timestamp="4341015" timestamp2="4343214">
+    <text><![CDATA[6, 15, 39]]></text>
+  </DocumentChange>
+  <Command __id="305" _type="InsertStringCommand" date="Wed Oct 11 12:30:30 EDT 2023" starttimestamp="1697037489079" timestamp="4341015" timestamp2="4341015">
+    <data><![CDATA[6]]></data>
+  </Command>
+  <Command __id="307" _type="InsertStringCommand" date="Wed Oct 11 12:30:30 EDT 2023" starttimestamp="1697037489079" timestamp="4341197" timestamp2="4341197">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="309" _type="InsertStringCommand" date="Wed Oct 11 12:30:30 EDT 2023" starttimestamp="1697037489079" timestamp="4341299" timestamp2="4341299">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="311" _type="InsertStringCommand" date="Wed Oct 11 12:30:30 EDT 2023" starttimestamp="1697037489079" timestamp="4341485" timestamp2="4341485">
+    <data><![CDATA[1]]></data>
+  </Command>
+  <Command __id="313" _type="InsertStringCommand" date="Wed Oct 11 12:30:30 EDT 2023" starttimestamp="1697037489079" timestamp="4341641" timestamp2="4341641">
+    <data><![CDATA[5]]></data>
+  </Command>
+  <Command __id="315" _type="InsertStringCommand" date="Wed Oct 11 12:30:31 EDT 2023" starttimestamp="1697037489079" timestamp="4342805" timestamp2="4342805">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="317" _type="InsertStringCommand" date="Wed Oct 11 12:30:31 EDT 2023" starttimestamp="1697037489079" timestamp="4342872" timestamp2="4342872">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="319" _type="InsertStringCommand" date="Wed Oct 11 12:30:32 EDT 2023" starttimestamp="1697037489079" timestamp="4343125" timestamp2="4343125">
+    <data><![CDATA[3]]></data>
+  </Command>
+  <Command __id="321" _type="InsertStringCommand" date="Wed Oct 11 12:30:32 EDT 2023" starttimestamp="1697037489079" timestamp="4343215" timestamp2="4343215">
+    <data><![CDATA[9]]></data>
+  </Command>
+  <DocumentChange __id="322" _type="Delete" date="Wed Oct 11 12:30:32 EDT 2023" docASTNodeCount="1" docActiveCodeLength="208" docExpressionCount="0" docLength="208" endLine="7" length="1" offset="182" startLine="7" starttimestamp="1697037489079" timestamp="4343768">
+    <text><![CDATA[9]]></text>
+  </DocumentChange>
+  <Command __id="323" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:32 EDT 2023" starttimestamp="1697037489079" timestamp="4343770" />
+  <Command __id="325" _type="InsertStringCommand" date="Wed Oct 11 12:30:33 EDT 2023" starttimestamp="1697037489079" timestamp="4343929" timestamp2="4343929">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="327" _type="InsertStringCommand" date="Wed Oct 11 12:30:33 EDT 2023" starttimestamp="1697037489079" timestamp="4344552" timestamp2="4344552">
+    <data><![CDATA[)]]></data>
+  </Command>
+  <Command __id="329" _type="InsertStringCommand" date="Wed Oct 11 12:30:34 EDT 2023" starttimestamp="1697037489079" timestamp="4345103" timestamp2="4345103">
+    <data><![CDATA[.]]></data>
+  </Command>
+  <Command __id="330" _type="MoveCaretCommand" caretOffset="198" date="Wed Oct 11 12:30:35 EDT 2023" docOffset="198" starttimestamp="1697037489079" timestamp="4346553" />
+  <Command __id="331" _type="ShellCommand" date="Wed Oct 11 12:30:35 EDT 2023" starttimestamp="1697037489079" timestamp="4346715" type="ECLIPSE_LOST_FOCUS" />
+  <DocumentChange __id="324" _type="Insert" date="Wed Oct 11 12:30:33 EDT 2023" docASTNodeCount="1" docActiveCodeLength="211" docExpressionCount="0" docLength="211" length="3" offset="182" repeat="3" starttimestamp="1697037489079" timestamp="4343929" timestamp2="4345102">
+    <text><![CDATA[0).]]></text>
+  </DocumentChange>
+  <DocumentChange __id="333" _type="Delete" date="Wed Oct 11 12:30:40 EDT 2023" docASTNodeCount="1" docActiveCodeLength="209" docExpressionCount="0" docLength="209" endLine="8" length="2" offset="196" repeat="2" startLine="8" starttimestamp="1697037489079" timestamp="4351119" timestamp2="4351248">
+    <text><![CDATA[13]]></text>
+  </DocumentChange>
+  <Command __id="332" _type="ShellCommand" date="Wed Oct 11 12:30:39 EDT 2023" starttimestamp="1697037489079" timestamp="4350157" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="334" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:40 EDT 2023" starttimestamp="1697037489079" timestamp="4351121" />
+  <Command __id="336" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:40 EDT 2023" starttimestamp="1697037489079" timestamp="4351250" />
+  <Command __id="338" _type="InsertStringCommand" date="Wed Oct 11 12:30:41 EDT 2023" starttimestamp="1697037489079" timestamp="4352276" timestamp2="4352276">
+    <data><![CDATA[2]]></data>
+  </Command>
+  <Command __id="340" _type="InsertStringCommand" date="Wed Oct 11 12:30:41 EDT 2023" starttimestamp="1697037489079" timestamp="4352362" timestamp2="4352362">
+    <data><![CDATA[7]]></data>
+  </Command>
+  <Command __id="342" _type="InsertStringCommand" date="Wed Oct 11 12:30:41 EDT 2023" starttimestamp="1697037489079" timestamp="4352628" timestamp2="4352628">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="344" _type="InsertStringCommand" date="Wed Oct 11 12:30:42 EDT 2023" starttimestamp="1697037489079" timestamp="4353135" timestamp2="4353135">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="346" _type="InsertStringCommand" date="Wed Oct 11 12:30:42 EDT 2023" starttimestamp="1697037489079" timestamp="4353437" timestamp2="4353437">
+    <data><![CDATA[3]]></data>
+  </Command>
+  <Command __id="348" _type="InsertStringCommand" date="Wed Oct 11 12:30:42 EDT 2023" starttimestamp="1697037489079" timestamp="4353512" timestamp2="4353512">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="350" _type="InsertStringCommand" date="Wed Oct 11 12:30:42 EDT 2023" starttimestamp="1697037489079" timestamp="4353795" timestamp2="4353795">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="352" _type="InsertStringCommand" date="Wed Oct 11 12:30:43 EDT 2023" starttimestamp="1697037489079" timestamp="4354093" timestamp2="4354093">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="354" _type="InsertStringCommand" date="Wed Oct 11 12:30:43 EDT 2023" starttimestamp="1697037489079" timestamp="4354349" timestamp2="4354349">
+    <data><![CDATA[5]]></data>
+  </Command>
+  <Command __id="356" _type="InsertStringCommand" date="Wed Oct 11 12:30:43 EDT 2023" starttimestamp="1697037489079" timestamp="4354490" timestamp2="4354490">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="358" _type="InsertStringCommand" date="Wed Oct 11 12:30:44 EDT 2023" starttimestamp="1697037489079" timestamp="4355162" timestamp2="4355162">
+    <data><![CDATA[(]]></data>
+  </Command>
+  <Command __id="360" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:44 EDT 2023" starttimestamp="1697037489079" timestamp="4355578" />
+  <Command __id="362" _type="InsertStringCommand" date="Wed Oct 11 12:30:44 EDT 2023" starttimestamp="1697037489079" timestamp="4355797" timestamp2="4355797">
+    <data><![CDATA[)]]></data>
+  </Command>
+  <Command __id="364" _type="InsertStringCommand" date="Wed Oct 11 12:30:45 EDT 2023" starttimestamp="1697037489079" timestamp="4356039" timestamp2="4356039">
+    <data><![CDATA[.]]></data>
+  </Command>
+  <Command __id="365" _type="MoveCaretCommand" caretOffset="221" date="Wed Oct 11 12:30:45 EDT 2023" docOffset="221" starttimestamp="1697037489079" timestamp="4356754" />
+  <Command __id="367" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:46 EDT 2023" starttimestamp="1697037489079" timestamp="4356940" />
+  <Command __id="369" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:46 EDT 2023" starttimestamp="1697037489079" timestamp="4357061" />
+  <Command __id="371" _type="InsertStringCommand" date="Wed Oct 11 12:30:46 EDT 2023" starttimestamp="1697037489079" timestamp="4357154" timestamp2="4357154">
+    <data><![CDATA[2]]></data>
+  </Command>
+  <Command __id="373" _type="InsertStringCommand" date="Wed Oct 11 12:30:46 EDT 2023" starttimestamp="1697037489079" timestamp="4357255" timestamp2="4357255">
+    <data><![CDATA[8]]></data>
+  </Command>
+  <Command __id="375" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:46 EDT 2023" starttimestamp="1697037489079" timestamp="4357729" />
+  <Command __id="377" _type="InsertStringCommand" date="Wed Oct 11 12:30:47 EDT 2023" starttimestamp="1697037489079" timestamp="4358320" timestamp2="4358320">
+    <data><![CDATA[7]]></data>
+  </Command>
+  <Command __id="379" _type="InsertStringCommand" date="Wed Oct 11 12:30:47 EDT 2023" starttimestamp="1697037489079" timestamp="4358611" timestamp2="4358611">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="381" _type="InsertStringCommand" date="Wed Oct 11 12:30:48 EDT 2023" starttimestamp="1697037489079" timestamp="4359393" timestamp2="4359393">
+    <data><![CDATA[ ]]></data>
+  </Command>
+  <Command __id="383" _type="InsertStringCommand" date="Wed Oct 11 12:30:48 EDT 2023" starttimestamp="1697037489079" timestamp="4359462" timestamp2="4359462">
+    <data><![CDATA[3]]></data>
+  </Command>
+  <Command __id="385" _type="InsertStringCommand" date="Wed Oct 11 12:30:48 EDT 2023" starttimestamp="1697037489079" timestamp="4359537" timestamp2="4359537">
+    <data><![CDATA[9]]></data>
+  </Command>
+  <Command __id="387" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:49 EDT 2023" starttimestamp="1697037489079" timestamp="4360051" />
+  <Command __id="389" _type="InsertStringCommand" date="Wed Oct 11 12:30:49 EDT 2023" starttimestamp="1697037489079" timestamp="4360254" timestamp2="4360254">
+    <data><![CDATA[0]]></data>
+  </Command>
+  <Command __id="391" _type="InsertStringCommand" date="Wed Oct 11 12:30:49 EDT 2023" starttimestamp="1697037489079" timestamp="4360641" timestamp2="4360641">
+    <data><![CDATA[,]]></data>
+  </Command>
+  <Command __id="392" _type="ShellCommand" date="Wed Oct 11 12:30:50 EDT 2023" starttimestamp="1697037489079" timestamp="4361851" type="ECLIPSE_LOST_FOCUS" />
+  <DocumentChange __id="337" _type="Insert" date="Wed Oct 11 12:30:41 EDT 2023" docASTNodeCount="1" docActiveCodeLength="220" docExpressionCount="0" docLength="220" length="11" offset="196" repeat="11" starttimestamp="1697037489079" timestamp="4352276" timestamp2="4355162">
+    <text><![CDATA[27, 30, 50(]]></text>
+  </DocumentChange>
+  <DocumentChange __id="359" _type="Delete" date="Wed Oct 11 12:30:44 EDT 2023" docASTNodeCount="1" docActiveCodeLength="219" docExpressionCount="0" docLength="219" endLine="8" length="1" offset="206" startLine="8" starttimestamp="1697037489079" timestamp="4355576">
+    <text><![CDATA[(]]></text>
+  </DocumentChange>
+  <DocumentChange __id="361" _type="Insert" date="Wed Oct 11 12:30:44 EDT 2023" docASTNodeCount="1" docActiveCodeLength="221" docExpressionCount="0" docLength="221" length="2" offset="206" repeat="2" starttimestamp="1697037489079" timestamp="4355796" timestamp2="4356038">
+    <text><![CDATA[).]]></text>
+  </DocumentChange>
+  <DocumentChange __id="366" _type="Delete" date="Wed Oct 11 12:30:46 EDT 2023" docASTNodeCount="1" docActiveCodeLength="219" docExpressionCount="0" docLength="219" endLine="9" length="2" offset="219" repeat="2" startLine="9" starttimestamp="1697037489079" timestamp="4356937" timestamp2="4357058">
+    <text><![CDATA[13]]></text>
+  </DocumentChange>
+  <DocumentChange __id="370" _type="Insert" date="Wed Oct 11 12:30:46 EDT 2023" docASTNodeCount="1" docActiveCodeLength="221" docExpressionCount="0" docLength="221" length="2" offset="219" repeat="2" starttimestamp="1697037489079" timestamp="4357152" timestamp2="4357254">
+    <text><![CDATA[28]]></text>
+  </DocumentChange>
+  <DocumentChange __id="374" _type="Delete" date="Wed Oct 11 12:30:46 EDT 2023" docASTNodeCount="1" docActiveCodeLength="220" docExpressionCount="0" docLength="220" endLine="9" length="1" offset="220" startLine="9" starttimestamp="1697037489079" timestamp="4357725">
+    <text><![CDATA[8]]></text>
+  </DocumentChange>
+  <DocumentChange __id="376" _type="Insert" date="Wed Oct 11 12:30:47 EDT 2023" docASTNodeCount="1" docActiveCodeLength="225" docExpressionCount="0" docLength="225" length="5" offset="220" repeat="5" starttimestamp="1697037489079" timestamp="4358318" timestamp2="4359536">
+    <text><![CDATA[7, 39]]></text>
+  </DocumentChange>
+  <DocumentChange __id="386" _type="Delete" date="Wed Oct 11 12:30:49 EDT 2023" docASTNodeCount="1" docActiveCodeLength="224" docExpressionCount="0" docLength="224" endLine="9" length="1" offset="224" startLine="9" starttimestamp="1697037489079" timestamp="4360048">
+    <text><![CDATA[9]]></text>
+  </DocumentChange>
+  <DocumentChange __id="388" _type="Insert" date="Wed Oct 11 12:30:49 EDT 2023" docASTNodeCount="1" docActiveCodeLength="226" docExpressionCount="0" docLength="226" length="2" offset="224" repeat="2" starttimestamp="1697037489079" timestamp="4360253" timestamp2="4360639">
+    <text><![CDATA[0,]]></text>
+  </DocumentChange>
+  <Command __id="393" _type="ShellCommand" date="Wed Oct 11 12:30:52 EDT 2023" starttimestamp="1697037489079" timestamp="4363223" type="ECLIPSE_GAINED_FOCUS" />
+  <DocumentChange __id="394" _type="Delete" date="Wed Oct 11 12:30:53 EDT 2023" docASTNodeCount="1" docActiveCodeLength="223" docExpressionCount="0" docLength="223" endLine="9" length="3" offset="223" repeat="3" startLine="9" starttimestamp="1697037489079" timestamp="4364515" timestamp2="4364871">
+    <text><![CDATA[30,]]></text>
+  </DocumentChange>
+  <Command __id="395" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:53 EDT 2023" starttimestamp="1697037489079" timestamp="4364519" />
+  <Command __id="397" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:53 EDT 2023" starttimestamp="1697037489079" timestamp="4364627" />
+  <Command __id="399" _type="EclipseCommand" commandID="eventLogger.styledTextCommand.DELETE_PREVIOUS" date="Wed Oct 11 12:30:53 EDT 2023" starttimestamp="1697037489079" timestamp="4364874" />
+  <Command __id="426" _type="DiffBasedFileOpenCommand" date="Wed Oct 11 12:31:03 EDT 2023" docASTNodeCount="46" docActiveCodeLength="416" docExpressionCount="30" docLength="1144" projectName="Assignment0_1" starttimestamp="1697037489079" timestamp="4374306">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/Assignment0_1/src/RunAssignment0_1_Tests.java]]></filePath>
+    <diff><![CDATA[Diff(EQUAL,"import gradingTools.comp524f23.assignment0_1.F23Assignment0_1Suite;import trace.grader.basics.GraderBasicsTraceUtility;public class RunAssignment0_1_Tests {	public static void main(String[] args) {		//		// if you want to step through local checks calls to your code//		// set this to false//		BasicProjectExecution.setUseMethodAndConstructorTimeOut(false);				// if you set this to false, grader steps will not be traced		GraderBasicsTraceUtility.setTracerShowInfo(false);		//		// if you set this to false, all grader steps will be traced,//		// not just the ones that failed		GraderBasicsTraceUtility.setBufferTracedMessages(true);//		//		// Change this number if a test trace gets longer than 600 and is clipped//		GraderBasicsTraceUtility.setMaxPrintedTraces(600);//		//		// Change this number if all traces together are longer than 2000//		GraderBasicsTraceUtility.setMaxTraces(2000);		//		// Change this number if your process times out prematurely//		BasicProjectExecution.setProcessTimeOut(5);//				// You need to always call such a method		F23Assignment0_1Suite.main(args);	}}")]]></diff>
+    <snapshot><![CDATA[null]]></snapshot>
+  </Command>
+  <Command __id="431" _type="ShellCommand" date="Wed Oct 11 12:31:11 EDT 2023" starttimestamp="1697037489079" timestamp="4381931" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="432" _type="ProgramExecutionEvent" className="/Assignment0_1/src/RunAssignment0_1_Tests.java" date="Wed Oct 11 12:31:11 EDT 2023" kind="HitBreakPoint" projectName="Assignment0_1" starttimestamp="1697037489079" timestamp="4381949" type="Run" />
+  <Command __id="433" _type="ProgramExecutionEvent" className="/Assignment0_1/src/RunAssignment0_1_Tests.java" date="Wed Oct 11 12:31:11 EDT 2023" kind="Terminate" projectName="Assignment0_1" starttimestamp="1697037489079" timestamp="4381949" type="Run" />
+  <Command __id="543" _type="ShellCommand" date="Wed Oct 11 12:32:01 EDT 2023" starttimestamp="1697037489079" timestamp="4432687" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="544" _type="ShellCommand" date="Wed Oct 11 12:32:01 EDT 2023" starttimestamp="1697037489079" timestamp="4432901" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="546" _type="MoveCaretCommand" caretOffset="232" date="Wed Oct 11 12:32:02 EDT 2023" docOffset="232" starttimestamp="1697037489079" timestamp="4433690" />
+  <Command __id="547" _type="ShellCommand" date="Wed Oct 11 12:32:03 EDT 2023" starttimestamp="1697037489079" timestamp="4433946" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="548" _type="ShellCommand" date="Wed Oct 11 12:33:59 EDT 2023" starttimestamp="1697037489079" timestamp="4550578" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="549" _type="ShellCommand" date="Wed Oct 11 12:34:00 EDT 2023" starttimestamp="1697037489079" timestamp="4551536" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="550" _type="ShellCommand" date="Wed Oct 11 12:34:00 EDT 2023" starttimestamp="1697037489079" timestamp="4551815" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="551" _type="ShellCommand" date="Wed Oct 11 12:34:01 EDT 2023" starttimestamp="1697037489079" timestamp="4552096" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="552" _type="ShellCommand" date="Wed Oct 11 12:34:07 EDT 2023" starttimestamp="1697037489079" timestamp="4558318" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="554" _type="InsertStringCommand" date="Wed Oct 11 12:34:08 EDT 2023" starttimestamp="1697037489079" timestamp="4559270" timestamp2="4559270">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="555" _type="InsertStringCommand" date="Wed Oct 11 12:34:08 EDT 2023" starttimestamp="1697037489079" timestamp="4559270" timestamp2="4559270">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="556" _type="ShellCommand" date="Wed Oct 11 12:34:09 EDT 2023" starttimestamp="1697037489079" timestamp="4560028" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="557" _type="ShellCommand" date="Wed Oct 11 12:34:09 EDT 2023" starttimestamp="1697037489079" timestamp="4560739" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="559" _type="InsertStringCommand" date="Wed Oct 11 12:34:09 EDT 2023" starttimestamp="1697037489079" timestamp="4560850" timestamp2="4560850">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="560" _type="InsertStringCommand" date="Wed Oct 11 12:34:09 EDT 2023" starttimestamp="1697037489079" timestamp="4560850" timestamp2="4560850">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="561" _type="MoveCaretCommand" caretOffset="71" date="Wed Oct 11 12:34:10 EDT 2023" docOffset="71" starttimestamp="1697037489079" timestamp="4561745" />
+  <Command __id="562" _type="MoveCaretCommand" caretOffset="71" date="Wed Oct 11 12:34:10 EDT 2023" docOffset="71" starttimestamp="1697037489079" timestamp="4561745" />
+  <Command __id="564" _type="InsertStringCommand" date="Wed Oct 11 12:34:10 EDT 2023" starttimestamp="1697037489079" timestamp="4561874" timestamp2="4561874">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="565" _type="InsertStringCommand" date="Wed Oct 11 12:34:10 EDT 2023" starttimestamp="1697037489079" timestamp="4561874" timestamp2="4561874">
+    <data><![CDATA[]]></data>
+  </Command>
+  <Command __id="566" _type="MoveCaretCommand" caretOffset="235" date="Wed Oct 11 12:34:11 EDT 2023" docOffset="235" starttimestamp="1697037489079" timestamp="4562423" />
+  <Command __id="567" _type="MoveCaretCommand" caretOffset="235" date="Wed Oct 11 12:34:11 EDT 2023" docOffset="235" starttimestamp="1697037489079" timestamp="4562423" />
+  <Command __id="568" _type="ShellCommand" date="Wed Oct 11 12:34:11 EDT 2023" starttimestamp="1697037489079" timestamp="4562656" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="569" _type="ShellCommand" date="Wed Oct 11 12:34:21 EDT 2023" starttimestamp="1697037489079" timestamp="4572343" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="570" _type="ShellCommand" date="Wed Oct 11 12:34:22 EDT 2023" starttimestamp="1697037489079" timestamp="4573337" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="571" _type="ShellCommand" date="Wed Oct 11 12:34:22 EDT 2023" starttimestamp="1697037489079" timestamp="4573904" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="572" _type="ShellCommand" date="Wed Oct 11 12:34:23 EDT 2023" starttimestamp="1697037489079" timestamp="4574241" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="573" _type="ShellCommand" date="Wed Oct 11 12:34:23 EDT 2023" starttimestamp="1697037489079" timestamp="4574494" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="574" _type="ShellCommand" date="Wed Oct 11 12:34:24 EDT 2023" starttimestamp="1697037489079" timestamp="4574925" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="575" _type="ShellCommand" date="Wed Oct 11 12:34:24 EDT 2023" starttimestamp="1697037489079" timestamp="4575420" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="576" _type="ShellCommand" date="Wed Oct 11 12:34:25 EDT 2023" starttimestamp="1697037489079" timestamp="4576147" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="577" _type="ShellCommand" date="Wed Oct 11 12:38:52 EDT 2023" starttimestamp="1697037489079" timestamp="4843085" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="578" _type="ShellCommand" date="Wed Oct 11 12:38:53 EDT 2023" starttimestamp="1697037489079" timestamp="4844270" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="579" _type="ShellCommand" date="Wed Oct 11 12:38:53 EDT 2023" starttimestamp="1697037489079" timestamp="4844879" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="581" _type="InsertStringCommand" date="Wed Oct 11 12:38:54 EDT 2023" starttimestamp="1697037489079" timestamp="4845043" timestamp2="4845043">
+    <data><![CDATA[	]]></data>
+  </Command>
+  <Command __id="582" _type="InsertStringCommand" date="Wed Oct 11 12:38:54 EDT 2023" starttimestamp="1697037489079" timestamp="4845043" timestamp2="4845043">
+    <data><![CDATA[	]]></data>
+  </Command>
+  <Command __id="583" _type="ShellCommand" date="Wed Oct 11 12:38:54 EDT 2023" starttimestamp="1697037489079" timestamp="4845832" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="585" _type="DiffBasedFileOpenCommand" date="Wed Oct 11 12:42:53 EDT 2023" docASTNodeCount="2185" docActiveCodeLength="17033" docExpressionCount="1208" docLength="24160" projectName="Assignment2" starttimestamp="1697037489079" timestamp="5084385">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/Assignment2/src/main/BasicSocialDistanceUtility.java]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[package main;
+
+import java.util.ArrayList;
+import java.util.Random;
+import gradingTools.comp524f20.assignment1.WekaUtil;
+import weka.classifiers.Classifier;
+import weka.classifiers.trees.J48;
+public class BasicSocialDistanceUtility {
+	
+	public static final String LARGE = "Large";
+	public static final String MEDIUM = "Medium";
+	public static final String SMALL = "Small";
+	public static final int DISTANCE_SMALL = 6;
+	public static final int DISTANCE_MEDIUM = 13;
+	public static final int DISTANCE_LARGE = 27;
+	public static final int DURATION_SMALL = 15;
+	public static final int DURATION_MEDIUM = 30;
+	public static final int DURATION_LARGE = 120;
+	public static final int EXHALATION_LEVEL_SMALL = 10;
+	public static final int EXHALATION_LEVEL_MEDIUM = 30;
+	public static final int EXHALATION_LEVEL_LARGE = 50;
+	public static final int COMMA = 44;
+	public static final String DISTANCE = "distance";
+	public static final String DURATION = "duration";
+	public static final String EXHALATION = "exhalationLevel";
+	public static final String TRUE = "true";
+	public static final String FALSE = "false";
+	public static final String DERIVED = "Derived";
+	public static final String INFERRED = "Inferred";
+	private static String[] featureNames = {DISTANCE, DURATION, EXHALATION};
+	private static String resultAttributeName = "isSafe";
+	private static String[] resultValueNames = {TRUE, FALSE};
+	
+	/**
+	 * if the combination of the method parameters is safe based on the given data the function returns true
+	 * @param distance
+	 * @param duration
+	 * @param exhalationLevel
+	 * @return
+	 */
+	public static boolean isGivenSafe(final int distance, final int duration, final int exhalationLevel) {
+	    switch (distance) {
+	        case DISTANCE_SMALL:
+	            return isDurationExactSmallExhalationLevelExactMedium(duration, exhalationLevel) ||
+	                   isDurationExactMediumExhalationLevelExactSmall(duration, exhalationLevel);
+	        case DISTANCE_MEDIUM:
+	            return isDurationExactSmallExhalationLevelExactLarge(duration, exhalationLevel) ||
+	                   isDurationExactMediumExhalationLevelExactMedium(duration, exhalationLevel) ||
+	                   isDurationExactLargeExhalationLevelExactSmall(duration, exhalationLevel);
+	        case DISTANCE_LARGE:
+	            return isDurationExactMediumExhalationLevelExactLarge(duration, exhalationLevel) ||
+	                   isDurationExactLargeExhalationLevelExactMedium(duration, exhalationLevel);
+	        default:
+	            return false;
+	    }
+	}
+
+
+	/**
+	 * Checks if the given duration is exactly equal to the large duration constant and
+	 * the exhalation level is exactly equal to the medium exhalation level constant.
+	 *
+	 * @param duration        The duration to compare.
+	 * @param exhalationLevel The exhalation level to compare.
+	 * @return true if the duration is large and the exhalation level is medium, otherwise false.
+	 */
+	private static boolean isDurationExactLargeExhalationLevelExactMedium(final int duration, final int exhalationLevel) {
+	    return duration == DURATION_LARGE && exhalationLevel == EXHALATION_LEVEL_MEDIUM;
+	}
+
+	/**
+	 * Checks if the given duration is exactly equal to the medium duration constant and
+	 * the exhalation level is exactly equal to the large exhalation level constant.
+	 *
+	 * @param duration        The duration to compare.
+	 * @param exhalationLevel The exhalation level to compare.
+	 * @return true if the duration is medium and the exhalation level is large, otherwise false.
+	 */
+	private static boolean isDurationExactMediumExhalationLevelExactLarge(final int duration, final int exhalationLevel) {
+	    return duration == DURATION_MEDIUM && exhalationLevel == EXHALATION_LEVEL_LARGE;
+	}
+
+	/**
+	 * Checks if the given duration is exactly equal to the large duration constant and
+	 * the exhalation level is exactly equal to the small exhalation level constant.
+	 *
+	 * @param duration        The duration to compare.
+	 * @param exhalationLevel The exhalation level to compare.
+	 * @return true if the duration is large and the exhalation level is small, otherwise false.
+	 */
+	private static boolean isDurationExactLargeExhalationLevelExactSmall(final int duration, final int exhalationLevel) {
+	    return duration == DURATION_LARGE && exhalationLevel == EXHALATION_LEVEL_SMALL;
+	}
+
+	/**
+	 * Checks if the given duration is exactly equal to the medium duration constant and
+	 * the exhalation level is exactly equal to the medium exhalation level constant.
+	 *
+	 * @param duration        The duration to compare.
+	 * @param exhalationLevel The exhalation level to compare.
+	 * @return true if the duration is medium and the exhalation level is medium, otherwise false.
+	 */
+	private static boolean isDurationExactMediumExhalationLevelExactMedium(final int duration, final int exhalationLevel) {
+	    return duration == DURATION_MEDIUM && exhalationLevel == EXHALATION_LEVEL_MEDIUM;
+	}
+
+	/**
+	 * Checks if the given duration is exactly equal to the small duration constant and
+	 * the exhalation level is exactly equal to the large exhalation level constant.
+	 *
+	 * @param duration        The duration to compare.
+	 * @param exhalationLevel The exhalation level to compare.
+	 * @return true if the duration is small and the exhalation level is large, otherwise false.
+	 */
+	private static boolean isDurationExactSmallExhalationLevelExactLarge(final int duration, final int exhalationLevel) {
+	    return duration == DURATION_SMALL && exhalationLevel == EXHALATION_LEVEL_LARGE;
+	}
+
+	/**
+	 * Checks if the given duration is exactly equal to the medium duration constant and
+	 * the exhalation level is exactly equal to the small exhalation level constant.
+	 *
+	 * @param duration        The duration to compare.
+	 * @param exhalationLevel The exhalation level to compare.
+	 * @return true if the duration is medium and the exhalation level is small, otherwise false.
+	 */
+	private static boolean isDurationExactMediumExhalationLevelExactSmall(final int duration, final int exhalationLevel) {
+	    return duration == DURATION_MEDIUM && exhalationLevel == EXHALATION_LEVEL_SMALL;
+	}
+
+	/**
+	 * Checks if the given duration is exactly equal to the small duration constant and
+	 * the exhalation level is exactly equal to the medium exhalation level constant.
+	 *
+	 * @param duration        The duration to compare.
+	 * @param exhalationLevel The exhalation level to compare.
+	 * @return true if the duration is small and the exhalation level is medium, otherwise false.
+	 */
+	private static boolean isDurationExactSmallExhalationLevelExactMedium(final int duration, final int exhalationLevel) {
+	    return duration == DURATION_SMALL && exhalationLevel == EXHALATION_LEVEL_MEDIUM;
+	}
+
+	
+	/**
+	Write a static function called isInterpolatedSafe that returns a boolean, and takes three int parameters representing a distance, duration, and exhalation level. It thus, has the signature:
+	isGivenSafe: int*int*int🡪boolean
+	*/
+	
+	public static boolean isInterpolatedSafe(final int distance, final int duration, final int exhalationLevel) {
+		if(isGivenSafe(distance, duration, exhalationLevel)) {
+			return true;
+		}
+	    final boolean isSmall = distance >= DISTANCE_SMALL && distance < DISTANCE_MEDIUM;
+	    final boolean isMedium = distance >= DISTANCE_MEDIUM && distance < DISTANCE_LARGE;
+	    final boolean isLarge = distance >= DISTANCE_LARGE;
+
+	    final boolean condition1 = smallDistanceSituation(duration, exhalationLevel, isSmall);
+	    final boolean condition2 = mediumDistanceSituation(duration, exhalationLevel, isMedium);
+	    final boolean condition3 = largeDistanceSituation(duration, exhalationLevel, isLarge);
+	    
+	    return condition1 || condition2 || condition3;
+	}
+	
+	/**
+	 * low interpolation to a sequence of values is either an element of the sequence or zero
+	 * @param value type
+	 * @param type
+	 * @return
+	 */
+	
+	public static int lowInterpolation(final int value, final String type) {
+	    int result = 0;
+	    if ("d".equals(type)) {
+	        result = (value < DISTANCE_SMALL) ? 0 : (value < DISTANCE_MEDIUM) ? DISTANCE_SMALL : (value < DISTANCE_LARGE) ? DISTANCE_MEDIUM : DISTANCE_LARGE;
+	    }
+	    lowInterpolationHelper(type);
+	    return result;
+	}
+	
+	/**
+	 * high interpolation to a sequence of values is either an element of the sequence or max integer
+	 * @param value type
+	 * @param type
+	 * @return
+	 */
+	
+	public static int highInterpolation(final int value, final String type) {
+	    int result = 0;
+	    if ("e".equals(type)) {
+	        result = (value <= EXHALATION_LEVEL_SMALL) ? EXHALATION_LEVEL_SMALL : (value <= EXHALATION_LEVEL_MEDIUM) ? EXHALATION_LEVEL_MEDIUM : (value < EXHALATION_LEVEL_LARGE) ? EXHALATION_LEVEL_LARGE : Integer.MAX_VALUE;
+	    }
+	    highInterpolationHelper(type);
+	    return result;
+	}
+	
+	/**
+	 * then it is interpolated high
+	 * @param type
+	 * @return
+	 */
+	
+	private static int highInterpolationHelper(final String type) {
+		if("exhalation".equals(type) || DURATION.equals(type)) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	/**
+	 * then it is interpolated low
+	 * @param type
+	 * @return
+	 */
+	
+	private static int lowInterpolationHelper(final String type) {
+		if(DISTANCE.equals(type)) {
+			return 1;
+		}
+		return 0;
+	}
+
+	/**
+	 * Determines if the situation corresponds to a large distance scenario based on
+	 * the specified duration, exhalation level, and a flag indicating whether it's a large situation.
+	 *
+	 * @param duration        The duration to consider.
+	 * @param exhalationLevel The exhalation level to consider.
+	 * @param isLarge         A flag indicating whether it's a large situation.
+	 * @return true if the situation is a large distance scenario, otherwise false.
+	 */
+	private static boolean largeDistanceSituation(final int duration, final int exhalationLevel,
+	        final boolean isLarge) {
+	    return isLarge && (isMediumDurationLargeExhalation(duration, exhalationLevel)
+	            || isLargeDurationMediumExhalation(duration, exhalationLevel));
+	}
+
+	/**
+	 * Determines if the situation corresponds to a medium distance scenario based on
+	 * the specified duration, exhalation level, and a flag indicating whether it's a medium situation.
+	 *
+	 * @param duration        The duration to consider.
+	 * @param exhalationLevel The exhalation level to consider.
+	 * @param isMedium        A flag indicating whether it's a medium situation.
+	 * @return true if the situation is a medium distance scenario, otherwise false.
+	 */
+	private static boolean mediumDistanceSituation(final int duration, final int exhalationLevel,
+	        final boolean isMedium) {
+	    return isMedium && (isSmallDurationLargeExhalation(duration, exhalationLevel)
+	            || isMediumDurationMediumExhalation(duration, exhalationLevel)
+	            || isLargeDurationSmallExhalation(duration, exhalationLevel));
+	}
+
+	/**
+	 * Determines if the situation corresponds to a small distance scenario based on
+	 * the specified duration, exhalation level, and a flag indicating whether it's a small situation.
+	 *
+	 * @param duration        The duration to consider.
+	 * @param exhalationLevel The exhalation level to consider.
+	 * @param isSmall         A flag indicating whether it's a small situation.
+	 * @return true if the situation is a small distance scenario, otherwise false.
+	 */
+	private static boolean smallDistanceSituation(final int duration, final int exhalationLevel,
+	        final boolean isSmall) {
+	    return isSmall && (isSmallDurationMediumExhalation(duration, exhalationLevel)
+	            || isMediumDurationSmallExhalation(duration, exhalationLevel));
+	}
+
+	/**
+	 * Checks if the given duration is within the medium range and the exhalation level is within the medium range.
+	 *
+	 * @param duration        The duration to check.
+	 * @param exhalationLevel The exhalation level to check.
+	 * @return true if the duration is medium and the exhalation level is medium, otherwise false.
+	 */
+	private static boolean isMediumDurationMediumExhalation(final int duration, final int exhalationLevel) {
+	    return (duration > DURATION_SMALL && duration <= DURATION_MEDIUM)
+	            && (exhalationLevel > EXHALATION_LEVEL_SMALL && exhalationLevel <= EXHALATION_LEVEL_MEDIUM);
+	}
+
+	/**
+	 * Checks if the given duration is within the large range and the exhalation level is within the medium range.
+	 *
+	 * @param duration        The duration to check.
+	 * @param exhalationLevel The exhalation level to check.
+	 * @return true if the duration is large and the exhalation level is medium, otherwise false.
+	 */
+	private static boolean isLargeDurationMediumExhalation(final int duration, final int exhalationLevel) {
+	    return (duration > DURATION_MEDIUM && duration <= DURATION_LARGE)
+	            && (exhalationLevel > EXHALATION_LEVEL_SMALL && exhalationLevel <= EXHALATION_LEVEL_MEDIUM);
+	}
+
+	/**
+	 * Checks if the given duration is within the large range and the exhalation level is within the small range.
+	 *
+	 * @param duration        The duration to check.
+	 * @param exhalationLevel The exhalation level to check.
+	 * @return true if the duration is large and the exhalation level is small, otherwise false.
+	 */
+	private static boolean isLargeDurationSmallExhalation(final int duration, final int exhalationLevel) {
+	    return duration <= DURATION_LARGE && duration > DURATION_MEDIUM && exhalationLevel <= EXHALATION_LEVEL_SMALL;
+	}
+
+	/**
+	 * Checks if the given duration is within the small range and the exhalation level is within the large range.
+	 *
+	 * @param duration        The duration to check.
+	 * @param exhalationLevel The exhalation level to check.
+	 * @return true if the duration is small and the exhalation level is large, otherwise false.
+	 */
+	private static boolean isSmallDurationLargeExhalation(final int duration, final int exhalationLevel) {
+	    return (duration <= DURATION_SMALL) && (exhalationLevel > EXHALATION_LEVEL_MEDIUM && exhalationLevel <= EXHALATION_LEVEL_LARGE);
+	}
+
+	/**
+	 * Checks if the given duration is within the medium range and the exhalation level is within the large range.
+	 *
+	 * @param duration        The duration to check.
+	 * @param exhalationLevel The exhalation level to check.
+	 * @return true if the duration is medium and the exhalation level is large, otherwise false.
+	 */
+	private static boolean isMediumDurationLargeExhalation(final int duration, final int exhalationLevel) {
+	    return (duration > DURATION_SMALL && duration <= DURATION_MEDIUM)
+	            && (exhalationLevel > EXHALATION_LEVEL_MEDIUM && exhalationLevel <= EXHALATION_LEVEL_LARGE);
+	}
+
+	
+	/**
+	Write a static function called isSmallDurationMediumExhalation that returns a boolean, and takes three int parameters representing a distance, duration, and exhalation level. It thus, has the signature:
+	isSmallDurationMediumExhalation: int*int*int🡪boolean
+	*/
+	private static boolean isSmallDurationMediumExhalation(final int duration, final int exhalationLevel) {
+	    return duration <= DURATION_SMALL && exhalationLevel <= EXHALATION_LEVEL_MEDIUM && exhalationLevel > EXHALATION_LEVEL_SMALL;
+	}
+
+	
+	/**
+	Write a static function called isMediumDurationSmallExhalation that returns a boolean, and takes two int parameters representing a duration, and exhalation level. It thus, has the signature:
+	isMediumDurationSmallExhalation: int*int🡪boolean
+	*/
+	private static boolean isMediumDurationSmallExhalation(final int duration, final int exhalationLevel) {
+	    return duration > DURATION_SMALL && duration <= DURATION_MEDIUM && exhalationLevel <= EXHALATION_LEVEL_SMALL;
+	}
+
+
+	public static boolean isInterpolatedSafe(final int distance, final int duration) {
+		return isInterpolatedSafe(distance, duration, EXHALATION_LEVEL_MEDIUM);
+	}
+	
+	public static boolean isInterpolatedSafe(final int distance) {
+		return isInterpolatedSafe(distance, DURATION_MEDIUM);
+	}
+	
+	public static boolean isDerivedSafe(final int distance, final int duration, final int exhalationLevel) {
+	    final boolean isLargeDistance = distance >= DISTANCE_LARGE;
+	    final boolean isMediumDistance = distance >= DISTANCE_MEDIUM;
+	    final boolean isSmallDistance = distance >= DISTANCE_SMALL;
+
+	    final boolean condition1 = isLargeDistance && (isLessDurationLargeExhalationMedium(duration, exhalationLevel) || isLessDurationMediumExhalationLarge(duration, exhalationLevel));
+	    final boolean condition2 = isMediumDistance && (isLessDurationLargeExhalationSmall(duration, exhalationLevel) || isLessDurationMediumExhalationMedium(duration, exhalationLevel) || isLessDurationSmallExhalationLarge(duration, exhalationLevel));
+	    final boolean condition3 = isSmallDistance && (isLessDurationMediumExhalationSmall(duration, exhalationLevel) || isLessDurationSmallExhalationMedium(duration, exhalationLevel));
+
+	    return condition1 || condition2 || condition3;
+	}
+
+
+	private static boolean isLessDurationSmallExhalationMedium(final int duration, final int exhalationLevel) {
+		return duration <= DURATION_SMALL && exhalationLevel <= EXHALATION_LEVEL_MEDIUM;
+	}
+
+	private static boolean isLessDurationMediumExhalationSmall(final int duration, final int exhalationLevel) {
+		return duration <= DURATION_MEDIUM && exhalationLevel <= EXHALATION_LEVEL_SMALL;
+	}
+
+	private static boolean isLessDurationSmallExhalationLarge(final int duration, final int exhalationLevel) {
+		return duration <= DURATION_SMALL && exhalationLevel <= EXHALATION_LEVEL_LARGE;
+	}
+
+	private static boolean isLessDurationMediumExhalationMedium(final int duration, final int exhalationLevel) {
+		return duration <= DURATION_MEDIUM && exhalationLevel <= EXHALATION_LEVEL_MEDIUM;
+	}
+
+	private static boolean isLessDurationLargeExhalationSmall(final int duration, final int exhalationLevel) {
+		return duration <= DURATION_LARGE && exhalationLevel <= EXHALATION_LEVEL_SMALL;
+	}
+
+	private static boolean isLessDurationMediumExhalationLarge(final int duration, final int exhalationLevel) {
+		return duration <= DURATION_MEDIUM && exhalationLevel <= EXHALATION_LEVEL_LARGE;
+	}
+
+	private static boolean isLessDurationLargeExhalationMedium(final int duration, final int exhalationLevel) {
+		return duration <= DURATION_LARGE && exhalationLevel <= EXHALATION_LEVEL_MEDIUM;
+	}
+
+	
+	public static void printGeneratedCombinationDerivedSafety() {
+		final Random rand = new Random();
+		final int randDistance = rand.nextInt(34);
+		final int randDuration = rand.nextInt(145);
+		final int randExhalationLevel = rand.nextInt(61);
+		System.out.println("" + randDistance + (char)COMMA + randDuration + (char)COMMA + randExhalationLevel + (char)COMMA + isDerivedSafe(randDistance, randDuration, randExhalationLevel));
+	}
+	
+	public static void printGeneratedCombinationInferredSafety() {
+		final Random rand = new Random();
+		final int randDistance = rand.nextInt(34);
+		final int randDuration = rand.nextInt(145);
+		final int randExhalationLevel = rand.nextInt(61);
+		System.out.println("" + randDistance + (char)COMMA + randDuration + (char)COMMA + randExhalationLevel + (char)COMMA + isInferredSafe(randDistance, randDuration, randExhalationLevel));
+	}
+	
+	public static boolean printcompareSafetyComputations() {
+		final Random rand = new Random();
+		final int randDistance = rand.nextInt(34);
+		final int randDuration = rand.nextInt(145);
+		final int randExhalationLevel = rand.nextInt(61);
+		final boolean isDerivedSafe = isDerivedSafe(randDistance, randDuration, randExhalationLevel);
+		final boolean isInferredSafe = isInferredSafe(randDistance, randDuration, randExhalationLevel);
+		System.out.println("" + randDistance + (char)COMMA + randDuration + (char)COMMA + randExhalationLevel + (char)COMMA + isDerivedSafe(randDistance, randDuration, randExhalationLevel) + (char)COMMA + isInferredSafe(randDistance, randDuration, randExhalationLevel));
+		return isDerivedSafe == isInferredSafe;
+	}
+	
+	public static void printGivenAndGeneratedCombinationsDerivedSafety() {
+		printHead();
+		printTail(DERIVED);
+		
+	}
+	
+	public static void printGivenAndGeneratedCombinationsInferredSafety() {
+		printHead();
+		printTail(INFERRED);
+		
+	}
+	
+	public static void printHead() {
+		System.out.println("Distance,Duration,Exhalation,IsSafe");
+		System.out.print("13,30,30,true\n"
+				+ "6,30,10,true\n"
+				+ "27,30,50,true\n"
+				+ "13,15,50,true\n"
+				+ "13,120,10,true\n"
+				+ "27,120,30,true\n"
+				+ "6,15,30,true\n"
+				+ "----------------\n"
+				+ "");
+	}
+	
+	public static void printTail(final String type) {
+		final int instanceNumber = 10;
+		for(int i = 0; i < instanceNumber; i++) {
+			final Random rand = new Random();
+			final int randDistance = rand.nextInt(34);
+			final int randDuration = rand.nextInt(145);
+			final int randExhalationLevel = rand.nextInt(61);
+			if(INFERRED.equals(type)) {
+				System.out.println("" + randDistance + (char)COMMA + randDuration + (char)COMMA + randExhalationLevel + (char)COMMA + isInferredSafe(randDistance, randDuration, randExhalationLevel));
+			}else if(DERIVED.equals(type)) {
+				System.out.println("" + randDistance + (char)COMMA + randDuration + (char)COMMA + randExhalationLevel + (char)COMMA + isDerivedSafe(randDistance, randDuration, randExhalationLevel));
+			}
+		}
+	}
+	
+	public static ArrayList<Integer[]> generateSafeDistancesAndDurations(final int exhalationLevel){
+		final String exhalationLevelString = exhalationLevel(exhalationLevel);
+		final ArrayList<Integer[]> finalComb = new ArrayList<>();
+		if(SMALL.equals(exhalationLevelString)) {
+			final Integer[] smallMedium = {DISTANCE_SMALL,DURATION_MEDIUM};
+			final Integer[] mediumLarge = {DISTANCE_MEDIUM,DURATION_LARGE};
+			finalComb.add(smallMedium);
+			finalComb.add(mediumLarge);
+		}
+		if(MEDIUM.equals(exhalationLevelString)){
+			final Integer[] mediumMedium = {DISTANCE_MEDIUM,DURATION_MEDIUM};
+			final Integer[] largeLarge = {DISTANCE_LARGE,DURATION_LARGE};
+			final Integer[] smallSmall = {DISTANCE_SMALL,DURATION_SMALL};
+			finalComb.add(mediumMedium);
+			finalComb.add(largeLarge);
+			finalComb.add(smallSmall);
+		}
+		if(LARGE.equals(exhalationLevelString)){
+			final Integer[] LargeMedium = {DISTANCE_LARGE,DURATION_MEDIUM};
+			final Integer[] mediumSmall = {DISTANCE_MEDIUM,DURATION_SMALL};
+			finalComb.add(LargeMedium);
+			finalComb.add(mediumSmall);
+		}
+		return finalComb;
+	}
+
+	public static void printSafeDistancesAndDurations(final int exhalationLevel){
+		
+		final ArrayList<Integer[]> arrayList = generateSafeDistancesAndDurations(exhalationLevel);
+		System.out.print("" + exhalationLevel + (char)COMMA);
+        System.out.print("[");
+        for (int i = 0; i < arrayList.size(); i++) {
+            final Integer[] array = arrayList.get(i);
+            System.out.print("{");
+            loopSingleArray(array);
+            System.out.print("}");
+            if (i < arrayList.size() - 1) {
+                System.out.print((char)COMMA);
+            }
+        }
+        System.out.println("]");
+	}
+
+	private static void loopSingleArray(final Integer[] array) {
+		for (int i = 0; i < array.length; i++) {
+		    System.out.print(array[i]);
+		    if (i < array.length - 1) {
+		        System.out.print((char)COMMA);
+		    }
+		}
+	}
+	
+	
+	
+	private static String exhalationLevel(final int exhalationLevel) {
+		if(exhalationLevel <= EXHALATION_LEVEL_SMALL) {
+			return SMALL;
+		}
+		if(exhalationLevel <= EXHALATION_LEVEL_MEDIUM) {
+			return MEDIUM;
+		}
+		if(exhalationLevel <= EXHALATION_LEVEL_LARGE) {
+			return LARGE;
+		}
+		return "Max";
+	}
+	
+	public static boolean isInferredSafe(final int distance, final int duration, final int exhalationLevel) {
+		final double[] anInputFeatureValues = {distance, duration, exhalationLevel};
+		final Classifier classifier = new J48();
+		WekaUtil.buildTreeModel(classifier, "SafeSocialization.txt");
+		final String aResultString = WekaUtil.predictString(classifier, 
+				featureNames, anInputFeatureValues, resultAttributeName, resultValueNames);
+		return TRUE.equals(aResultString)?true:false;
+	}
+	
+	public static int compareSafetyComputations() {
+		System.out.println("Distance,Duration,Exhalation,Derived,Inferred");
+		final int instanceNumber = 10;
+		int correctNum = 0;
+		for(int i = 0; i < instanceNumber; i++) {
+			correctNum += printcompareSafetyComputations()? 1:0;
+		}
+		return correctNum;
+	}
+	
+}
+]]></snapshot>
+  </Command>
+  <Command __id="590" _type="MoveCaretCommand" caretOffset="9078" date="Wed Oct 11 12:43:26 EDT 2023" docOffset="9227" starttimestamp="1697037489079" timestamp="5117805" />
+  <Command __id="591" _type="InsertStringCommand" date="Wed Oct 11 12:43:27 EDT 2023" starttimestamp="1697037489079" timestamp="5117963" timestamp2="5117963">
+    <data><![CDATA[f]]></data>
+  </Command>
+  <Command __id="596" _type="EclipseCommand" commandID="org.eclipse.ui.file.save" date="Wed Oct 11 12:43:43 EDT 2023" starttimestamp="1697037489079" timestamp="5134843" />
+  <Command __id="597" _type="ShellCommand" date="Wed Oct 11 12:43:45 EDT 2023" starttimestamp="1697037489079" timestamp="5136081" type="ECLIPSE_CLOSED" />
+  <Command __id="592" _type="DiffBasedFileOpenCommand" date="Wed Oct 11 12:43:43 EDT 2023" docLength="236" projectName="PrologTest" starttimestamp="1697037489079" timestamp="5134283">
+    <filePath><![CDATA[/Users/shanw25/College/JuniorFall/COMP524/PrologTest/src/SocialDistance.pl]]></filePath>
+    <diff><![CDATA[Diff(EQUAL,"givenSizes(6, 15, 10).givenSizes(13, 30, 30).givenSizes(27, 120, 50)."), Diff(INSERT,""), Diff(EQUAL,"givenSafe(13, 30, 30).givenSafe(13, 15, 50).givenSafe(13, 120, 10).givenSafe(6, 30, 10).givenSafe(6, 15, 30).givenSafe(27, 30, 50).givenSafe(27, 120, 30)."), Diff(INSERT,"	")]]></diff>
+    <snapshot><![CDATA[givenSizes(6, 15, 10).
+givenSizes(13, 30, 30).
+givenSizes(27, 120, 50).
+
+givenSafe(13, 30, 30).
+givenSafe(13, 15, 50).
+givenSafe(13, 120, 10).
+givenSafe(6, 30, 10).
+givenSafe(6, 15, 30).
+givenSafe(27, 30, 50).
+givenSafe(27, 120, 30).
+
+	]]></snapshot>
+  </Command>
+</Events>
